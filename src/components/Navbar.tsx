@@ -1,17 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Search, ShoppingBag, Phone } from "lucide-react";
+import { Menu, X, Search, ShoppingBag, Phone, Heart, ChevronDown } from "lucide-react";
 import Link from "next/link";
-
-const navLinks = [
-  { label: "Accueil", href: "/" },
-  { label: "Solaire", href: "/collections/solaire" },
-  { label: "Optique", href: "/collections/optique" },
-  { label: "Lentilles", href: "/collections/lentilles" },
-  { label: "Sport", href: "/collections/sport" },
-  { label: "Marques", href: "/marques" },
-];
+import { useStore } from "@/lib/store";
+import { megaMenuData } from "@/lib/data";
 
 export class NavbarController {
   static readonly brandName = "NEW LOOK OPTIC";
@@ -21,6 +14,8 @@ export class NavbarController {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const { state, dispatch } = useStore();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -52,36 +47,88 @@ export default function Navbar() {
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm tracking-widest uppercase text-stone-600 hover:text-gold transition-colors duration-300"
+            {/* Desktop Mega Menu Navigation */}
+            <div className="hidden lg:flex items-center gap-6">
+              <Link
+                href="/"
+                className="text-sm tracking-widest uppercase text-stone-600 hover:text-gold transition-colors duration-300"
+              >
+                Accueil
+              </Link>
+              {megaMenuData.map((cat) => (
+                <div
+                  key={cat.label}
+                  className="relative"
+                  onMouseEnter={() => setActiveMenu(cat.label)}
+                  onMouseLeave={() => setActiveMenu(null)}
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    href={cat.href}
+                    className="flex items-center gap-1 text-sm tracking-widest uppercase text-stone-600 hover:text-gold transition-colors duration-300"
+                  >
+                    {cat.label.split(" ").slice(-1)}
+                    <ChevronDown size={12} className={`transition-transform duration-200 ${activeMenu === cat.label ? "rotate-180" : ""}`} />
+                  </Link>
+
+                  {/* Mega Dropdown */}
+                  {activeMenu === cat.label && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
+                      <div className="bg-white border border-stone-200 shadow-xl min-w-[240px] py-4">
+                        {cat.subcategories.map((sub) => (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            className="block px-6 py-2 text-sm text-stone-600 hover:text-gold hover:bg-cream transition-colors"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
 
             {/* Right Icons */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <a
                 href={`tel:${NavbarController.phone.replace(/\s/g, "")}`}
-                className="hidden sm:flex items-center gap-2 text-sm text-stone-600 hover:text-gold transition-colors"
+                className="hidden md:flex items-center gap-2 text-sm text-stone-600 hover:text-gold transition-colors"
               >
                 <Phone size={16} />
-                <span className="hidden md:inline">{NavbarController.phone}</span>
+                <span className="hidden lg:inline">{NavbarController.phone}</span>
               </a>
-              <button className="p-2 text-charcoal hover:text-gold transition-colors" aria-label="Rechercher">
+              <button
+                onClick={() => dispatch({ type: "TOGGLE_SEARCH" })}
+                className="p-2 text-charcoal hover:text-gold transition-colors"
+                aria-label="Rechercher"
+              >
                 <Search size={20} />
               </button>
-              <button className="p-2 text-charcoal hover:text-gold transition-colors relative" aria-label="Panier">
+              <Link
+                href="/wishlist"
+                className="p-2 text-charcoal hover:text-gold transition-colors relative"
+                aria-label="Favoris"
+              >
+                <Heart size={20} />
+                {state.wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                    {state.wishlistCount}
+                  </span>
+                )}
+              </Link>
+              <button
+                onClick={() => dispatch({ type: "TOGGLE_CART" })}
+                className="p-2 text-charcoal hover:text-gold transition-colors relative"
+                aria-label="Panier"
+              >
                 <ShoppingBag size={20} />
-                <span className="absolute -top-1 -right-1 bg-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-                  0
-                </span>
+                {state.itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                    {state.itemCount}
+                  </span>
+                )}
               </button>
             </div>
           </div>
@@ -89,18 +136,42 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden bg-white border-t border-stone-100">
-            <div className="px-6 py-8 space-y-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-sm tracking-[0.2em] uppercase text-stone-700 hover:text-gold transition-colors"
-                >
-                  {link.label}
-                </Link>
+          <div className="lg:hidden bg-white border-t border-stone-100 max-h-[80vh] overflow-y-auto">
+            <div className="px-6 py-6 space-y-4">
+              <Link href="/" onClick={() => setIsOpen(false)} className="block text-sm tracking-[0.2em] uppercase text-stone-700 hover:text-gold transition-colors">
+                Accueil
+              </Link>
+              {megaMenuData.map((cat) => (
+                <div key={cat.label}>
+                  <Link
+                    href={cat.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block text-sm tracking-[0.2em] uppercase text-stone-700 hover:text-gold transition-colors font-medium"
+                  >
+                    {cat.label}
+                  </Link>
+                  <div className="ml-4 mt-2 space-y-2">
+                    {cat.subcategories.slice(0, 4).map((sub) => (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        onClick={() => setIsOpen(false)}
+                        className="block text-xs tracking-[0.15em] text-stone-500 hover:text-gold transition-colors"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               ))}
+              <div className="pt-4 border-t border-stone-100 space-y-3">
+                <Link href="/store-locator" onClick={() => setIsOpen(false)} className="block text-sm tracking-[0.2em] uppercase text-stone-700 hover:text-gold transition-colors">
+                  Nos Boutiques
+                </Link>
+                <Link href="/size-guide" onClick={() => setIsOpen(false)} className="block text-sm tracking-[0.2em] uppercase text-stone-700 hover:text-gold transition-colors">
+                  Guide des Tailles
+                </Link>
+              </div>
               <a
                 href={`tel:${NavbarController.phone.replace(/\s/g, "")}`}
                 className="flex items-center gap-2 text-sm text-gold pt-4 border-t border-stone-100"
