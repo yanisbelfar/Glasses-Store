@@ -3,6 +3,7 @@ import FeaturedProducts from "@/components/FeaturedProducts";
 import Categories from "@/components/Categories";
 import PopularProducts from "@/components/PopularProducts";
 import Testimonials from "@/components/Testimonials";
+import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Categories />
       <PopularProducts />
       <Testimonials />
+      <Newsletter />
       <Footer />
     </main>
   );
