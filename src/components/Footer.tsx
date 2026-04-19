@@ -13,11 +13,10 @@ export class FooterConfig {
 
   static readonly categoryLinks = [
     { label: "Tous les Produits", href: "/collections/all" },
-    { label: "Lunettes de Soleil", href: "/collections/solaire" },
-    { label: "Lunettes Optiques", href: "/collections/optique" },
-    { label: "Lentilles de Contact", href: "/collections/lentilles" },
-    { label: "Lunettes de Sport", href: "/collections/sport" },
-    { label: "Accessoires", href: "/collections/accessoires" },
+    { label: "Lunettes Homme", href: "/collections/homme" },
+    { label: "Lunettes Femme", href: "/collections/femme" },
+    { label: "Lunettes Enfant", href: "/collections/enfant" },
+    { label: "Toutes les marques", href: "/marques" },
   ];
 
   static readonly serviceLinks = [

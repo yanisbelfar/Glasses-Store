@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import CartSidebar from "@/components/CartSidebar";
 import SearchOverlay from "@/components/SearchOverlay";
 import QuickView from "@/components/QuickView";
 import BackToTop from "@/components/BackToTop";
@@ -21,7 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "New Look Optic | Opticien de Luxe en Algérie",
   description:
-    "Découvrez notre collection exclusive de lunettes de luxe. Ray-Ban, Gucci, Dior, Prada. Livraison express partout en Algérie.",
+    "Découvrez toutes les montures disponibles en boutique, classées par catégories Homme, Femme et Enfant. Livraison express partout en Algérie.",
 };
 
 export default function RootLayout({
@@ -38,7 +37,6 @@ export default function RootLayout({
         <StoreProvider>
           <Navbar />
           <SearchOverlay />
-          <CartSidebar />
           <QuickView />
           {children}
           <BackToTop />

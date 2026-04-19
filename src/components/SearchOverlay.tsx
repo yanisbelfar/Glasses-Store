@@ -8,7 +8,7 @@ import { allProducts, brands } from "@/lib/data";
 
 export class SearchController {
   static readonly placeholder = "Rechercher un produit, une marque...";
-  static readonly popularSearches = ["Ray-Ban", "Aviator", "Solaire", "Gucci", "Optique"];
+  static readonly popularSearches = ["Gauss", "Polaroid", "Skechers", "Homme", "Enfant"];
 
   static search(query: string) {
     const q = query.toLowerCase();
@@ -137,7 +137,6 @@ export default function SearchOverlay() {
                         <p className="text-sm font-light text-charcoal group-hover:text-gold transition-colors truncate">
                           {p.name}
                         </p>
-                        <p className="text-sm text-stone-500">{p.formattedPrice}</p>
                       </Link>
                     ))}
                   </div>

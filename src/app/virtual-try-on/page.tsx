@@ -20,7 +20,7 @@ export default function VirtualTryOnPage() {
   const [selectedProduct, setSelectedProduct] = useState(allProducts[0]?.id ?? "");
   const [mode, setMode] = useState<"webcam" | "photo">("webcam");
 
-  const sunglasses = allProducts.filter((p) => p.category === "Solaire").slice(0, 8);
+  const tryOnProducts = allProducts.slice(0, 12);
   const iconMap = { camera: Camera, upload: Upload };
 
   return (
@@ -106,7 +106,7 @@ export default function VirtualTryOnPage() {
               Choisissez un modèle
             </p>
             <div className="grid grid-cols-2 gap-3 max-h-[600px] overflow-y-auto">
-              {sunglasses.map((p) => (
+              {tryOnProducts.map((p) => (
                 <button
                   key={p.id}
                   onClick={() => setSelectedProduct(p.id)}
@@ -125,7 +125,7 @@ export default function VirtualTryOnPage() {
               ))}
             </div>
             <Link
-              href="/collections/solaire"
+              href="/collections/all"
               className="block text-center mt-4 text-xs text-gold hover:underline"
             >
               Voir tous les modèles →

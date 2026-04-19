@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Search, ShoppingBag, Phone, Heart, ChevronDown } from "lucide-react";
+import { Menu, X, Search, Phone, Heart, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { megaMenuData } from "@/lib/data";
@@ -9,7 +9,7 @@ import { megaMenuData } from "@/lib/data";
 export class NavbarController {
   static readonly brandName = "NEW LOOK OPTIC";
   static readonly phone = "0555 12 34 56";
-  static readonly promoBanner = "Livraison Gratuite dès 2 articles | Paiement à la livraison";
+  static readonly promoBanner = "Conseils monture personnalisés | Réponse rapide sur WhatsApp";
 }
 
 export default function Navbar() {
@@ -118,18 +118,6 @@ export default function Navbar() {
                   </span>
                 )}
               </Link>
-              <button
-                onClick={() => dispatch({ type: "TOGGLE_CART" })}
-                className="p-2 text-charcoal hover:text-gold transition-colors relative"
-                aria-label="Panier"
-              >
-                <ShoppingBag size={20} />
-                {state.itemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-                    {state.itemCount}
-                  </span>
-                )}
-              </button>
             </div>
           </div>
         </div>

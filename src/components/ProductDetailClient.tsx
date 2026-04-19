@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Heart, ShoppingBag, Truck, Shield, RotateCcw, Eye, ChevronLeft, ChevronRight, Camera } from "lucide-react";
+import { Heart, Send, Truck, Shield, RotateCcw, Eye, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { allProducts, Product } from "@/lib/data";
@@ -9,6 +9,9 @@ import Breadcrumbs, { BreadcrumbItem } from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 
 export class ProductDetailConfig {
+  static readonly whatsappNumber = "213555123456";
+  static readonly requestSuccessMessage = "vos donnée ont bien été envoyé, vous auriez une reponse dans les plus bref délai";
+
   static readonly guarantees = [
     { icon: "truck", label: "Livraison 24-48h", detail: "Express partout en Algérie" },
     { icon: "shield", label: "Garantie 2 ans", detail: "Produit 100% authentique" },
@@ -20,6 +23,19 @@ export class ProductDetailConfig {
       .filter((p) => p.id !== product.id && (p.brand === product.brand || p.category === product.category))
       .slice(0, 4);
   }
+
+  static getWhatsAppLink(product: Product, frame: string, color?: string, size?: string): string {
+    const message = [
+      "Nouvelle demande monture - New Look Optic",
+      `Produit: ${product.name}`,
+      `Marque: ${product.brand ?? "Non précisée"}`,
+      `Monture indiquée: ${frame}`,
+      `Couleur: ${color ?? "Non précisée"}`,
+      `Taille: ${size ?? "Non précisée"}`,
+    ].join("\n");
+
+    return `https://wa.me/${ProductDetailConfig.whatsappNumber}?text=${encodeURIComponent(message)}`;
+  }
 }
 
 export default function ProductDetailClient({ id }: { id: string }) {
@@ -28,6 +44,9 @@ export default function ProductDetailClient({ id }: { id: string }) {
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
   const [currentImage, setCurrentImage] = useState(0);
+  const [frameInput, setFrameInput] = useState("");
+  const [requestError, setRequestError] = useState("");
+  const [requestSent, setRequestSent] = useState(false);
   const [activeTab, setActiveTab] = useState<"details" | "livraison" | "guide">("details");
 
   useEffect(() => {
@@ -51,6 +70,28 @@ export default function ProductDetailClient({ id }: { id: string }) {
   const relatedProducts = ProductDetailConfig.getRelatedProducts(product);
   const images = product.images ?? [product.image];
   const iconMap = { truck: Truck, shield: Shield, return: RotateCcw };
+
+  const handleSendRequest = () => {
+    const normalizedFrame = frameInput.trim();
+
+    if (!normalizedFrame) {
+      setRequestSent(false);
+      setRequestError("Veuillez indiquer votre monture avant l'envoi.");
+      return;
+    }
+
+    setRequestError("");
+    setRequestSent(true);
+
+    const whatsappUrl = ProductDetailConfig.getWhatsAppLink(
+      product,
+      normalizedFrame,
+      product.colors?.[selectedColor]?.name,
+      product.sizes?.[selectedSize],
+    );
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <main className="flex-1 pt-28 lg:pt-32">
@@ -112,7 +153,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
           <div>
             <p className="text-xs tracking-[0.3em] uppercase text-gold mb-2">{product.brand}</p>
             <h1 className="text-3xl lg:text-4xl font-extralight text-charcoal">{product.name}</h1>
-            <p className="text-3xl font-light text-charcoal mt-4">{product.formattedPrice}</p>
+            <p className="text-sm text-stone-500 mt-4">Indiquez votre monture pour recevoir une réponse personnalisée.</p>
 
             {product.description && (
               <p className="text-stone-500 mt-4 leading-relaxed">{product.description}</p>
@@ -171,19 +212,25 @@ export default function ProductDetailClient({ id }: { id: string }) {
 
             {/* Actions */}
             <div className="mt-8 space-y-3">
+              <div>
+                <label htmlFor="frame-input" className="text-xs tracking-[0.2em] uppercase text-stone-400 mb-2 block">
+                  Monture
+                </label>
+                <input
+                  id="frame-input"
+                  type="text"
+                  value={frameInput}
+                  onChange={(event) => setFrameInput(event.target.value)}
+                  placeholder="Ex: 138 mm / référence / besoin spécifique"
+                  className="w-full border border-stone-200 px-4 py-3 text-sm text-charcoal outline-none focus:border-gold"
+                />
+              </div>
               <button
-                onClick={() =>
-                  dispatch({
-                    type: "ADD_TO_CART",
-                    product,
-                    color: product.colors?.[selectedColor]?.name,
-                    size: product.sizes?.[selectedSize],
-                  })
-                }
+                onClick={handleSendRequest}
                 className="w-full py-4 bg-gold text-white text-sm tracking-[0.2em] uppercase hover:bg-gold-dark transition-colors flex items-center justify-center gap-2"
               >
-                <ShoppingBag size={18} />
-                Ajouter au panier
+                <Send size={18} />
+                Envoyer
               </button>
               <button
                 onClick={() => dispatch({ type: "TOGGLE_WISHLIST", productId: product.id })}
@@ -196,6 +243,14 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 <Heart size={18} fill={isWished ? "currentColor" : "none"} />
                 {isWished ? "Dans vos favoris" : "Ajouter aux favoris"}
               </button>
+              {requestError && (
+                <p className="text-sm text-red-600">{requestError}</p>
+              )}
+              {requestSent && (
+                <p className="text-sm text-emerald-700 bg-emerald-50 border border-emerald-100 px-3 py-2">
+                  {ProductDetailConfig.requestSuccessMessage}
+                </p>
+              )}
             </div>
 
             {/* Guarantees */}
@@ -245,10 +300,10 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 )}
                 {activeTab === "livraison" && (
                   <div className="space-y-3">
-                    <p>Livraison express en 24-48h partout en Algérie.</p>
-                    <p>Livraison gratuite dès 2 articles ou à partir de 50 000 DA.</p>
-                    <p>Paiement à la livraison (espèces, BaridiMob, Edahabia).</p>
-                    <p>Retour gratuit sous 14 jours si le produit ne vous convient pas.</p>
+                    <p>Après envoi de votre demande, un conseiller vous contacte dans les plus brefs délais.</p>
+                    <p>La réponse inclut disponibilité, ajustement de monture et options de prise en charge.</p>
+                    <p>Le suivi est assuré directement par téléphone ou WhatsApp.</p>
+                    <p>Un accompagnement personnalisé est proposé pour chaque référence.</p>
                   </div>
                 )}
                 {activeTab === "guide" && (
@@ -279,7 +334,6 @@ export default function ProductDetailClient({ id }: { id: string }) {
                   <div className="mt-3">
                     <p className="text-[10px] tracking-[0.2em] uppercase text-gold">{p.brand}</p>
                     <p className="text-sm font-light text-charcoal group-hover:text-gold transition-colors truncate">{p.name}</p>
-                    <p className="text-sm text-stone-500 mt-1">{p.formattedPrice}</p>
                   </div>
                 </Link>
               ))}

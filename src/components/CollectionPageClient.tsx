@@ -15,18 +15,11 @@ export class CollectionFilterConfig {
   static readonly genders = [
     { value: "homme", label: "Homme" },
     { value: "femme", label: "Femme" },
+    { value: "enfant", label: "Enfant" },
     { value: "unisexe", label: "Unisexe" },
-  ];
-  static readonly priceRanges = [
-    { label: "Moins de 25 000 DA", min: 0, max: 25000 },
-    { label: "25 000 - 40 000 DA", min: 25000, max: 40000 },
-    { label: "40 000 - 60 000 DA", min: 40000, max: 60000 },
-    { label: "Plus de 60 000 DA", min: 60000, max: Infinity },
   ];
   static readonly sortOptions = [
     { value: "featured", label: "En vedette" },
-    { value: "price-asc", label: "Prix croissant" },
-    { value: "price-desc", label: "Prix décroissant" },
     { value: "name", label: "A - Z" },
   ];
 }
@@ -43,7 +36,6 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
   );
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
   const [selectedGenders, setSelectedGenders] = useState<string[]>([]);
-  const [selectedPriceRange, setSelectedPriceRange] = useState<number | null>(null);
   const [sortBy, setSortBy] = useState("featured");
 
   const category = categories.find((c) => c.slug === slug);
@@ -51,12 +43,13 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
   const title = isAll ? "Tous les Produits" : category?.name ?? "Collection";
 
   const filtered = useMemo(() => {
+    const activeCategory = categories.find((c) => c.slug === slug);
     let products = allProducts;
 
     // Filter by category
-    if (!isAll && category) {
+    if (!isAll && activeCategory) {
       products = products.filter((p) =>
-        p.category.toLowerCase() === category.name.replace("Lunettes de ", "").replace("Lunettes ", "").toLowerCase() ||
+        p.category.toLowerCase() === activeCategory.name.replace("Lunettes de ", "").replace("Lunettes ", "").toLowerCase() ||
         p.category.toLowerCase() === slug.toLowerCase()
       );
     }
@@ -81,43 +74,30 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
       products = products.filter((p) => p.gender && selectedGenders.includes(p.gender));
     }
 
-    // Filter by price range
-    if (selectedPriceRange !== null) {
-      const range = CollectionFilterConfig.priceRanges[selectedPriceRange];
-      products = products.filter((p) => p.price >= range.min && p.price < range.max);
-    }
-
     // Sort
     switch (sortBy) {
-      case "price-asc":
-        products = [...products].sort((a, b) => a.price - b.price);
-        break;
-      case "price-desc":
-        products = [...products].sort((a, b) => b.price - a.price);
-        break;
       case "name":
         products = [...products].sort((a, b) => a.name.localeCompare(b.name));
         break;
     }
 
     return products;
-  }, [slug, isAll, category, selectedShapes, selectedBrands, selectedMaterials, selectedGenders, selectedPriceRange, sortBy]);
+  }, [slug, isAll, selectedShapes, selectedBrands, selectedMaterials, selectedGenders, sortBy]);
 
   const toggleFilter = (list: string[], item: string, setter: (v: string[]) => void) => {
     setter(list.includes(item) ? list.filter((i) => i !== item) : [...list, item]);
   };
 
-  const activeFilterCount = selectedShapes.length + selectedBrands.length + selectedMaterials.length + selectedGenders.length + (selectedPriceRange !== null ? 1 : 0);
+  const activeFilterCount = selectedShapes.length + selectedBrands.length + selectedMaterials.length + selectedGenders.length;
 
   const clearFilters = () => {
     setSelectedShapes([]);
     setSelectedBrands([]);
     setSelectedMaterials([]);
     setSelectedGenders([]);
-    setSelectedPriceRange(null);
   };
 
-  const FilterSidebar = () => (
+  const renderFilterSidebar = () => (
     <div className="space-y-8">
       {/* Shapes */}
       <div>
@@ -191,25 +171,6 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
         </div>
       </div>
 
-      {/* Price */}
-      <div>
-        <h3 className="text-xs tracking-[0.2em] uppercase text-charcoal mb-3 font-medium">Prix</h3>
-        <div className="space-y-2">
-          {CollectionFilterConfig.priceRanges.map((range, i) => (
-            <label key={i} className="flex items-center gap-2 cursor-pointer group">
-              <input
-                type="radio"
-                name="price"
-                checked={selectedPriceRange === i}
-                onChange={() => setSelectedPriceRange(selectedPriceRange === i ? null : i)}
-                className="accent-[var(--gold)] w-4 h-4"
-              />
-              <span className="text-sm text-stone-600 group-hover:text-gold transition-colors">{range.label}</span>
-            </label>
-          ))}
-        </div>
-      </div>
-
       {activeFilterCount > 0 && (
         <button
           onClick={clearFilters}
@@ -255,7 +216,7 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
         <div className="flex gap-8">
           {/* Desktop Filters */}
           <aside className="hidden lg:block w-64 shrink-0">
-            <FilterSidebar />
+            {renderFilterSidebar()}
           </aside>
 
           {/* Mobile Filters Overlay */}
@@ -267,7 +228,7 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
                   <span className="text-sm tracking-[0.2em] uppercase text-charcoal">Filtres</span>
                   <button onClick={() => setFiltersOpen(false)}><X size={20} /></button>
                 </div>
-                <FilterSidebar />
+                {renderFilterSidebar()}
               </div>
             </>
           )}
@@ -328,7 +289,6 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
                       <div className="mt-2">
                         <p className="text-[10px] tracking-[0.2em] uppercase text-gold">{product.brand}</p>
                         <p className="text-sm font-light text-charcoal group-hover:text-gold transition-colors truncate">{product.name}</p>
-                        <p className="text-sm font-light text-charcoal mt-1">{product.formattedPrice}</p>
                       </div>
                     </div>
                   );

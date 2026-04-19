@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, ShoppingBag, Eye, Trash2 } from "lucide-react";
+import { Heart, Eye, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { allProducts } from "@/lib/data";
@@ -54,15 +54,13 @@ export default function WishlistPage() {
                 <div className="mt-3">
                   <p className="text-[10px] tracking-[0.2em] uppercase text-gold">{p.brand}</p>
                   <p className="text-sm font-light text-charcoal truncate">{p.name}</p>
-                  <p className="text-sm text-stone-500 mt-1">{p.formattedPrice}</p>
                 </div>
-                <button
-                  onClick={() => dispatch({ type: "ADD_TO_CART", product: p })}
-                  className="mt-2 w-full py-2 bg-charcoal text-white text-[10px] tracking-[0.2em] uppercase hover:bg-gold transition-colors flex items-center justify-center gap-2"
+                <Link
+                  href={`/products/${p.id}`}
+                  className="mt-2 block w-full py-2 bg-charcoal text-white text-[10px] tracking-[0.2em] uppercase hover:bg-gold transition-colors text-center"
                 >
-                  <ShoppingBag size={12} />
-                  Ajouter au panier
-                </button>
+                  Indiquer ma monture
+                </Link>
               </div>
             ))}
           </div>

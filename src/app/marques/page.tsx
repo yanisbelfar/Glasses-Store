@@ -24,7 +24,7 @@ export default function BrandsPage() {
           {brands.map((brand) => (
             <Link
               key={brand.name}
-              href={`/collections/${brand.slug}`}
+              href={`/collections/all?brand=${encodeURIComponent(brand.name)}`}
               className="group border border-stone-200 p-6 text-center hover:border-gold/40 transition-all"
             >
               <div className="w-full aspect-[3/2] flex items-center justify-center bg-stone-50 mb-4 group-hover:bg-gold/5 transition-colors">

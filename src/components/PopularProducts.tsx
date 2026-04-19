@@ -51,9 +51,6 @@ export default function PopularProducts() {
                 <h3 className="text-sm font-light text-charcoal mt-1 group-hover:text-gold transition-colors truncate">
                   {product.name}
                 </h3>
-                <p className="text-sm font-light text-charcoal mt-1">
-                  {product.formattedPrice}
-                </p>
               </div>
             </Link>
           ))}

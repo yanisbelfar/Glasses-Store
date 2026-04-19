@@ -95,9 +95,6 @@ export default function FeaturedProducts() {
                 {product.description && (
                   <p className="text-sm text-stone-400 mt-1">{product.description}</p>
                 )}
-                <p className="mt-2 text-lg font-light text-charcoal">
-                  {product.formattedPrice}
-                </p>
               </div>
             </Link>
           ))}

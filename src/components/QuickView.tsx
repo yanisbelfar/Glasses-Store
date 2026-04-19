@@ -1,6 +1,6 @@
 "use client";
 
-import { X, Heart, ShoppingBag, Eye } from "lucide-react";
+import { X, Heart, Eye } from "lucide-react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { allProducts } from "@/lib/data";
@@ -46,7 +46,6 @@ export default function QuickView() {
           <div className="p-8">
             <p className="text-xs tracking-[0.3em] uppercase text-gold mb-2">{product.brand}</p>
             <h3 className="text-2xl font-light text-charcoal">{product.name}</h3>
-            <p className="text-2xl font-light text-charcoal mt-2">{product.formattedPrice}</p>
 
             {product.description && (
               <p className="text-sm text-stone-500 mt-4">{product.description}</p>
@@ -89,13 +88,6 @@ export default function QuickView() {
             {/* Actions */}
             <div className="mt-8 space-y-3">
               <button
-                onClick={() => dispatch({ type: "ADD_TO_CART", product })}
-                className="w-full py-4 bg-gold text-white text-xs tracking-[0.2em] uppercase hover:bg-gold-dark transition-colors flex items-center justify-center gap-2"
-              >
-                <ShoppingBag size={16} />
-                Ajouter au panier
-              </button>
-              <button
                 onClick={() => dispatch({ type: "TOGGLE_WISHLIST", productId: product.id })}
                 className={`w-full py-3 border text-xs tracking-[0.2em] uppercase transition-colors flex items-center justify-center gap-2 ${
                   isWished
@@ -111,7 +103,7 @@ export default function QuickView() {
                 onClick={() => dispatch({ type: "CLOSE_QUICK_VIEW" })}
                 className="block text-center text-xs tracking-[0.2em] uppercase text-stone-500 hover:text-gold transition-colors py-2"
               >
-                Voir tous les détails
+                Indiquer ma monture
               </Link>
             </div>
 
