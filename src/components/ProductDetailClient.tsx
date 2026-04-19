@@ -9,7 +9,7 @@ import Breadcrumbs, { BreadcrumbItem } from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 
 export class ProductDetailConfig {
-  static readonly whatsappNumber = "213555123456";
+  static readonly whatsappNumber = "213555852457";
   static readonly requestSuccessMessage = "vos donnée ont bien été envoyé, vous auriez une reponse dans les plus bref délai";
 
   static readonly guarantees = [

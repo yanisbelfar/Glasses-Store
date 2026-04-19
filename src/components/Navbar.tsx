@@ -8,7 +8,7 @@ import { megaMenuData } from "@/lib/data";
 
 export class NavbarController {
   static readonly brandName = "NEW LOOK OPTIC";
-  static readonly phone = "0555 12 34 56";
+  static readonly phone = "+213 555 85 24 57";
   static readonly promoBanner = "Conseils monture personnalisés | Réponse rapide sur WhatsApp";
 }
 

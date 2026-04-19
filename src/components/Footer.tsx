@@ -7,7 +7,7 @@ export class FooterConfig {
   static readonly ctaTitle = "Sublimez Votre Regard Aujourd\u2019hui";
   static readonly ctaSubtitle =
     "Rejoignez plus de 5000 clients qui ont choisi l\u2019excellence avec New Look Optic.";
-  static readonly phone = "0555 12 34 56";
+  static readonly phone = "+213 555 85 24 57";
   static readonly hours = "Sam-Jeu : 9h-18h";
   static readonly location = "Alg\u00e9rie \ud83c\udde9\ud83c\uddff";
 

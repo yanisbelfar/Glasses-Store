@@ -390,9 +390,9 @@ export const brands: Brand[] = uniqueBrandNames.map((brandName, index) => {
 });
 
 export const stores: Store[] = [
-  new Store("1", "New Look Optic - Alger Centre", "12 Rue Didouche Mourad", "Alger", "0555 12 34 56", "Sam-Jeu: 9h-18h, Ven: 9h-12h", 36.7538, 3.0588),
-  new Store("2", "New Look Optic - Oran", "45 Boulevard de la Soummam", "Oran", "0555 78 90 12", "Sam-Jeu: 9h-18h", 35.6969, -0.6331),
-  new Store("3", "New Look Optic - Constantine", "8 Avenue Aouati Mostefa", "Constantine", "0555 34 56 78", "Sam-Jeu: 9h-18h", 36.3650, 6.6147),
+  new Store("1", "New Look Optic - Alger Centre", "12 Rue Didouche Mourad", "Alger", "+213 555 85 24 57", "Sam-Jeu: 9h-18h, Ven: 9h-12h", 36.7538, 3.0588),
+  new Store("2", "New Look Optic - Oran", "45 Boulevard de la Soummam", "Oran", "+213 555 85 24 57", "Sam-Jeu: 9h-18h", 35.6969, -0.6331),
+  new Store("3", "New Look Optic - Constantine", "8 Avenue Aouati Mostefa", "Constantine", "+213 555 85 24 57", "Sam-Jeu: 9h-18h", 36.3650, 6.6147),
 ];
 
 export const sizeGuide: SizeGuideEntry[] = [
