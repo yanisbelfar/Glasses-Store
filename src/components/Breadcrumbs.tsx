@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Home } from "lucide-react";
 
 export class BreadcrumbItem {
   constructor(
@@ -10,17 +10,28 @@ export class BreadcrumbItem {
 
 export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   return (
-    <nav className="flex items-center gap-2 text-xs text-stone-400 py-4 overflow-x-auto">
-      <Link href="/" className="hover:text-gold transition-colors shrink-0">Accueil</Link>
+    <nav className="flex items-center gap-1.5 text-xs text-muted py-2 overflow-x-auto no-scrollbar">
+      <Link
+        href="/"
+        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full hover:bg-[var(--neon-violet)]/8 hover:text-[var(--neon-violet)] transition-colors shrink-0"
+      >
+        <Home size={11} />
+        Accueil
+      </Link>
       {items.map((item, i) => (
-        <span key={i} className="flex items-center gap-2 shrink-0">
-          <ChevronRight size={12} />
+        <span key={i} className="flex items-center gap-1.5 shrink-0">
+          <ChevronRight size={11} className="text-muted/50" />
           {item.href ? (
-            <Link href={item.href} className="hover:text-gold transition-colors">
+            <Link
+              href={item.href}
+              className="px-2.5 py-1 rounded-full hover:bg-[var(--neon-violet)]/8 hover:text-[var(--neon-violet)] transition-colors"
+            >
               {item.label}
             </Link>
           ) : (
-            <span className="text-charcoal">{item.label}</span>
+            <span className="px-2.5 py-1 rounded-full bg-[var(--neon-violet)]/8 text-[var(--neon-violet)] font-semibold">
+              {item.label}
+            </span>
           )}
         </span>
       ))}

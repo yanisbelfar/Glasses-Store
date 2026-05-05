@@ -1,90 +1,286 @@
-import { Glasses, Shield, Truck, Users } from "lucide-react";
+"use client";
+
+import {
+  Glasses,
+  Shield,
+  Truck,
+  Users,
+  ScanFace,
+  Sparkles,
+  ArrowRight,
+  PlayCircle,
+} from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { allProducts, productImageCatalog } from "@/lib/data";
 
 export class HeroConfig {
-  static readonly headline = "L\u2019art de voir le monde avec \u00e9l\u00e9gance";
+  static readonly eyebrow = "Collection 2026 · Édition Limitée";
+  static readonly headline = "L'art de voir le monde";
+  static readonly headlineGradient = "en haute définition.";
   static readonly subheadline =
-    "D\u00e9couvrez notre collection exclusive de lunettes de luxe. Marques prestigieuses, authenticit\u00e9 garantie, livraison express partout en Alg\u00e9rie.";
+    "Plus de 60 marques exclusives, conseil personnalise et essai virtuel 3D. Decouvrez la nouvelle ere de l'optique a Sidi Aiche.";
   static readonly ctaPrimary = "Explorer la Collection";
-  static readonly ctaSecondary = "Nos Marques";
+  static readonly ctaSecondary = "Essayer en 3D";
   static readonly trustBadges = [
-    { icon: "truck", label: "24-48h", sub: "Livraison Express" },
-    { icon: "shield", label: "100%", sub: "Authentique" },
-    { icon: "glasses", label: "2 Ans", sub: "Garantie Officielle" },
-    { icon: "users", label: "5000+", sub: "Clients Satisfaits" },
+    { icon: "truck", label: "24-48h", sub: "Livraison Express", color: "var(--neon-cyan)" },
+    { icon: "shield", label: "100%", sub: "Authentique", color: "var(--neon-violet)" },
+    { icon: "glasses", label: "60+", sub: "Marques Premium", color: "var(--neon-magenta)" },
+    { icon: "users", label: "5000+", sub: "Clients Satisfaits", color: "var(--neon-amber)" },
   ];
 }
 
 const iconMap = { truck: Truck, shield: Shield, glasses: Glasses, users: Users };
 
+const rotatingHeadlines = [
+  "en haute définition.",
+  "avec style.",
+  "sans compromis.",
+  "comme jamais avant.",
+];
+
 export default function Hero() {
+  const [headlineIndex, setHeadlineIndex] = useState(0);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setHeadlineIndex((i) => (i + 1) % rotatingHeadlines.length);
+    }, 2800);
+    return () => clearInterval(t);
+  }, []);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const cx = (e.clientX - rect.left - rect.width / 2) / rect.width;
+    const cy = (e.clientY - rect.top - rect.height / 2) / rect.height;
+    setTilt({ x: cx * 6, y: cy * -6 });
+  };
+
+  // pick 3 hero images from catalog for the floating mosaic
+  const heroImages =
+    productImageCatalog.length >= 5
+      ? [
+          productImageCatalog[1].path,
+          productImageCatalog[15].path,
+          productImageCatalog[30].path,
+          productImageCatalog[44].path,
+          productImageCatalog[8].path,
+        ]
+      : productImageCatalog.slice(0, 5).map((e) => e.path);
+
+  const totalProducts = allProducts.length;
+
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-charcoal via-charcoal-light to-stone-900 overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-gold/3 rounded-full blur-3xl" />
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden text-white pt-32 pb-20">
+      {/* Background layers */}
+      <div className="absolute inset-0 -z-10 bg-[#04061a]" />
+      <div className="absolute inset-0 -z-10">
+        <div className="aurora animate-mesh" />
+        <div className="noise opacity-30" />
+        {/* grid */}
+        <div
+          className="absolute inset-0 opacity-25"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage:
+              "radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%)",
+          }}
+        />
+        {/* glow orbs */}
+        <div
+          className="glow-orb animate-float-soft"
+          style={{
+            width: 380,
+            height: 380,
+            left: "8%",
+            top: "20%",
+            background: "rgba(32, 58, 116, 0.55)",
+          }}
+        />
+        <div
+          className="glow-orb animate-float-soft"
+          style={{
+            width: 420,
+            height: 420,
+            right: "5%",
+            bottom: "10%",
+            background: "rgba(31, 185, 195, 0.45)",
+            animationDelay: "1.2s",
+          }}
+        />
+        <div
+          className="glow-orb animate-float-soft"
+          style={{
+            width: 280,
+            height: 280,
+            right: "30%",
+            top: "55%",
+            background: "rgba(90, 167, 255, 0.45)",
+            animationDelay: "2.4s",
+          }}
+        />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Text */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 items-center">
+          {/* LEFT: Copy */}
           <div className="text-center lg:text-left">
-            <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6 font-light">
-              Collection Exclusive
+            <p className="section-eyebrow text-white/70 mb-6 justify-center lg:justify-start">
+              <Sparkles size={14} className="text-[var(--neon-amber)]" />
+              {HeroConfig.eyebrow}
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extralight text-white leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light leading-[1.05] tracking-tight">
               {HeroConfig.headline}
+              <br />
+              <span className="inline-flex items-center gap-2">
+                <span className="gradient-text font-semibold">
+                  {rotatingHeadlines[headlineIndex]}
+                </span>
+                <span className="inline-block w-1 h-12 bg-[var(--neon-cyan)] rounded-sm animate-blink-caret align-middle" />
+              </span>
             </h1>
-            <p className="mt-8 text-lg text-stone-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p className="mt-7 text-base lg:text-lg text-white/70 leading-relaxed max-w-xl mx-auto lg:mx-0">
               {HeroConfig.subheadline}
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link
-                href="/collections/all"
-                className="inline-flex items-center justify-center px-8 py-4 bg-gold text-white text-sm tracking-[0.2em] uppercase hover:bg-gold-dark transition-all duration-300 rounded-none"
-              >
+            <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <Link href="/collections/all" className="btn-primary">
                 {HeroConfig.ctaPrimary}
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="/virtual-try-on"
+                className="inline-flex items-center justify-center gap-2 px-7 py-[0.85rem] rounded-full text-[0.78rem] tracking-[0.22em] uppercase font-semibold text-white border border-white/30 bg-white/5 backdrop-blur-md hover:bg-white/15 hover:border-[var(--neon-cyan)] transition-all"
+              >
+                <ScanFace size={16} />
+                {HeroConfig.ctaSecondary}
               </Link>
               <Link
                 href="/marques"
-                className="inline-flex items-center justify-center px-8 py-4 border border-stone-600 text-stone-300 text-sm tracking-[0.2em] uppercase hover:border-gold hover:text-gold transition-all duration-300 rounded-none"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs tracking-[0.22em] uppercase text-white/70 hover:text-white"
               >
-                {HeroConfig.ctaSecondary}
+                <PlayCircle size={16} />
+                Voir nos Marques
               </Link>
             </div>
+
+            {/* live counter */}
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto lg:mx-0">
+              {HeroConfig.trustBadges.map((badge, idx) => {
+                const Icon = iconMap[badge.icon as keyof typeof iconMap];
+                return (
+                  <div
+                    key={badge.label}
+                    className="relative rounded-2xl p-4 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors group"
+                    style={{ animationDelay: `${idx * 80}ms` }}
+                  >
+                    <div
+                      className="absolute -top-3 left-4 w-8 h-8 grid place-items-center rounded-full text-white shadow-lg"
+                      style={{
+                        background: `linear-gradient(135deg, ${badge.color}, rgba(255,255,255,0.4))`,
+                        boxShadow: `0 8px 22px -10px ${badge.color}`,
+                      }}
+                    >
+                      <Icon size={14} strokeWidth={2.2} />
+                    </div>
+                    <p className="mt-3 text-2xl font-semibold gradient-text">
+                      {badge.label}
+                    </p>
+                    <p className="mt-0.5 text-[10px] tracking-[0.2em] uppercase text-white/60">
+                      {badge.sub}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Right: Visual */}
-          <div className="hidden lg:flex items-center justify-center">
-            <div className="relative w-full max-w-md aspect-square">
-              <div className="absolute inset-0 border border-gold/20 rotate-6" />
-              <div className="absolute inset-4 border border-gold/10 -rotate-3" />
-              <div className="absolute inset-8 bg-gradient-to-br from-gold/10 to-transparent flex items-center justify-center">
-                <Glasses className="w-32 h-32 text-gold/40" strokeWidth={0.5} />
+          {/* RIGHT: Image mosaic */}
+          <div className="hidden lg:block">
+            <div
+              className="relative w-full h-[560px]"
+              onMouseMove={onMouseMove}
+              onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+              style={{
+                perspective: "1200px",
+              }}
+            >
+              {/* Halo ring */}
+              <div className="absolute inset-0 grid place-items-center pointer-events-none">
+                <div
+                  className="w-[520px] h-[520px] rounded-full border border-white/10 animate-ring-rotate"
+                  style={{
+                    background:
+                      "conic-gradient(from 0deg, transparent 70%, rgba(139,92,246,0.35), transparent 100%)",
+                    mask: "radial-gradient(transparent 220px, black 222px)",
+                    WebkitMask: "radial-gradient(transparent 220px, black 222px)",
+                  }}
+                />
+              </div>
+
+              {/* Big card */}
+              <div
+                className="absolute left-1/2 top-1/2 w-[330px] aspect-[4/5] -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden shadow-2xl border border-white/20 transition-transform duration-300"
+                style={{
+                  transform: `translate(-50%, -50%) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`,
+                  background:
+                    "linear-gradient(135deg, rgba(32,58,116,0.45), rgba(31,185,195,0.35))",
+                }}
+              >
+                <img
+                  src={heroImages[0]}
+                  alt="Lunette featured"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--neon-cyan)]">
+                    Édition signature
+                  </p>
+                  <p className="text-lg font-semibold">Newtis · Verres progressifs</p>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="chip bg-white/15 text-white">Nouveau</span>
+                    <span className="chip bg-[var(--neon-cyan)]/20 text-[var(--neon-cyan)]">
+                      ★ 4.9 / 5
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating cards */}
+              <div
+                className="absolute top-4 right-4 w-44 aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-xl animate-float-soft"
+                style={{ animationDelay: "0.4s" }}
+              >
+                <img src={heroImages[1]} alt="" className="w-full h-full object-cover" />
+              </div>
+              <div
+                className="absolute bottom-6 left-2 w-40 aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-xl animate-float-soft"
+                style={{ animationDelay: "1.2s" }}
+              >
+                <img src={heroImages[2]} alt="" className="w-full h-full object-cover" />
+              </div>
+              <div
+                className="absolute top-12 left-0 w-32 aspect-[4/3] rounded-2xl overflow-hidden border border-white/15 shadow-xl animate-float-soft"
+                style={{ animationDelay: "2s" }}
+              >
+                <img src={heroImages[3]} alt="" className="w-full h-full object-cover" />
+              </div>
+              <div
+                className="absolute bottom-2 right-12 w-32 aspect-[4/3] rounded-2xl overflow-hidden border border-white/15 shadow-xl animate-float-soft"
+                style={{ animationDelay: "1.6s" }}
+              >
+                <img src={heroImages[4]} alt="" className="w-full h-full object-cover" />
+              </div>
+
+              {/* Stat bubble */}
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] tracking-[0.25em] uppercase text-white/90">
+                {totalProducts}+ modèles disponibles
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Trust Badges */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-          {HeroConfig.trustBadges.map((badge) => {
-            const Icon = iconMap[badge.icon as keyof typeof iconMap];
-            return (
-              <div
-                key={badge.label}
-                className="flex flex-col items-center text-center p-6 border border-stone-700/50 bg-stone-900/30 backdrop-blur-sm"
-              >
-                <Icon size={24} className="text-gold mb-3" strokeWidth={1.5} />
-                <span className="text-2xl font-light text-white">{badge.label}</span>
-                <span className="text-xs tracking-[0.2em] uppercase text-stone-500 mt-1">
-                  {badge.sub}
-                </span>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>

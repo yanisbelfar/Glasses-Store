@@ -1,24 +1,16 @@
 "use client";
 
-import { X, Minus, Plus, ShoppingBag } from "lucide-react";
+import { X, Minus, Plus, ShoppingBag, ShieldCheck, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 
 export class CartSidebarConfig {
   static readonly title = "Votre Panier";
-  static readonly emptyMessage = "Votre panier est vide";
-  static readonly emptySubtext = "Découvrez nos collections et trouvez la monture parfaite.";
-  static readonly ctaCheckout = "Commander";
-  static readonly ctaContinue = "Continuer les achats";
-  static readonly freeShippingThreshold = 50000;
-
-  static getFreeShippingMessage(subtotal: number): string {
-    if (subtotal >= this.freeShippingThreshold) {
-      return "Livraison gratuite !";
-    }
-    const remaining = this.freeShippingThreshold - subtotal;
-    return `Plus que ${remaining.toLocaleString("fr-DZ")} DA pour la livraison gratuite`;
-  }
+  static readonly emptyMessage = "Votre panier est encore vide";
+  static readonly emptySubtext =
+    "Ajoutez vos coups de cœur et finalisez votre demande sur WhatsApp.";
+  static readonly ctaCheckout = "Finaliser ma demande";
+  static readonly ctaContinue = "Continuer mes achats";
 }
 
 export default function CartSidebar() {
@@ -28,99 +20,129 @@ export default function CartSidebar() {
 
   return (
     <>
-      {/* Backdrop */}
       <div
-        className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm"
+        className="fixed inset-0 z-[60] bg-[#04061a]/60 backdrop-blur-md animate-fade-in"
         onClick={() => dispatch({ type: "TOGGLE_CART" })}
       />
-
-      {/* Sidebar */}
-      <div className="fixed top-0 right-0 bottom-0 z-[61] w-full max-w-md bg-white shadow-2xl flex flex-col">
+      <div className="fixed top-0 right-0 bottom-0 z-[61] w-full max-w-md bg-white shadow-2xl flex flex-col animate-fade-in">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-stone-200">
-          <h2 className="text-sm tracking-[0.3em] uppercase text-charcoal">
-            {CartSidebarConfig.title} ({state.itemCount})
-          </h2>
-          <button
-            onClick={() => dispatch({ type: "TOGGLE_CART" })}
-            className="p-1 text-charcoal hover:text-gold transition-colors"
-          >
-            <X size={20} />
-          </button>
+        <div className="relative px-6 py-5 text-white overflow-hidden bg-gradient-to-br from-[var(--neon-violet)] via-[var(--neon-magenta)] to-[var(--neon-rose)]">
+          <div className="aurora opacity-50" />
+          <div className="relative flex items-center justify-between">
+            <div>
+              <p className="text-[10px] tracking-[0.32em] uppercase text-white/70">
+                Mon panier
+              </p>
+              <h2 className="text-xl font-semibold mt-0.5">
+                {CartSidebarConfig.title}
+                <span className="text-white/70 font-normal"> · {state.itemCount}</span>
+              </h2>
+            </div>
+            <button
+              onClick={() => dispatch({ type: "TOGGLE_CART" })}
+              className="w-9 h-9 grid place-items-center rounded-full bg-white/15 hover:bg-white/25 text-white transition-colors"
+              aria-label="Fermer"
+            >
+              <X size={18} />
+            </button>
+          </div>
         </div>
 
-        {/* Free Shipping Bar */}
-        {state.items.length > 0 && (
-          <div className="px-6 py-3 bg-cream">
-            <p className="text-xs text-center text-stone-600">
-              {CartSidebarConfig.getFreeShippingMessage(state.subtotal)}
-            </p>
-            <div className="mt-2 h-1 bg-stone-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gold transition-all duration-500"
-                style={{
-                  width: `${Math.min(100, (state.subtotal / CartSidebarConfig.freeShippingThreshold) * 100)}%`,
-                }}
-              />
-            </div>
-          </div>
-        )}
+
 
         {/* Items */}
-        <div className="flex-1 overflow-y-auto px-6 py-4">
+        <div className="flex-1 overflow-y-auto px-6 py-5">
           {state.items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <ShoppingBag size={48} className="text-stone-200 mb-4" strokeWidth={1} />
-              <p className="text-lg font-light text-charcoal">{CartSidebarConfig.emptyMessage}</p>
-              <p className="text-sm text-stone-400 mt-2">{CartSidebarConfig.emptySubtext}</p>
+              <span className="w-20 h-20 grid place-items-center rounded-full bg-gradient-to-br from-[var(--neon-violet)]/15 to-[var(--neon-cyan)]/15">
+                <ShoppingBag size={36} className="text-[var(--neon-violet)]" strokeWidth={1.5} />
+              </span>
+              <p className="mt-5 text-lg font-semibold text-ink">
+                {CartSidebarConfig.emptyMessage}
+              </p>
+              <p className="text-sm text-muted mt-2 max-w-xs">
+                {CartSidebarConfig.emptySubtext}
+              </p>
               <Link
                 href="/collections/all"
                 onClick={() => dispatch({ type: "TOGGLE_CART" })}
-                className="mt-6 px-6 py-3 bg-gold text-white text-xs tracking-[0.2em] uppercase hover:bg-gold-dark transition-colors"
+                className="btn-primary mt-7"
               >
-                Explorer
+                Explorer la collection
               </Link>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-5">
               {state.items.map((item) => (
-                <div key={item.product.id} className="flex gap-4">
-                  <div className="w-20 h-20 bg-stone-100 shrink-0" />
+                <div
+                  key={item.product.id}
+                  className="flex gap-4 p-3 rounded-2xl border border-[var(--neon-violet)]/10 bg-white shadow-sm"
+                >
+                  <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#f5f7ff] shrink-0">
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="text-xs text-gold tracking-wider uppercase">{item.product.brand}</p>
-                        <p className="text-sm font-light text-charcoal truncate">{item.product.name}</p>
+                    <div className="flex justify-between gap-2">
+                      <div className="min-w-0">
+                        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--neon-violet)] font-semibold">
+                          {item.product.brand}
+                        </p>
+                        <p className="text-sm font-semibold text-ink truncate">
+                          {item.product.name}
+                        </p>
                       </div>
                       <button
-                        onClick={() => dispatch({ type: "REMOVE_FROM_CART", productId: item.product.id })}
-                        className="text-stone-400 hover:text-charcoal transition-colors shrink-0"
+                        onClick={() =>
+                          dispatch({ type: "REMOVE_FROM_CART", productId: item.product.id })
+                        }
+                        className="text-muted hover:text-[var(--neon-rose)] transition-colors"
+                        aria-label="Retirer"
                       >
                         <X size={14} />
                       </button>
                     </div>
                     {(item.selectedColor || item.selectedSize) && (
-                      <p className="text-xs text-stone-400 mt-1">
-                        {[item.selectedColor, item.selectedSize].filter(Boolean).join(" / ")}
+                      <p className="text-xs text-muted mt-1">
+                        {[item.selectedColor, item.selectedSize].filter(Boolean).join(" · ")}
                       </p>
                     )}
-                    <div className="flex items-center justify-between mt-2">
-                      <div className="flex items-center border border-stone-200">
+                    <div className="flex items-center justify-between mt-2.5">
+                      <div className="inline-flex items-center rounded-full bg-[#f5f7ff] p-0.5">
                         <button
-                          onClick={() => dispatch({ type: "UPDATE_QUANTITY", productId: item.product.id, quantity: item.quantity - 1 })}
-                          className="px-2 py-1 text-stone-400 hover:text-charcoal transition-colors"
+                          onClick={() =>
+                            dispatch({
+                              type: "UPDATE_QUANTITY",
+                              productId: item.product.id,
+                              quantity: item.quantity - 1,
+                            })
+                          }
+                          className="w-7 h-7 grid place-items-center rounded-full hover:bg-white text-ink-soft"
                         >
                           <Minus size={12} />
                         </button>
-                        <span className="px-3 text-sm text-charcoal">{item.quantity}</span>
+                        <span className="px-3 text-sm text-ink font-semibold">
+                          {item.quantity}
+                        </span>
                         <button
-                          onClick={() => dispatch({ type: "UPDATE_QUANTITY", productId: item.product.id, quantity: item.quantity + 1 })}
-                          className="px-2 py-1 text-stone-400 hover:text-charcoal transition-colors"
+                          onClick={() =>
+                            dispatch({
+                              type: "UPDATE_QUANTITY",
+                              productId: item.product.id,
+                              quantity: item.quantity + 1,
+                            })
+                          }
+                          className="w-7 h-7 grid place-items-center rounded-full hover:bg-white text-ink-soft"
                         >
                           <Plus size={12} />
                         </button>
                       </div>
-                      <p className="text-sm font-light text-charcoal">{item.formattedTotal}</p>
+                      <p className="text-xs text-muted uppercase tracking-[0.18em]">
+                        Sur devis
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -131,17 +153,29 @@ export default function CartSidebar() {
 
         {/* Footer */}
         {state.items.length > 0 && (
-          <div className="border-t border-stone-200 px-6 py-6 space-y-4">
-            <div className="flex justify-between">
-              <span className="text-sm tracking-wider uppercase text-stone-500">Sous-total</span>
-              <span className="text-lg font-light text-charcoal">{state.formattedSubtotal}</span>
+          <div className="border-t border-[var(--neon-violet)]/10 px-6 py-5 space-y-3 bg-white">
+            <div className="flex items-center justify-between text-xs text-muted">
+              <span className="inline-flex items-center gap-1.5">
+                <ShieldCheck size={12} className="text-[var(--neon-emerald)]" />
+                Paiement sécurisé
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Sparkles size={12} className="text-[var(--neon-amber)]" />
+                Conseil expert
+              </span>
             </div>
-            <button className="w-full py-4 bg-gold text-white text-sm tracking-[0.2em] uppercase hover:bg-gold-dark transition-colors">
-              {CartSidebarConfig.ctaCheckout}
-            </button>
+            <div className="flex items-center justify-between">
+              <span className="text-xs tracking-[0.22em] uppercase text-muted">
+                Articles
+              </span>
+              <span className="text-2xl font-semibold text-ink">
+                {state.itemCount}
+              </span>
+            </div>
+            <button className="btn-primary w-full">{CartSidebarConfig.ctaCheckout}</button>
             <button
               onClick={() => dispatch({ type: "TOGGLE_CART" })}
-              className="w-full py-3 text-sm tracking-[0.15em] uppercase text-stone-500 hover:text-charcoal transition-colors"
+              className="w-full py-3 text-xs tracking-[0.22em] uppercase text-muted hover:text-[var(--neon-violet)] transition-colors"
             >
               {CartSidebarConfig.ctaContinue}
             </button>

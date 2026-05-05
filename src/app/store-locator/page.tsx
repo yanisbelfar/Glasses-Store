@@ -1,9 +1,15 @@
 "use client";
 
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, Compass, Navigation } from "lucide-react";
 import Breadcrumbs, { BreadcrumbItem } from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import { stores } from "@/lib/data";
+
+const accents = [
+  { from: "#22d3ee", to: "#3b82f6" },
+  { from: "#f472b6", to: "#a855f7" },
+  { from: "#fbbf24", to: "#fb7185" },
+];
 
 export default function StoreLocatorPage() {
   return (
@@ -11,41 +17,89 @@ export default function StoreLocatorPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <Breadcrumbs items={[new BreadcrumbItem("Nos Boutiques")]} />
         <div className="text-center mt-6 mb-12">
-          <h1 className="text-3xl lg:text-4xl font-extralight text-charcoal">
-            Nos Boutiques
+          <p className="section-eyebrow text-ink-soft justify-center">
+            <Compass size={14} className="text-[var(--neon-rose)]" />
+            Nos points de vente
+          </p>
+          <h1 className="mt-4 text-4xl lg:text-6xl font-light text-ink leading-[1.05]">
+            Trouvez la <span className="gradient-text font-semibold">boutique</span> la plus proche
           </h1>
-          <p className="text-sm text-stone-400 mt-3 max-w-xl mx-auto">
-            Retrouvez-nous dans nos boutiques à travers l&apos;Algérie. Notre équipe d&apos;opticiens
-            diplômés vous accueille pour un conseil personnalisé.
+          <p className="mt-3 text-ink-soft max-w-xl mx-auto">
+            Trois boutiques en Algérie · des opticiens diplômés · un accueil chaleureux pour vous conseiller.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {stores.map((store) => (
-            <div key={store.name} className="border border-stone-200 p-6 hover:border-gold/30 transition-colors">
-              <div className="w-full h-48 bg-stone-100 flex items-center justify-center mb-6">
-                <MapPin size={32} className="text-stone-300" strokeWidth={1} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {stores.map((store, i) => {
+            const c = accents[i % accents.length];
+            return (
+              <div
+                key={store.id}
+                className="group relative rounded-3xl overflow-hidden border border-[var(--neon-violet)]/10 bg-white transition-all"
+              >
+                <div
+                  className="relative h-44 overflow-hidden"
+                  style={{
+                    background: `linear-gradient(135deg, ${c.from}, ${c.to})`,
+                  }}
+                >
+                  <div className="absolute inset-0 opacity-25">
+                    <div
+                      className="w-full h-full"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(rgba(255,255,255,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.25) 1px, transparent 1px)",
+                        backgroundSize: "30px 30px",
+                      }}
+                    />
+                  </div>
+                  <MapPin
+                    size={56}
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-xl"
+                    strokeWidth={1.5}
+                  />
+                  <div className="absolute top-3 left-3 chip bg-white/85 text-ink">
+                    {store.city}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h2 className="text-lg font-semibold text-ink">{store.name}</h2>
+                  <ul className="mt-4 space-y-2.5 text-sm text-ink-soft">
+                    <li className="flex items-start gap-3">
+                      <MapPin size={15} className="text-[var(--neon-rose)] mt-0.5" />
+                      {store.address}
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <Phone size={15} className="text-[var(--neon-cyan)]" />
+                      <a
+                        href={`tel:${store.phone.replace(/\s/g, "")}`}
+                        className="hover:text-[var(--neon-violet)]"
+                      >
+                        {store.phone}
+                      </a>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Clock size={15} className="text-[var(--neon-amber)] mt-0.5" />
+                      {store.hours}
+                    </li>
+                  </ul>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.name + " " + store.city)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 w-full inline-flex items-center justify-center gap-2 py-3 rounded-full text-xs tracking-[0.22em] uppercase font-semibold text-white"
+                    style={{
+                      background: `linear-gradient(135deg, ${c.from}, ${c.to})`,
+                      boxShadow: `0 12px 24px -10px ${c.from}`,
+                    }}
+                  >
+                    <Navigation size={14} />
+                    Itinéraire Google Maps
+                  </a>
+                </div>
               </div>
-              <h2 className="text-lg font-light text-charcoal mb-4">{store.name}</h2>
-              <div className="space-y-3 text-sm text-stone-500">
-                <div className="flex items-start gap-3">
-                  <MapPin size={16} className="text-gold mt-0.5 flex-shrink-0" />
-                  <span>{store.address}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone size={16} className="text-gold flex-shrink-0" />
-                  <span>{store.phone}</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Clock size={16} className="text-gold mt-0.5 flex-shrink-0" />
-                  <span>{store.hours}</span>
-                </div>
-              </div>
-              <button className="mt-6 w-full py-3 border border-charcoal text-charcoal text-xs tracking-[0.2em] uppercase hover:bg-charcoal hover:text-white transition-colors">
-                Itinéraire
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       <Footer />

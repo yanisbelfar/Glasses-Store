@@ -1,60 +1,110 @@
-import { categories } from "@/lib/data";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+"use client";
 
-export class CategoriesConfig {
-  static readonly sectionTitle = "Explorez par Cat\u00e9gorie";
-  static readonly sectionSubtitle =
-    "Trouvez la monture parfaite pour chaque occasion et chaque style";
-}
+import { categories, allProducts, categoryAccents } from "@/lib/data";
+import { ArrowRight, Compass } from "lucide-react";
+import Link from "next/link";
 
 export default function Categories() {
   return (
-    <section className="py-24 lg:py-32 bg-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">
-            Notre Univers
+    <section className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-[#04061a] text-white" />
+      <div className="aurora opacity-60" />
+      <div
+        className="absolute inset-0 -z-10 opacity-30"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+          maskImage:
+            "radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%)",
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+        <div className="text-center mb-14">
+          <p className="section-eyebrow text-white/70 justify-center">
+            <Compass size={14} className="text-[var(--neon-cyan)]" />
+            Notre univers
           </p>
-          <h2 className="text-3xl lg:text-5xl font-extralight text-charcoal tracking-tight">
-            {CategoriesConfig.sectionTitle}
+          <h2 className="mt-4 text-4xl lg:text-5xl xl:text-6xl font-light text-white tracking-tight">
+            Explorez par <span className="gradient-text font-semibold">catégorie</span>
           </h2>
-          <p className="mt-4 text-stone-500 max-w-2xl mx-auto">
-            {CategoriesConfig.sectionSubtitle}
+          <p className="mt-4 text-white/70 max-w-2xl mx-auto">
+            Trois univers, trois langages visuels. Chaque catégorie est pensée pour révéler ce qui vous rend unique.
           </p>
-          <div className="mt-6 w-16 h-px bg-gold mx-auto" />
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/collections/${cat.slug}`}
-              className="group relative overflow-hidden bg-white border border-stone-200 hover:border-gold/50 transition-all duration-500"
-            >
-              <div className="p-8 lg:p-10">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="text-lg font-light text-charcoal tracking-wide uppercase group-hover:text-gold transition-colors">
-                      {cat.name}
-                    </h3>
-                    <p className="text-sm text-stone-400 mt-2">{cat.description}</p>
-                    <p className="text-xs tracking-[0.2em] text-gold mt-4">
-                      {cat.productCount} produits
-                    </p>
+        <div className="grid md:grid-cols-3 gap-6">
+          {categories.map((cat, idx) => {
+            const accent = categoryAccents[cat.slug] ?? categoryAccents.all;
+            const sample = allProducts
+              .filter((p) => p.category.toLowerCase().includes(cat.slug))
+              .slice(0, 4);
+
+            return (
+              <Link
+                key={cat.id}
+                href={`/collections/${cat.slug}`}
+                className="group relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white/10"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                {/* glow background */}
+                <div
+                  className="absolute -inset-1 opacity-30 group-hover:opacity-60 blur-3xl pointer-events-none transition-opacity"
+                  style={{
+                    background: `radial-gradient(60% 60% at 30% 30%, ${accent.from}, transparent 60%), radial-gradient(60% 60% at 70% 70%, ${accent.to}, transparent 60%)`,
+                  }}
+                />
+
+                <div className="relative p-7">
+                  {/* image mosaic */}
+                  <div className="grid grid-cols-2 gap-2 mb-6">
+                    {sample.slice(0, 4).map((p, i) => (
+                      <div
+                        key={p.id}
+                        className={`aspect-square rounded-xl overflow-hidden ${
+                          i === 0 ? "row-span-2 col-span-1 aspect-auto h-full" : ""
+                        }`}
+                      >
+                        <img
+                          src={p.image}
+                          alt={p.name}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
                   </div>
-                  <ArrowRight
-                    size={20}
-                    className="text-stone-300 group-hover:text-gold group-hover:translate-x-1 transition-all duration-300 mt-1 shrink-0"
-                  />
+
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p
+                        className="text-[10px] tracking-[0.3em] uppercase font-semibold"
+                        style={{ color: accent.from }}
+                      >
+                        {accent.tag}
+                      </p>
+                      <h3 className="mt-2 text-2xl font-semibold text-white">
+                        {cat.name}
+                      </h3>
+                      <p className="mt-1 text-sm text-white/60">
+                        {cat.productCount} modèles
+                      </p>
+                    </div>
+                    <span
+                      className="w-12 h-12 grid place-items-center rounded-full text-white shadow-lg group-hover:rotate-45 transition-transform duration-500"
+                      style={{
+                        background: `linear-gradient(135deg, ${accent.from}, ${accent.to})`,
+                        boxShadow: `0 12px 30px -10px ${accent.from}`,
+                      }}
+                    >
+                      <ArrowRight size={18} />
+                    </span>
+                  </div>
                 </div>
-              </div>
-              {/* Bottom gold line on hover */}
-              <div className="h-0.5 bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

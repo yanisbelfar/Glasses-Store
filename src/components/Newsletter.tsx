@@ -1,19 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle2, Mail, Sparkles, BellRing } from "lucide-react";
 
 export class NewsletterConfig {
-  static readonly title = "Restez Informé";
-  static readonly subtitle = "Inscrivez-vous pour recevoir nos offres exclusives et les nouvelles collections en avant-première.";
+  static readonly title = "Restez en avant-première";
+  static readonly subtitle =
+    "Rejoignez 12 000+ amateurs d'optique : nouvelles collections, ventes privées, conseils de stylistes et invitations à nos pop-up boutiques.";
   static readonly placeholder = "Votre adresse email";
   static readonly cta = "S'inscrire";
-  static readonly successMessage = "Merci ! Vous recevrez bientôt nos exclusivités.";
+  static readonly successMessage =
+    "Merci ! Vérifiez votre boîte mail — surprise futuriste à l'intérieur.";
 
   static validateEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 }
+
+const perks = [
+  { icon: Sparkles, text: "Accès exclusif aux nouveautés" },
+  { icon: BellRing, text: "Ventes privées 7 jours avant tous" },
+  { icon: Mail, text: "Conseils stylistes mensuels" },
+];
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -31,42 +39,111 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-20 bg-cream">
-      <div className="max-w-2xl mx-auto px-4 text-center">
-        <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">Newsletter</p>
-        <h2 className="text-3xl lg:text-4xl font-extralight text-charcoal tracking-tight">
-          {NewsletterConfig.title}
-        </h2>
-        <p className="mt-4 text-stone-500 text-sm leading-relaxed">
-          {NewsletterConfig.subtitle}
-        </p>
+    <section className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f5f7ff] via-white to-[#f0f3ff]" />
+      <div
+        className="glow-orb"
+        style={{
+          width: 380,
+          height: 380,
+          left: "5%",
+          top: "10%",
+          background: "rgba(139, 92, 246, 0.18)",
+        }}
+      />
+      <div
+        className="glow-orb"
+        style={{
+          width: 360,
+          height: 360,
+          right: "5%",
+          bottom: "10%",
+          background: "rgba(244, 114, 182, 0.16)",
+        }}
+      />
 
-        {submitted ? (
-          <div className="mt-8 flex items-center justify-center gap-3 text-gold">
-            <CheckCircle size={20} />
-            <span className="text-sm">{NewsletterConfig.successMessage}</span>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <div className="flex-1">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); setError(""); }}
-                placeholder={NewsletterConfig.placeholder}
-                className="w-full px-4 py-3 border border-stone-200 text-sm text-charcoal bg-white outline-none focus:border-gold transition-colors placeholder:text-stone-400"
-              />
-              {error && <p className="text-xs text-red-500 mt-1 text-left">{error}</p>}
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl overflow-hidden border border-white/60 bg-white/70 backdrop-blur-xl p-10 lg:p-14 shadow-xl shadow-[var(--neon-violet)]/10">
+          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-[var(--neon-violet)] to-[var(--neon-magenta)] blur-3xl opacity-30 pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-gradient-to-br from-[var(--neon-cyan)] to-[var(--neon-blue)] blur-3xl opacity-25 pointer-events-none" />
+
+          <div className="relative grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+            <div>
+              <p className="section-eyebrow text-ink-soft">
+                <Mail size={14} className="text-[var(--neon-violet)]" />
+                Newsletter
+              </p>
+              <h2 className="mt-4 text-3xl lg:text-5xl font-light text-ink leading-[1.05]">
+                {NewsletterConfig.title.split(" ").slice(0, -1).join(" ")}{" "}
+                <span className="gradient-text font-semibold">
+                  {NewsletterConfig.title.split(" ").slice(-1)}
+                </span>
+              </h2>
+              <p className="mt-4 text-ink-soft leading-relaxed max-w-lg">
+                {NewsletterConfig.subtitle}
+              </p>
+              <ul className="mt-6 space-y-2">
+                {perks.map((p) => {
+                  const Icon = p.icon;
+                  return (
+                    <li
+                      key={p.text}
+                      className="flex items-center gap-3 text-sm text-ink-soft"
+                    >
+                      <span className="w-7 h-7 grid place-items-center rounded-full bg-gradient-to-br from-[var(--neon-violet)] to-[var(--neon-magenta)] text-white">
+                        <Icon size={13} />
+                      </span>
+                      {p.text}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
-            <button
-              type="submit"
-              className="px-6 py-3 bg-gold text-white text-sm tracking-[0.15em] uppercase hover:bg-gold-dark transition-colors flex items-center justify-center gap-2 shrink-0"
-            >
-              <Send size={14} />
-              {NewsletterConfig.cta}
-            </button>
-          </form>
-        )}
+
+            <div>
+              {submitted ? (
+                <div className="rounded-3xl p-8 bg-gradient-to-br from-[var(--neon-emerald)]/15 to-[var(--neon-cyan)]/15 border border-[var(--neon-emerald)]/30 flex flex-col items-center text-center animate-scale-in">
+                  <CheckCircle2 size={48} className="text-[var(--neon-emerald)] mb-3" />
+                  <p className="text-lg font-semibold text-ink">
+                    {NewsletterConfig.successMessage}
+                  </p>
+                </div>
+              ) : (
+                <form
+                  onSubmit={handleSubmit}
+                  className="rounded-3xl p-6 lg:p-7 bg-white border border-white/60 shadow-lg shadow-[var(--neon-violet)]/10"
+                >
+                  <label className="text-[11px] tracking-[0.25em] uppercase text-muted">
+                    Adresse email
+                  </label>
+                  <div className="mt-2 flex items-center gap-2 border-b-2 border-ink/20 focus-within:border-[var(--neon-violet)] transition-colors py-2">
+                    <Mail size={16} className="text-muted" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setError("");
+                      }}
+                      placeholder={NewsletterConfig.placeholder}
+                      className="flex-1 bg-transparent text-base text-ink outline-none placeholder:text-muted/60"
+                    />
+                  </div>
+                  {error && (
+                    <p className="text-xs text-[var(--neon-rose)] mt-2">{error}</p>
+                  )}
+                  <button type="submit" className="btn-primary w-full mt-5">
+                    <Send size={14} />
+                    {NewsletterConfig.cta}
+                  </button>
+                  <p className="text-[10px] text-muted text-center mt-3 tracking-wide">
+                    Aucun spam · Désinscription en 1 clic
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

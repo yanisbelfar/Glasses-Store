@@ -1,63 +1,104 @@
-import { testimonials } from "@/lib/data";
-import { Star } from "lucide-react";
+"use client";
 
-export class TestimonialsConfig {
-  static readonly sectionTitle = "Ils Nous Font Confiance";
-  static readonly sectionSubtitle =
-    "Plus de 5000 clients satisfaits \u00e0 travers l\u2019Alg\u00e9rie";
-}
+import { testimonials } from "@/lib/data";
+import { Quote, Star, ShieldCheck } from "lucide-react";
+
+const palette = [
+  { from: "#22d3ee", to: "#3b82f6" },
+  { from: "#f472b6", to: "#a855f7" },
+  { from: "#fbbf24", to: "#fb7185" },
+  { from: "#2ed68a", to: "#22d3ee" },
+  { from: "#a855f7", to: "#ec4899" },
+];
 
 export default function Testimonials() {
   return (
-    <section className="py-24 lg:py-32 bg-charcoal">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">
-            T\u00e9moignages
+    <section className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#04061a] via-[#0e0a2a] to-[#04061a] text-white" />
+      <div className="aurora opacity-40" />
+      <div className="noise opacity-30" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+        <div className="text-center mb-14">
+          <p className="section-eyebrow text-white/70 justify-center">
+            <ShieldCheck size={14} className="text-[var(--neon-emerald)]" />
+            Témoignages clients
           </p>
-          <h2 className="text-3xl lg:text-5xl font-extralight text-white tracking-tight">
-            {TestimonialsConfig.sectionTitle}
+          <h2 className="mt-4 text-4xl lg:text-5xl xl:text-6xl font-light text-white tracking-tight">
+            Ils <span className="gradient-text font-semibold">nous adorent</span>.
           </h2>
-          <p className="mt-4 text-stone-500 max-w-2xl mx-auto">
-            {TestimonialsConfig.sectionSubtitle}
+          <p className="mt-3 text-white/60 max-w-2xl mx-auto">
+            Plus de 5000 clients à travers l&apos;Algérie ont fait de New Look Optic leur opticien de confiance.
           </p>
-          <div className="mt-6 w-16 h-px bg-gold mx-auto" />
         </div>
 
-        {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
+          {testimonials.map((t, i) => {
+            const c = palette[i % palette.length];
+            return (
+              <div
+                key={t.id}
+                className="relative rounded-3xl overflow-hidden p-7 border border-white/10 bg-white/[0.04] backdrop-blur-md hover:bg-white/[0.07] transition-all"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div
+                  className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-30 blur-3xl pointer-events-none"
+                  style={{ background: `linear-gradient(135deg, ${c.from}, ${c.to})` }}
+                />
+                <Quote
+                  size={28}
+                  className="text-white/20 mb-3"
+                />
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: t.rating }).map((_, idx) => (
+                    <Star
+                      key={idx}
+                      size={14}
+                      className="text-[var(--neon-amber)]"
+                      fill="currentColor"
+                    />
+                  ))}
+                </div>
+                <p className="text-white/85 leading-relaxed text-sm italic">
+                  &ldquo;{t.comment}&rdquo;
+                </p>
+                <div className="mt-6 flex items-center gap-3">
+                  <span
+                    className="w-10 h-10 rounded-full grid place-items-center text-sm font-semibold text-white shadow-lg"
+                    style={{
+                      background: `linear-gradient(135deg, ${c.from}, ${c.to})`,
+                    }}
+                  >
+                    {t.initials}
+                  </span>
+                  <div>
+                    <p className="text-white text-sm font-semibold">{t.name}</p>
+                    <p className="text-white/55 text-[11px] tracking-wider">
+                      {t.city} {t.verified && "• Vérifié"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Stats strip */}
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { v: "5000+", l: "Clients servis" },
+            { v: "4.9/5", l: "Note moyenne" },
+            { v: "60+", l: "Marques premium" },
+            { v: "24-48h", l: "Livraison express" },
+          ].map((s) => (
             <div
-              key={t.id}
-              className="border border-stone-700/50 bg-stone-900/30 backdrop-blur-sm p-8"
+              key={s.l}
+              className="rounded-2xl p-5 border border-white/10 bg-white/[0.03] text-center"
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: t.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    size={14}
-                    className="text-gold fill-gold"
-                  />
-                ))}
-              </div>
-              {/* Quote */}
-              <p className="text-stone-300 text-sm leading-relaxed italic">
-                &ldquo;{t.comment}&rdquo;
+              <p className="text-3xl font-semibold gradient-text">{s.v}</p>
+              <p className="text-[11px] tracking-[0.22em] uppercase text-white/55 mt-1">
+                {s.l}
               </p>
-              {/* Author */}
-              <div className="mt-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-gold/20 text-gold flex items-center justify-center text-sm font-light">
-                  {t.initials}
-                </div>
-                <div>
-                  <p className="text-white text-sm font-light">{t.name}</p>
-                  <p className="text-stone-500 text-xs">
-                    {t.city} {t.verified && "\u2022 Client(e) v\u00e9rifi\u00e9(e)"}
-                  </p>
-                </div>
-              </div>
             </div>
           ))}
         </div>

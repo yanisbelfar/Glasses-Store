@@ -1,103 +1,76 @@
-import { featuredProducts, Product } from "@/lib/data";
-import { Eye } from "lucide-react";
+"use client";
+
+import { featuredProducts } from "@/lib/data";
+import ProductCard from "@/components/ProductCard";
+import { Crown, ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-export class FeaturedProductsConfig {
-  static readonly sectionTitle = "Nos Pi\u00e8ces d\u2019Exception";
-  static readonly sectionSubtitle =
-    "Une s\u00e9lection rigoureuse des plus belles montures pour un style qui vous ressemble";
-
-  static getBadgeStyle(badge: Product["badge"]): string {
-    switch (badge) {
-      case "best-seller":
-        return "bg-gold text-white";
-      case "nouveau":
-        return "bg-charcoal text-white";
-      case "tendance":
-        return "bg-stone-600 text-white";
-      default:
-        return "";
-    }
-  }
-
-  static getBadgeLabel(badge: Product["badge"]): string {
-    switch (badge) {
-      case "best-seller":
-        return "\u2605 Best Seller";
-      case "nouveau":
-        return "Nouveau";
-      case "tendance":
-        return "Tendance";
-      default:
-        return "";
-    }
-  }
-}
 
 export default function FeaturedProducts() {
   return (
-    <section className="py-24 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">
-            Collection Exclusive
-          </p>
-          <h2 className="text-3xl lg:text-5xl font-extralight text-charcoal tracking-tight">
-            {FeaturedProductsConfig.sectionTitle}
-          </h2>
-          <p className="mt-4 text-stone-500 max-w-2xl mx-auto">
-            {FeaturedProductsConfig.sectionSubtitle}
-          </p>
-          <div className="mt-6 w-16 h-px bg-gold mx-auto" />
+    <section className="relative py-24 lg:py-32 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#f5f7ff] to-white" />
+      <div
+        className="glow-orb"
+        style={{
+          width: 420,
+          height: 420,
+          left: "-8%",
+          top: "10%",
+          background: "rgba(139, 92, 246, 0.12)",
+        }}
+      />
+      <div
+        className="glow-orb"
+        style={{
+          width: 360,
+          height: 360,
+          right: "-6%",
+          bottom: "-6%",
+          background: "rgba(6, 211, 247, 0.12)",
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+          <div>
+            <p className="section-eyebrow text-ink-soft">
+              <Crown size={14} className="text-[var(--neon-amber)]" />
+              Pièces d&apos;exception
+            </p>
+            <h2 className="mt-4 text-4xl lg:text-5xl xl:text-6xl font-light leading-[1.05] text-ink">
+              Les <span className="gradient-text font-semibold">stars</span> de la collection
+            </h2>
+            <p className="mt-4 text-ink-soft max-w-2xl">
+              Une sélection rigoureuse des plus belles montures, repérées par nos opticiens parmi
+              60+ marques pour leur qualité, leur style et leur confort.
+            </p>
+          </div>
+          <Link
+            href="/collections/all"
+            className="hidden lg:inline-flex btn-ghost"
+          >
+            Tout voir
+            <ArrowRight size={14} />
+          </Link>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProducts.map((product) => (
-            <Link
-              key={product.id}
-              href={`/products/${product.id}`}
-              className="group block"
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {featuredProducts.map((p, i) => (
+            <div
+              key={p.id}
+              className="animate-float-up"
+              style={{ animationDelay: `${i * 90}ms` }}
             >
-              <div className="relative overflow-hidden bg-stone-100 aspect-[4/3]">
-                {/* Placeholder image area */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200 group-hover:from-stone-200 group-hover:to-stone-300 transition-colors duration-500">
-                  <Eye
-                    size={48}
-                    className="text-stone-300 group-hover:text-gold/50 transition-colors duration-500"
-                    strokeWidth={1}
-                  />
-                </div>
-                {/* Badge */}
-                {product.badge && (
-                  <span
-                    className={`absolute top-4 left-4 px-3 py-1 text-[10px] tracking-[0.2em] uppercase ${FeaturedProductsConfig.getBadgeStyle(product.badge)}`}
-                  >
-                    {FeaturedProductsConfig.getBadgeLabel(product.badge)}
-                  </span>
-                )}
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-500" />
-                <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="inline-block bg-charcoal text-white text-xs tracking-[0.2em] uppercase px-6 py-3 w-full text-center">
-                    Découvrir
-                  </span>
-                </div>
-              </div>
-              <div className="mt-5">
-                <p className="text-xs tracking-[0.2em] uppercase text-gold mb-1">
-                  {product.category}
-                </p>
-                <h3 className="text-lg font-light text-charcoal group-hover:text-gold transition-colors">
-                  {product.name}
-                </h3>
-                {product.description && (
-                  <p className="text-sm text-stone-400 mt-1">{product.description}</p>
-                )}
-              </div>
-            </Link>
+              <ProductCard product={p} size="lg" />
+            </div>
           ))}
+        </div>
+
+        <div className="mt-10 text-center lg:hidden">
+          <Link href="/collections/all" className="btn-ghost">
+            Tout voir <ArrowRight size={14} />
+          </Link>
         </div>
       </div>
     </section>

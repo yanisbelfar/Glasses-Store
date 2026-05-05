@@ -1,66 +1,59 @@
 "use client";
 
-import { Heart, Eye, Trash2 } from "lucide-react";
+import { Heart, Trash2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { allProducts } from "@/lib/data";
 import Breadcrumbs, { BreadcrumbItem } from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
+import ProductCard from "@/components/ProductCard";
 
 export default function WishlistPage() {
   const { state, dispatch } = useStore();
-  const wishedProducts = allProducts.filter((p) => state.wishlist.includes(p.id));
+  const wished = allProducts.filter((p) => state.wishlist.includes(p.id));
 
   return (
     <main className="flex-1 pt-28 lg:pt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <Breadcrumbs items={[new BreadcrumbItem("Favoris")]} />
-        <h1 className="text-3xl lg:text-4xl font-extralight text-charcoal mt-4 mb-2">
-          Mes Favoris
-        </h1>
-        <p className="text-sm text-stone-400 mb-10">
-          {wishedProducts.length === 0
-            ? "Votre liste de souhaits est vide."
-            : `${wishedProducts.length} article${wishedProducts.length > 1 ? "s" : ""}`}
-        </p>
+        <div className="mt-5 mb-10">
+          <p className="section-eyebrow text-ink-soft">
+            <Heart size={14} className="text-[var(--neon-rose)]" />
+            Mes coups de cœur
+          </p>
+          <h1 className="mt-3 text-4xl lg:text-5xl font-light text-ink leading-[1.05]">
+            Mes <span className="gradient-text-warm font-semibold">favoris</span>
+          </h1>
+          <p className="text-sm text-muted mt-2">
+            {wished.length === 0
+              ? "Votre liste est vide."
+              : `${wished.length} article${wished.length > 1 ? "s" : ""} sauvegardé${wished.length > 1 ? "s" : ""}`}
+          </p>
+        </div>
 
-        {wishedProducts.length === 0 ? (
-          <div className="text-center py-20">
-            <Heart size={48} className="text-stone-200 mx-auto mb-4" strokeWidth={1} />
-            <p className="text-stone-400 mb-6">Vous n&apos;avez pas encore de favoris.</p>
-            <Link
-              href="/collections/all"
-              className="inline-block px-8 py-3 bg-gold text-white text-xs tracking-[0.2em] uppercase hover:bg-gold-dark transition-colors"
-            >
-              Découvrir la collection
+        {wished.length === 0 ? (
+          <div className="rounded-3xl border-2 border-dashed border-[var(--neon-rose)]/30 p-16 text-center bg-gradient-to-br from-[var(--neon-rose)]/4 via-white to-[var(--neon-violet)]/4">
+            <span className="inline-grid place-items-center w-20 h-20 rounded-full bg-gradient-to-br from-[var(--neon-rose)] to-[var(--neon-magenta)] text-white">
+              <Heart size={32} />
+            </span>
+            <p className="mt-5 text-ink-soft">Vous n&apos;avez pas encore de favoris.</p>
+            <Link href="/collections/all" className="btn-primary mt-7 inline-flex">
+              Explorer la collection
+              <ArrowRight size={14} />
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {wishedProducts.map((p) => (
-              <div key={p.id} className="group relative">
-                <Link href={`/products/${p.id}`}>
-                  <div className="aspect-square bg-stone-100 flex items-center justify-center">
-                    <Eye size={40} className="text-stone-300 group-hover:text-gold/50 transition-colors" strokeWidth={1} />
-                  </div>
-                </Link>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {wished.map((p) => (
+              <div key={p.id} className="relative group">
+                <ProductCard product={p} />
                 <button
                   onClick={() => dispatch({ type: "TOGGLE_WISHLIST", productId: p.id })}
-                  className="absolute top-3 right-3 w-8 h-8 bg-white/80 flex items-center justify-center text-red-400 hover:text-red-600 transition-colors"
-                  title="Retirer des favoris"
+                  className="absolute top-3 right-3 z-10 w-9 h-9 grid place-items-center rounded-full bg-white/95 backdrop-blur text-[var(--neon-rose)] hover:bg-[var(--neon-rose)] hover:text-white shadow-md transition-all"
+                  aria-label="Retirer des favoris"
                 >
                   <Trash2 size={14} />
                 </button>
-                <div className="mt-3">
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-gold">{p.brand}</p>
-                  <p className="text-sm font-light text-charcoal truncate">{p.name}</p>
-                </div>
-                <Link
-                  href={`/products/${p.id}`}
-                  className="mt-2 block w-full py-2 bg-charcoal text-white text-[10px] tracking-[0.2em] uppercase hover:bg-gold transition-colors text-center"
-                >
-                  Indiquer ma monture
-                </Link>
               </div>
             ))}
           </div>

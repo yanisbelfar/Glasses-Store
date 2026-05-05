@@ -1,68 +1,85 @@
-import { popularProducts } from "@/lib/data";
-import { Eye } from "lucide-react";
-import Link from "next/link";
+"use client";
 
-export class PopularProductsConfig {
-  static readonly sectionTitle = "Les Plus Populaires";
-  static readonly sectionSubtitle =
-    "D\u00e9couvrez les montures pr\u00e9f\u00e9r\u00e9es de nos clients dans toutes nos cat\u00e9gories";
-}
+import { popularProducts } from "@/lib/data";
+import ProductCard from "@/components/ProductCard";
+import Link from "next/link";
+import { Flame, ArrowRight } from "lucide-react";
+import { useState } from "react";
+
+const tabs = [
+  { id: "all", label: "Tous" },
+  { id: "Homme", label: "Homme" },
+  { id: "Femme", label: "Femme" },
+  { id: "Enfant", label: "Enfant" },
+] as const;
 
 export default function PopularProducts() {
+  const [tab, setTab] = useState<(typeof tabs)[number]["id"]>("all");
+  const filtered =
+    tab === "all" ? popularProducts : popularProducts.filter((p) => p.category === tab);
+
   return (
-    <section className="py-24 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">
-            Tendances
-          </p>
-          <h2 className="text-3xl lg:text-5xl font-extralight text-charcoal tracking-tight">
-            {PopularProductsConfig.sectionTitle}
-          </h2>
-          <p className="mt-4 text-stone-500 max-w-2xl mx-auto">
-            {PopularProductsConfig.sectionSubtitle}
-          </p>
-          <div className="mt-6 w-16 h-px bg-gold mx-auto" />
+    <section className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-white" />
+      <div
+        className="glow-orb"
+        style={{
+          width: 380,
+          height: 380,
+          right: "-6%",
+          top: "20%",
+          background: "rgba(90, 167, 255, 0.18)",
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <div>
+            <p className="section-eyebrow text-ink-soft">
+              <Flame size={14} className="text-[var(--neon-rose)]" />
+              Tendances
+            </p>
+            <h2 className="mt-4 text-4xl lg:text-5xl xl:text-6xl font-light text-ink leading-[1.05]">
+              Ce que <span className="gradient-text-warm font-semibold">tout le monde</span> commande
+            </h2>
+          </div>
+
+          <div className="flex flex-wrap gap-1.5 p-1 bg-[#f5f7ff] rounded-full">
+            {tabs.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => setTab(t.id)}
+                className={`px-4 py-2 rounded-full text-[11px] tracking-[0.2em] uppercase font-semibold transition-all ${
+                  tab === t.id
+                    ? "text-white bg-gradient-to-r from-[var(--neon-violet)] to-[var(--neon-magenta)] shadow-md shadow-[var(--neon-violet)]/30"
+                    : "text-ink-soft hover:text-[var(--neon-violet)]"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {popularProducts.map((product) => (
-            <Link
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {filtered.map((product, i) => (
+            <div
               key={product.id}
-              href={`/products/${product.id}`}
-              className="group block"
+              className="animate-float-up"
+              style={{ animationDelay: `${i * 60}ms` }}
             >
-              <div className="relative overflow-hidden bg-stone-100 aspect-square">
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-stone-50 to-stone-200 group-hover:from-stone-100 group-hover:to-stone-300 transition-colors duration-500">
-                  <Eye
-                    size={36}
-                    className="text-stone-300 group-hover:text-gold/50 transition-colors duration-500"
-                    strokeWidth={1}
-                  />
-                </div>
-                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500" />
-              </div>
-              <div className="mt-4">
-                <p className="text-[10px] tracking-[0.2em] uppercase text-stone-400">
-                  {product.category}
-                </p>
-                <h3 className="text-sm font-light text-charcoal mt-1 group-hover:text-gold transition-colors truncate">
-                  {product.name}
-                </h3>
-              </div>
-            </Link>
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
 
-        {/* See All */}
-        <div className="text-center mt-14">
-          <Link
-            href="/collections/all"
-            className="inline-flex items-center gap-3 text-sm tracking-[0.2em] uppercase text-charcoal hover:text-gold border-b border-charcoal hover:border-gold pb-1 transition-colors duration-300"
-          >
-            Voir Tous les Produits
+        {filtered.length === 0 && (
+          <p className="text-center text-muted py-12">Aucun produit dans cette catégorie pour l&apos;instant.</p>
+        )}
+
+        <div className="mt-12 text-center">
+          <Link href="/collections/all" className="btn-primary">
+            Découvrir tous les produits <ArrowRight size={16} />
           </Link>
         </div>
       </div>
