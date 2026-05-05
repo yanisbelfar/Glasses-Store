@@ -22,7 +22,7 @@ export default function QuickView() {
   return (
     <>
       <div
-        className="fixed inset-0 z-[60] bg-[#04061a]/65 backdrop-blur-md animate-fade-in"
+        className="fixed inset-0 z-[60] bg-[rgba(123,182,255,0.25)] backdrop-blur-md animate-fade-in"
         onClick={() => dispatch({ type: "CLOSE_QUICK_VIEW" })}
       />
       <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[61] bg-white max-w-3xl w-full max-h-[92vh] overflow-y-auto rounded-3xl shadow-2xl shadow-[var(--neon-violet)]/20 border border-white/60 animate-scale-in">

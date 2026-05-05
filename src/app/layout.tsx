@@ -22,9 +22,9 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Nexlook Optic Sidi Aiche",
+  title: "Newlook Optic Sidi Aiche",
   description:
-    "Plus de 60 marques exclusives, essai virtuel 3D et conseil personnalisé a Sidi Aiche. Nexlook Optic Sidi Aiche reinvente l'optique.",
+    "Plus de 60 marques exclusives, essai virtuel 3D et conseil personnalisé a Sidi Aiche. Newlook Optic Sidi Aiche reinvente l'optique.",
   keywords: [
     "lunettes",
     "opticien",

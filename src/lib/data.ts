@@ -4,7 +4,7 @@ import { resolveBrandLogo } from "@/data/brandLogos";
 export { productImageCatalog };
 
 // ============================================
-// Data Classes — each feature = a class
+// Data Classes - each feature = a class
 // ============================================
 
 export type ProductBadge = "best-seller" | "nouveau" | "tendance";
@@ -357,7 +357,7 @@ function buildProductsFromInventory(): Product[] {
       const imageEntry = pickImageEntry(cycleIndex);
       const productImage = imageEntry?.path ?? "/products/placeholder.jpg";
       const productImages = imageEntry ? [imageEntry.path] : ["/products/placeholder.jpg"];
-      const productBrand = imageEntry?.brandLabel || name;
+      const productBrand = name;
       const shape = shapeCycle[cycleIndex % shapeCycle.length];
       const material = materialCycle[cycleIndex % materialCycle.length];
       const lensType = lensCycle[cycleIndex % lensCycle.length];
@@ -474,8 +474,8 @@ export const categoryAccents: Record<string, { from: string; to: string; glow: s
   },
   all: {
     from: "#1fb9c3",
-    to: "#203a74",
-    glow: "rgba(32, 58, 116, 0.35)",
+    to: "#9acbff",
+    glow: "rgba(123, 182, 255, 0.35)",
     tag: "Toutes les collections",
     emoji: "✦",
   },
@@ -505,7 +505,7 @@ export const brands: Brand[] = uniqueBrandNames.map((brandName, index) => {
 export const stores: Store[] = [
   new Store(
     "1",
-    "Nexlook Optic Sidi Aiche",
+    "Newlook Optic Sidi Aiche",
     "Centre ville, Sidi Aiche",
     "Sidi Aiche",
     "+213 555 85 24 57",

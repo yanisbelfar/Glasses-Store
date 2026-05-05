@@ -155,17 +155,17 @@ export default function LensConfiguratorPage() {
 
           {/* Right: Summary */}
           <div className="lg:sticky lg:top-32 self-start">
-            <div className="rounded-3xl overflow-hidden border border-[var(--neon-violet)]/15 bg-gradient-to-br from-[#04061a] via-[#0e0a2a] to-[#04061a] text-white shadow-2xl shadow-[var(--neon-violet)]/15">
+            <div className="rounded-3xl overflow-hidden border border-[var(--neon-violet)]/15 bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff] text-ink shadow-2xl shadow-[var(--neon-violet)]/15">
               <div className="aurora opacity-40" />
               <div className="relative p-7">
-                <p className="text-xs tracking-[0.3em] uppercase text-white/60">
+                <p className="text-xs tracking-[0.3em] uppercase text-ink-soft">
                   Récapitulatif
                 </p>
                 <h2 className="mt-2 text-2xl font-semibold">Votre paire sur-mesure</h2>
 
                 {frame && (
                   <div className="mt-6 flex gap-4 items-center">
-                    <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+                    <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white/80 border border-[var(--neon-violet)]/15">
                       <img src={frame.image} alt={frame.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="min-w-0">
@@ -173,39 +173,39 @@ export default function LensConfiguratorPage() {
                         {frame.brand}
                       </p>
                       <p className="font-semibold truncate">{frame.name}</p>
-                      <p className="text-sm text-white/70">Devis sur demande</p>
+                      <p className="text-sm text-ink-soft">Devis sur demande</p>
                     </div>
                   </div>
                 )}
 
-                <div className="mt-6 space-y-2 border-t border-white/10 pt-5">
-                  <p className="text-[11px] tracking-[0.22em] uppercase text-white/55">
+                <div className="mt-6 space-y-2 border-t border-[var(--neon-violet)]/15 pt-5">
+                  <p className="text-[11px] tracking-[0.22em] uppercase text-ink-soft">
                     Traitements ({selectedLens.length})
                   </p>
                   {lensOptions
                     .filter((l) => selectedLens.includes(l.id))
                     .map((l) => (
                       <div key={l.id} className="flex justify-between text-sm">
-                        <span className="text-white/85">{l.name}</span>
-                        <span className="text-white/85">
+                        <span className="text-ink">{l.name}</span>
+                        <span className="text-ink">
                           {l.price === 0 ? "Inclus" : "Sur devis"}
                         </span>
                       </div>
                     ))}
                   {coating === "premium" && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-white/85">Finition Premium</span>
-                      <span className="text-white/85">Sur devis</span>
+                      <span className="text-ink">Finition Premium</span>
+                      <span className="text-ink">Sur devis</span>
                     </div>
                   )}
                 </div>
 
-                <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
-                  <p className="text-sm text-white/70 inline-flex items-center gap-2">
+                <div className="mt-6 pt-5 border-t border-[var(--neon-violet)]/15 flex items-center justify-between">
+                  <p className="text-sm text-ink-soft inline-flex items-center gap-2">
                     <Sparkles size={14} className="text-[var(--neon-amber)]" />
                     Devis
                   </p>
-                  <p className="text-lg font-semibold text-white/90">
+                  <p className="text-lg font-semibold text-ink">
                     Sur demande
                   </p>
                 </div>
@@ -224,7 +224,7 @@ export default function LensConfiguratorPage() {
                   Envoyer ma config sur WhatsApp
                   <ArrowRight size={14} />
                 </a>
-                <p className="text-[11px] text-center text-white/55 mt-3">
+                <p className="text-[11px] text-center text-ink-soft mt-3">
                   Devis sans engagement · Réponse en 30 minutes
                 </p>
               </div>

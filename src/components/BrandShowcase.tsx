@@ -11,7 +11,7 @@ export default function BrandShowcase() {
 
   return (
     <section className="relative py-20 lg:py-24 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#fff7fb] to-white" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#eef5ff] to-white" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
@@ -24,7 +24,7 @@ export default function BrandShowcase() {
               <span className="gradient-text-warm font-semibold">60+ marques</span> que vous adorez
             </h2>
             <p className="mt-3 text-ink-soft max-w-xl">
-              De Dior à Skechers en passant par GIVENCHY, KENZO et Polaroid — toutes les
+              De Dior à Skechers en passant par GIVENCHY, KENZO et Polaroid, toutes les
               griffes que vous cherchez, vérifiées et 100% authentiques.
             </p>
           </div>

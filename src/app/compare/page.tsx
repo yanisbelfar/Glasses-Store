@@ -126,8 +126,8 @@ export default function ComparePage() {
                         f.key === "frameWidth"
                           ? p.frameWidth
                             ? `${p.frameWidth} mm`
-                            : "—"
-                          : (p[f.key] as string) ?? "—";
+                            : "N/A"
+                          : (p[f.key] as string) ?? "N/A";
                       return (
                         <td key={p.id} className="p-4 text-sm text-ink font-medium">
                           {v}
@@ -177,7 +177,7 @@ export default function ComparePage() {
         {pickerOpen && (
           <>
             <div
-              className="fixed inset-0 z-[60] bg-[#04061a]/60 backdrop-blur-md"
+              className="fixed inset-0 z-[60] bg-[rgba(123,182,255,0.22)] backdrop-blur-md"
               onClick={() => setPickerOpen(false)}
             />
             <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[61] w-[92%] max-w-3xl max-h-[80vh] overflow-y-auto rounded-3xl bg-white shadow-2xl p-6 animate-scale-in">

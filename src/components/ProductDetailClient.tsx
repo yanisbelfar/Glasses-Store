@@ -49,7 +49,7 @@ export class ProductDetailConfig {
     size?: string
   ): string {
     const message = [
-      "Nouvelle demande monture · New Look Optic",
+      "Nouvelle demande monture · Newlook Optic Sidi Aiche",
       `Produit: ${product.name}`,
       `Marque: ${product.brand ?? "Non précisée"}`,
       `Monture indiquée: ${frame}`,
@@ -135,7 +135,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 className="absolute inset-0 opacity-40 pointer-events-none"
                 style={{
                   background:
-                    "repeating-linear-gradient(45deg, rgba(139,92,246,0.05) 0 1px, transparent 1px 24px)",
+                    "repeating-linear-gradient(45deg, rgba(31,185,195,0.08) 0 1px, transparent 1px 24px)",
                 }}
               />
               <img

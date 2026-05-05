@@ -283,7 +283,7 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
           {filtersOpen && (
             <>
               <div
-                className="fixed inset-0 z-50 bg-[#04061a]/60 backdrop-blur-md lg:hidden"
+                className="fixed inset-0 z-50 bg-[rgba(123,182,255,0.22)] backdrop-blur-md lg:hidden"
                 onClick={() => setFiltersOpen(false)}
               />
               <div className="fixed top-0 left-0 bottom-0 z-50 w-80 bg-white p-6 overflow-y-auto lg:hidden animate-fade-in">

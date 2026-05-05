@@ -54,7 +54,7 @@ export default function FaceShapePage() {
           </h1>
           <p className="mt-3 text-ink-soft max-w-xl mx-auto">
             3 questions, 60 secondes. On vous propose ensuite les formes qui flattent vos traits
-            naturels — basé sur les recommandations de nos opticiens.
+            naturels. Basé sur les recommandations de nos opticiens.
           </p>
         </div>
 

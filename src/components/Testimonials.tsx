@@ -4,31 +4,31 @@ import { testimonials } from "@/lib/data";
 import { Quote, Star, ShieldCheck } from "lucide-react";
 
 const palette = [
-  { from: "#22d3ee", to: "#3b82f6" },
-  { from: "#f472b6", to: "#a855f7" },
-  { from: "#fbbf24", to: "#fb7185" },
-  { from: "#2ed68a", to: "#22d3ee" },
-  { from: "#a855f7", to: "#ec4899" },
+  { from: "#6fdcff", to: "#9acbff" },
+  { from: "#7bb6ff", to: "#9acbff" },
+  { from: "#7fe0d2", to: "#b1ddff" },
+  { from: "#6fdcff", to: "#7bb6ff" },
+  { from: "#9acbff", to: "#7fe0d2" },
 ];
 
 export default function Testimonials() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#04061a] via-[#0e0a2a] to-[#04061a] text-white" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff]" />
       <div className="aurora opacity-40" />
       <div className="noise opacity-30" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-ink">
         <div className="text-center mb-14">
-          <p className="section-eyebrow text-white/70 justify-center">
+          <p className="section-eyebrow text-ink-soft justify-center">
             <ShieldCheck size={14} className="text-[var(--neon-emerald)]" />
             Témoignages clients
           </p>
-          <h2 className="mt-4 text-4xl lg:text-5xl xl:text-6xl font-light text-white tracking-tight">
+          <h2 className="mt-4 text-4xl lg:text-5xl xl:text-6xl font-light text-ink tracking-tight">
             Ils <span className="gradient-text font-semibold">nous adorent</span>.
           </h2>
-          <p className="mt-3 text-white/60 max-w-2xl mx-auto">
-            Plus de 5000 clients à travers l&apos;Algérie ont fait de New Look Optic leur opticien de confiance.
+          <p className="mt-3 text-ink-soft max-w-2xl mx-auto">
+            Plus de 5000 clients à travers l&apos;Algérie ont fait de Newlook Optic Sidi Aiche leur opticien de confiance.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ export default function Testimonials() {
             return (
               <div
                 key={t.id}
-                className="relative rounded-3xl overflow-hidden p-7 border border-white/10 bg-white/[0.04] backdrop-blur-md hover:bg-white/[0.07] transition-all"
+                className="relative rounded-3xl overflow-hidden p-7 border border-[var(--neon-violet)]/10 bg-white/90 backdrop-blur-md hover:bg-white transition-all"
                 style={{ animationDelay: `${i * 80}ms` }}
               >
                 <div
@@ -47,7 +47,7 @@ export default function Testimonials() {
                 />
                 <Quote
                   size={28}
-                  className="text-white/20 mb-3"
+                  className="text-ink-soft mb-3"
                 />
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, idx) => (
@@ -59,7 +59,7 @@ export default function Testimonials() {
                     />
                   ))}
                 </div>
-                <p className="text-white/85 leading-relaxed text-sm italic">
+                <p className="text-ink-soft leading-relaxed text-sm italic">
                   &ldquo;{t.comment}&rdquo;
                 </p>
                 <div className="mt-6 flex items-center gap-3">
@@ -72,8 +72,8 @@ export default function Testimonials() {
                     {t.initials}
                   </span>
                   <div>
-                    <p className="text-white text-sm font-semibold">{t.name}</p>
-                    <p className="text-white/55 text-[11px] tracking-wider">
+                    <p className="text-ink text-sm font-semibold">{t.name}</p>
+                    <p className="text-ink-soft text-[11px] tracking-wider">
                       {t.city} {t.verified && "• Vérifié"}
                     </p>
                   </div>
@@ -93,10 +93,10 @@ export default function Testimonials() {
           ].map((s) => (
             <div
               key={s.l}
-              className="rounded-2xl p-5 border border-white/10 bg-white/[0.03] text-center"
+              className="rounded-2xl p-5 border border-[var(--neon-violet)]/10 bg-white/90 text-center"
             >
               <p className="text-3xl font-semibold gradient-text">{s.v}</p>
-              <p className="text-[11px] tracking-[0.22em] uppercase text-white/55 mt-1">
+              <p className="text-[11px] tracking-[0.22em] uppercase text-ink-soft mt-1">
                 {s.l}
               </p>
             </div>

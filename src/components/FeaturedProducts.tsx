@@ -17,7 +17,7 @@ export default function FeaturedProducts() {
           height: 420,
           left: "-8%",
           top: "10%",
-          background: "rgba(139, 92, 246, 0.12)",
+          background: "rgba(123, 182, 255, 0.12)",
         }}
       />
       <div

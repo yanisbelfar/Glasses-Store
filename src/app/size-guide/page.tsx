@@ -7,11 +7,11 @@ import { Ruler, Compass, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const accents = [
-  { from: "#22d3ee", to: "#3b82f6" },
-  { from: "#f472b6", to: "#a855f7" },
-  { from: "#fbbf24", to: "#fb7185" },
-  { from: "#2ed68a", to: "#06d3f7" },
-  { from: "#a855f7", to: "#ec4899" },
+  { from: "#1fb9c3", to: "#5aa7ff" },
+  { from: "#7bb6ff", to: "#9acbff" },
+  { from: "#1aa99c", to: "#7cc8ff" },
+  { from: "#6fdcff", to: "#7bb6ff" },
+  { from: "#5aa7ff", to: "#1aa99c" },
 ];
 
 export default function SizeGuidePage() {
@@ -29,7 +29,7 @@ export default function SizeGuidePage() {
             Trouvez la <span className="gradient-text font-semibold">taille parfaite</span>
           </h1>
           <p className="mt-3 text-ink-soft max-w-xl mx-auto">
-            Forme du visage, largeur de monture, longueur de branche — tout ce qu&apos;il faut savoir
+            Forme du visage, largeur de monture, longueur de branche, tout ce qu&apos;il faut savoir
             pour choisir la monture qui vous met en valeur.
           </p>
         </div>

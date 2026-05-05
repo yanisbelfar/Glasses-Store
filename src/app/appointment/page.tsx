@@ -47,7 +47,7 @@ export default function AppointmentPage() {
             Rencontrez nos <span className="gradient-text font-semibold">opticiens experts</span>
           </h1>
           <p className="mt-3 text-ink-soft max-w-xl mx-auto">
-            Bilan visuel, essayage, conseil styliste — réservez votre créneau en boutique en moins de 60 secondes.
+            Bilan visuel, essayage, conseil styliste. Réservez votre créneau en boutique en moins de 60 secondes.
           </p>
         </div>
 
@@ -206,31 +206,31 @@ export default function AppointmentPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-gradient-to-br from-[#04061a] via-[#0e0a2a] to-[#04061a] text-white p-6">
-                <p className="text-xs tracking-[0.3em] uppercase text-white/55">
+              <div className="rounded-3xl bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff] text-ink p-6">
+                <p className="text-xs tracking-[0.3em] uppercase text-ink-soft">
                   Récapitulatif
                 </p>
                 <ul className="mt-4 space-y-2 text-sm">
                   <li className="flex justify-between">
-                    <span className="text-white/65">Boutique</span>
+                    <span className="text-ink-soft">Boutique</span>
                     <span className="font-semibold">
                       {stores.find((s) => s.id === store)?.city}
                     </span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-white/65">Service</span>
+                    <span className="text-ink-soft">Service</span>
                     <span className="font-semibold">
                       {services.find((s) => s.id === service)?.label}
                     </span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-white/65">Date</span>
+                    <span className="text-ink-soft">Date</span>
                     <span className="font-semibold">
                       {dayObj?.day} {dayObj?.date}
                     </span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-white/65">Heure</span>
+                    <span className="text-ink-soft">Heure</span>
                     <span className="font-semibold gradient-text">{hour}</span>
                   </li>
                 </ul>
@@ -238,7 +238,7 @@ export default function AppointmentPage() {
                   <Sparkles size={14} />
                   Confirmer mon rendez-vous
                 </button>
-                <p className="text-[10px] text-white/55 text-center mt-3">
+                <p className="text-[10px] text-ink-soft text-center mt-3">
                   Annulation gratuite jusqu&apos;à 2h avant le RDV
                 </p>
               </div>

@@ -54,11 +54,11 @@ const TwitterIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 export class FooterConfig {
-  static readonly brandName = "NEXLOOK OPTIC SIDI AICHE";
+  static readonly brandName = "NEWLOOK OPTIC SIDI AICHE";
   static readonly tagline = "Opticien · Sidi Aiche";
   static readonly ctaTitle = "Prêt à voir le monde autrement ?";
   static readonly ctaSubtitle =
-    "Rejoignez plus de 5000 clients qui ont choisi Nexlook Optic Sidi Aiche pour leur regard. Conseil personnalise, livraison express et garantie 2 ans inclus.";
+    "Rejoignez plus de 5000 clients qui ont choisi Newlook Optic Sidi Aiche pour leur regard. Conseil personnalise, livraison express et garantie 2 ans inclus.";
   static readonly phone = "+213 555 85 24 57";
   static readonly hours = "Sam-Jeu : 9h-18h · Ven : 9h-12h";
   static readonly location = "Sidi Aiche";
@@ -91,12 +91,12 @@ export default function Footer() {
     <>
       {/* CTA Section */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#04061a] via-[#0e0a2a] to-[#04061a] text-white" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff]" />
         <div className="aurora opacity-50" />
         <div className="noise opacity-30" />
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
-          <p className="section-eyebrow text-white/70 justify-center">
+        <div className="relative max-w-4xl mx-auto px-4 text-center text-ink">
+          <p className="section-eyebrow text-ink-soft justify-center">
             <Sparkles size={14} className="text-[var(--neon-amber)]" />
             Votre regard mérite l&apos;exception
           </p>
@@ -106,7 +106,7 @@ export default function Footer() {
               {FooterConfig.ctaTitle.split(" ").slice(-2).join(" ")}
             </span>
           </h2>
-          <p className="mt-6 text-white/70 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-ink-soft max-w-xl mx-auto leading-relaxed">
             {FooterConfig.ctaSubtitle}
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
@@ -118,7 +118,7 @@ export default function Footer() {
               href="https://wa.me/213555852457"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-7 py-[0.85rem] rounded-full text-[0.78rem] tracking-[0.22em] uppercase font-semibold text-white border border-white/30 bg-white/5 backdrop-blur-md hover:bg-white/15 hover:border-[var(--neon-emerald)] transition-all"
+              className="inline-flex items-center justify-center gap-2 px-7 py-[0.85rem] rounded-full text-[0.78rem] tracking-[0.22em] uppercase font-semibold text-ink border border-[var(--neon-violet)]/30 bg-white/80 backdrop-blur-md hover:bg-white hover:border-[var(--neon-emerald)] transition-all"
             >
               <Phone size={14} />
               Conseil WhatsApp
@@ -127,12 +127,12 @@ export default function Footer() {
         </div>
       </section>
 
-      <footer className="bg-[#03051a] text-white/70 relative overflow-hidden">
+      <footer className="bg-[#eef6ff] text-ink-soft relative overflow-hidden">
         <div
           className="absolute inset-x-0 top-0 h-px"
           style={{
             background:
-              "linear-gradient(90deg, transparent, rgba(32,58,116,0.6), rgba(31,185,195,0.6), rgba(90,167,255,0.6), transparent)",
+              "linear-gradient(90deg, transparent, rgba(123,182,255,0.6), rgba(111,220,255,0.6), rgba(154,203,255,0.6), transparent)",
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -146,12 +146,12 @@ export default function Footer() {
                   <span className="text-lg font-semibold tracking-[0.22em] gradient-text">
                     {FooterConfig.brandName}
                   </span>
-                  <p className="text-[10px] tracking-[0.32em] text-white/50 uppercase mt-0.5">
+                  <p className="text-[10px] tracking-[0.32em] text-ink-soft uppercase mt-0.5">
                     {FooterConfig.tagline}
                   </p>
                 </div>
               </Link>
-              <p className="text-sm text-white/60 leading-relaxed max-w-md">
+              <p className="text-sm text-ink-soft leading-relaxed max-w-md">
                 Opticien moderne a Sidi Aiche. Plus de 60 marques, conseil personnalise,
                 essai virtuel 3D et livraison express. Votre regard, notre signature.
               </p>
@@ -162,7 +162,7 @@ export default function Footer() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full grid place-items-center border border-white/15 text-white/70 hover:text-white hover:border-[var(--neon-violet)] hover:bg-[var(--neon-violet)]/15 transition-all"
+                    className="w-10 h-10 rounded-full grid place-items-center border border-[var(--neon-violet)]/25 text-ink-soft hover:text-ink hover:border-[var(--neon-violet)] hover:bg-[var(--neon-violet)]/10 transition-all"
                     aria-label={label}
                   >
                     <Icon size={15} />
@@ -172,7 +172,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-xs tracking-[0.3em] uppercase text-white mb-5">
+              <h3 className="text-xs tracking-[0.3em] uppercase text-ink mb-5">
                 Catégories
               </h3>
               <ul className="space-y-2.5">
@@ -180,7 +180,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/60 hover:text-[var(--neon-cyan)] transition-colors"
+                      className="text-sm text-ink-soft hover:text-[var(--neon-cyan)] transition-colors"
                     >
                       → {link.label}
                     </Link>
@@ -190,7 +190,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-xs tracking-[0.3em] uppercase text-white mb-5">
+              <h3 className="text-xs tracking-[0.3em] uppercase text-ink mb-5">
                 Outils
               </h3>
               <ul className="space-y-2.5">
@@ -198,7 +198,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/60 hover:text-[var(--neon-magenta)] transition-colors"
+                      className="text-sm text-ink-soft hover:text-[var(--neon-magenta)] transition-colors"
                     >
                       → {link.label}
                     </Link>
@@ -208,15 +208,15 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-xs tracking-[0.3em] uppercase text-white mb-5">
+              <h3 className="text-xs tracking-[0.3em] uppercase text-ink mb-5">
                 Contact
               </h3>
-              <ul className="space-y-3 text-sm text-white/70">
+              <ul className="space-y-3 text-sm text-ink-soft">
                 <li className="flex items-start gap-3">
                   <Phone size={15} className="text-[var(--neon-cyan)] mt-0.5" />
                   <a
                     href={`tel:${FooterConfig.phone.replace(/\s/g, "")}`}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-ink transition-colors"
                   >
                     {FooterConfig.phone}
                   </a>
@@ -234,11 +234,11 @@ export default function Footer() {
                   {FooterConfig.location}
                 </li>
               </ul>
-              <div className="mt-5 pt-5 border-t border-white/10">
-                <p className="text-[10px] tracking-[0.25em] uppercase text-white/45 mb-2">
+              <div className="mt-5 pt-5 border-t border-[var(--neon-violet)]/15">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-ink-soft mb-2">
                   Paiement
                 </p>
-                <p className="text-xs text-white/60">
+                <p className="text-xs text-ink-soft">
                   Espèces · BaridiMob · Edahabia · CCP
                 </p>
               </div>
@@ -246,21 +246,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10">
+        <div className="border-t border-[var(--neon-violet)]/15">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-xs text-white/45 inline-flex items-center gap-1.5">
+            <p className="text-xs text-ink-soft inline-flex items-center gap-1.5">
               © 2026 {FooterConfig.brandName} · Fait avec
               <Heart size={11} className="text-[var(--neon-rose)]" fill="currentColor" />
               a Sidi Aiche
             </p>
             <div className="flex gap-5">
-              <Link href="/pages/about" className="text-xs text-white/45 hover:text-white transition-colors">
+              <Link href="/pages/about" className="text-xs text-ink-soft hover:text-ink transition-colors">
                 À Propos
               </Link>
-              <Link href="/pages/contact" className="text-xs text-white/45 hover:text-white transition-colors">
+              <Link href="/pages/contact" className="text-xs text-ink-soft hover:text-ink transition-colors">
                 Contact
               </Link>
-              <Link href="/pages/cgv" className="text-xs text-white/45 hover:text-white transition-colors">
+              <Link href="/pages/cgv" className="text-xs text-ink-soft hover:text-ink transition-colors">
                 CGV
               </Link>
             </div>

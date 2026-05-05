@@ -21,7 +21,7 @@ export default function CartSidebar() {
   return (
     <>
       <div
-        className="fixed inset-0 z-[60] bg-[#04061a]/60 backdrop-blur-md animate-fade-in"
+        className="fixed inset-0 z-[60] bg-[rgba(123,182,255,0.22)] backdrop-blur-md animate-fade-in"
         onClick={() => dispatch({ type: "TOGGLE_CART" })}
       />
       <div className="fixed top-0 right-0 bottom-0 z-[61] w-full max-w-md bg-white shadow-2xl flex flex-col animate-fade-in">

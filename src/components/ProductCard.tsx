@@ -6,9 +6,9 @@ import { Product } from "@/lib/data";
 import { useStore } from "@/lib/store";
 
 const accentByCategory: Record<string, { from: string; to: string; ring: string }> = {
-  Homme: { from: "#22d3ee", to: "#3b82f6", ring: "rgba(34,211,238,0.35)" },
-  Femme: { from: "#f472b6", to: "#a855f7", ring: "rgba(244,114,182,0.35)" },
-  Enfant: { from: "#fbbf24", to: "#fb7185", ring: "rgba(251,191,36,0.35)" },
+  Homme: { from: "#1fb9c3", to: "#5aa7ff", ring: "rgba(31,185,195,0.35)" },
+  Femme: { from: "#7bb6ff", to: "#9acbff", ring: "rgba(123,182,255,0.35)" },
+  Enfant: { from: "#1aa99c", to: "#7cc8ff", ring: "rgba(26,169,156,0.35)" },
 };
 
 function badgeStyle(badge?: Product["badge"]) {
@@ -70,7 +70,7 @@ export default function ProductCard({
             }}
           />
           {/* hover gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
       </Link>
 

@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 import { stores } from "@/lib/data";
 
 const accents = [
-  { from: "#22d3ee", to: "#3b82f6" },
-  { from: "#f472b6", to: "#a855f7" },
-  { from: "#fbbf24", to: "#fb7185" },
+  { from: "#1fb9c3", to: "#5aa7ff" },
+  { from: "#7bb6ff", to: "#9acbff" },
+  { from: "#1aa99c", to: "#7cc8ff" },
 ];
 
 export default function StoreLocatorPage() {
@@ -18,14 +18,14 @@ export default function StoreLocatorPage() {
         <Breadcrumbs items={[new BreadcrumbItem("Nos Boutiques")]} />
         <div className="text-center mt-6 mb-12">
           <p className="section-eyebrow text-ink-soft justify-center">
-            <Compass size={14} className="text-[var(--neon-rose)]" />
+            <Compass size={14} className="text-[var(--neon-cyan)]" />
             Nos points de vente
           </p>
           <h1 className="mt-4 text-4xl lg:text-6xl font-light text-ink leading-[1.05]">
             Trouvez la <span className="gradient-text font-semibold">boutique</span> la plus proche
           </h1>
           <p className="mt-3 text-ink-soft max-w-xl mx-auto">
-            Trois boutiques en Algérie · des opticiens diplômés · un accueil chaleureux pour vous conseiller.
+            Une boutique a Sidi Aiche, opticiens diplomes et accueil chaleureux pour vous conseiller.
           </p>
         </div>
 

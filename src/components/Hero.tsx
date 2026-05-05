@@ -72,9 +72,9 @@ export default function Hero() {
   const totalProducts = allProducts.length;
 
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden text-white pt-32 pb-20">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden text-ink pt-32 pb-20">
       {/* Background layers */}
-      <div className="absolute inset-0 -z-10 bg-[#04061a]" />
+      <div className="absolute inset-0 -z-10 bg-[#eef6ff]" />
       <div className="absolute inset-0 -z-10">
         <div className="aurora animate-mesh" />
         <div className="noise opacity-30" />
@@ -97,7 +97,7 @@ export default function Hero() {
             height: 380,
             left: "8%",
             top: "20%",
-            background: "rgba(32, 58, 116, 0.55)",
+            background: "rgba(123, 182, 255, 0.35)",
           }}
         />
         <div
@@ -107,7 +107,7 @@ export default function Hero() {
             height: 420,
             right: "5%",
             bottom: "10%",
-            background: "rgba(31, 185, 195, 0.45)",
+            background: "rgba(111, 220, 255, 0.35)",
             animationDelay: "1.2s",
           }}
         />
@@ -118,7 +118,7 @@ export default function Hero() {
             height: 280,
             right: "30%",
             top: "55%",
-            background: "rgba(90, 167, 255, 0.45)",
+            background: "rgba(154, 203, 255, 0.35)",
             animationDelay: "2.4s",
           }}
         />
@@ -128,7 +128,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 items-center">
           {/* LEFT: Copy */}
           <div className="text-center lg:text-left">
-            <p className="section-eyebrow text-white/70 mb-6 justify-center lg:justify-start">
+            <p className="section-eyebrow text-ink-soft mb-6 justify-center lg:justify-start">
               <Sparkles size={14} className="text-[var(--neon-amber)]" />
               {HeroConfig.eyebrow}
             </p>
@@ -142,7 +142,7 @@ export default function Hero() {
                 <span className="inline-block w-1 h-12 bg-[var(--neon-cyan)] rounded-sm animate-blink-caret align-middle" />
               </span>
             </h1>
-            <p className="mt-7 text-base lg:text-lg text-white/70 leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="mt-7 text-base lg:text-lg text-ink-soft leading-relaxed max-w-xl mx-auto lg:mx-0">
               {HeroConfig.subheadline}
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -152,14 +152,14 @@ export default function Hero() {
               </Link>
               <Link
                 href="/virtual-try-on"
-                className="inline-flex items-center justify-center gap-2 px-7 py-[0.85rem] rounded-full text-[0.78rem] tracking-[0.22em] uppercase font-semibold text-white border border-white/30 bg-white/5 backdrop-blur-md hover:bg-white/15 hover:border-[var(--neon-cyan)] transition-all"
+                className="inline-flex items-center justify-center gap-2 px-7 py-[0.85rem] rounded-full text-[0.78rem] tracking-[0.22em] uppercase font-semibold text-ink border border-[var(--neon-violet)]/30 bg-white/80 backdrop-blur-md hover:bg-white hover:border-[var(--neon-cyan)] transition-all"
               >
                 <ScanFace size={16} />
                 {HeroConfig.ctaSecondary}
               </Link>
               <Link
                 href="/marques"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs tracking-[0.22em] uppercase text-white/70 hover:text-white"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs tracking-[0.22em] uppercase text-ink-soft hover:text-ink"
               >
                 <PlayCircle size={16} />
                 Voir nos Marques
@@ -173,7 +173,7 @@ export default function Hero() {
                 return (
                   <div
                     key={badge.label}
-                    className="relative rounded-2xl p-4 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors group"
+                    className="relative rounded-2xl p-4 border border-[var(--neon-violet)]/15 bg-white/80 backdrop-blur-md hover:bg-white transition-colors group"
                     style={{ animationDelay: `${idx * 80}ms` }}
                   >
                     <div
@@ -188,7 +188,7 @@ export default function Hero() {
                     <p className="mt-3 text-2xl font-semibold gradient-text">
                       {badge.label}
                     </p>
-                    <p className="mt-0.5 text-[10px] tracking-[0.2em] uppercase text-white/60">
+                    <p className="mt-0.5 text-[10px] tracking-[0.2em] uppercase text-ink-soft">
                       {badge.sub}
                     </p>
                   </div>
@@ -213,7 +213,7 @@ export default function Hero() {
                   className="w-[520px] h-[520px] rounded-full border border-white/10 animate-ring-rotate"
                   style={{
                     background:
-                      "conic-gradient(from 0deg, transparent 70%, rgba(139,92,246,0.35), transparent 100%)",
+                      "conic-gradient(from 0deg, transparent 70%, rgba(90,167,255,0.35), transparent 100%)",
                     mask: "radial-gradient(transparent 220px, black 222px)",
                     WebkitMask: "radial-gradient(transparent 220px, black 222px)",
                   }}
@@ -226,7 +226,7 @@ export default function Hero() {
                 style={{
                   transform: `translate(-50%, -50%) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`,
                   background:
-                    "linear-gradient(135deg, rgba(32,58,116,0.45), rgba(31,185,195,0.35))",
+                    "linear-gradient(135deg, rgba(123,182,255,0.35), rgba(111,220,255,0.25))",
                 }}
               >
                 <img
@@ -234,15 +234,15 @@ export default function Hero() {
                   alt="Lunette featured"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--neon-cyan)]">
+                <div className="absolute inset-0 bg-gradient-to-t from-white/85 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-ink">
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--neon-violet)]">
                     Édition signature
                   </p>
                   <p className="text-lg font-semibold">Newtis · Verres progressifs</p>
                   <div className="mt-2 flex items-center gap-2">
-                    <span className="chip bg-white/15 text-white">Nouveau</span>
-                    <span className="chip bg-[var(--neon-cyan)]/20 text-[var(--neon-cyan)]">
+                    <span className="chip bg-white/80 text-ink">Nouveau</span>
+                    <span className="chip bg-[var(--neon-cyan)]/20 text-[var(--neon-violet)]">
                       ★ 4.9 / 5
                     </span>
                   </div>
@@ -251,32 +251,32 @@ export default function Hero() {
 
               {/* Floating cards */}
               <div
-                className="absolute top-4 right-4 w-44 aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-xl animate-float-soft"
+                className="absolute top-4 right-4 w-44 aspect-square rounded-2xl overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
                 style={{ animationDelay: "0.4s" }}
               >
                 <img src={heroImages[1]} alt="" className="w-full h-full object-cover" />
               </div>
               <div
-                className="absolute bottom-6 left-2 w-40 aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-xl animate-float-soft"
+                className="absolute bottom-6 left-2 w-40 aspect-square rounded-2xl overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
                 style={{ animationDelay: "1.2s" }}
               >
                 <img src={heroImages[2]} alt="" className="w-full h-full object-cover" />
               </div>
               <div
-                className="absolute top-12 left-0 w-32 aspect-[4/3] rounded-2xl overflow-hidden border border-white/15 shadow-xl animate-float-soft"
+                className="absolute top-12 left-0 w-32 aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
                 style={{ animationDelay: "2s" }}
               >
                 <img src={heroImages[3]} alt="" className="w-full h-full object-cover" />
               </div>
               <div
-                className="absolute bottom-2 right-12 w-32 aspect-[4/3] rounded-2xl overflow-hidden border border-white/15 shadow-xl animate-float-soft"
+                className="absolute bottom-2 right-12 w-32 aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
                 style={{ animationDelay: "1.6s" }}
               >
                 <img src={heroImages[4]} alt="" className="w-full h-full object-cover" />
               </div>
 
               {/* Stat bubble */}
-              <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] tracking-[0.25em] uppercase text-white/90">
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[var(--neon-violet)]/20 text-[10px] tracking-[0.25em] uppercase text-ink">
                 {totalProducts}+ modèles disponibles
               </div>
             </div>

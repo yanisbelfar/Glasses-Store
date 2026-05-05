@@ -10,7 +10,7 @@ export class NewsletterConfig {
   static readonly placeholder = "Votre adresse email";
   static readonly cta = "S'inscrire";
   static readonly successMessage =
-    "Merci ! Vérifiez votre boîte mail — surprise futuriste à l'intérieur.";
+    "Merci ! Vérifiez votre boîte mail, surprise futuriste à l'intérieur.";
 
   static validateEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -48,7 +48,7 @@ export default function Newsletter() {
           height: 380,
           left: "5%",
           top: "10%",
-          background: "rgba(139, 92, 246, 0.18)",
+          background: "rgba(123, 182, 255, 0.18)",
         }}
       />
       <div
@@ -58,7 +58,7 @@ export default function Newsletter() {
           height: 360,
           right: "5%",
           bottom: "10%",
-          background: "rgba(244, 114, 182, 0.16)",
+          background: "rgba(90, 167, 255, 0.16)",
         }}
       />
 

@@ -18,8 +18,8 @@ const features = [
       "Testez n'importe quelle monture depuis chez vous grâce à votre webcam ou une simple photo.",
     href: "/virtual-try-on",
     cta: "Lancer l'essai",
-    gradient: "linear-gradient(135deg, #06d3f7, #4f8cff)",
-    glow: "rgba(6, 211, 247, 0.35)",
+    gradient: "linear-gradient(135deg, #1fb9c3, #5aa7ff)",
+    glow: "rgba(31, 185, 195, 0.35)",
   },
   {
     icon: Compass,
@@ -28,18 +28,18 @@ const features = [
       "3 questions et nos experts vous proposent les montures qui flattent vraiment vos traits.",
     href: "/face-shape",
     cta: "Faire le quiz",
-    gradient: "linear-gradient(135deg, #f472b6, #a855f7)",
-    glow: "rgba(168, 85, 247, 0.35)",
+    gradient: "linear-gradient(135deg, #7bb6ff, #9acbff)",
+    glow: "rgba(90, 167, 255, 0.35)",
   },
   {
     icon: Layers,
     title: "Configurateur verres",
     description:
-      "Anti-reflet, bluelock, photochromique, progressifs — composez vos verres sur-mesure.",
+      "Anti-reflet, bluelock, photochromique, progressifs. Composez vos verres sur-mesure.",
     href: "/lens-configurator",
     cta: "Configurer",
-    gradient: "linear-gradient(135deg, #fbbf24, #fb7185)",
-    glow: "rgba(251, 191, 36, 0.35)",
+    gradient: "linear-gradient(135deg, #1aa99c, #7cc8ff)",
+    glow: "rgba(26, 169, 156, 0.35)",
   },
   {
     icon: CalendarDays,
@@ -48,8 +48,8 @@ const features = [
       "Réservez un créneau en boutique pour un examen visuel complet et un conseil expert.",
     href: "/appointment",
     cta: "Réserver",
-    gradient: "linear-gradient(135deg, #2ed68a, #06d3f7)",
-    glow: "rgba(46, 214, 138, 0.35)",
+    gradient: "linear-gradient(135deg, #6fdcff, #7bb6ff)",
+    glow: "rgba(123, 182, 255, 0.35)",
   },
   {
     icon: GitCompareArrows,
@@ -58,8 +58,8 @@ const features = [
       "Hésitation ? Comparez jusqu'à 4 modèles côte à côte : forme, matériau, taille.",
     href: "/compare",
     cta: "Comparer",
-    gradient: "linear-gradient(135deg, #8b5cf6, #ec4899)",
-    glow: "rgba(139, 92, 246, 0.35)",
+    gradient: "linear-gradient(135deg, #5aa7ff, #1aa99c)",
+    glow: "rgba(90, 167, 255, 0.35)",
   },
 ];
 

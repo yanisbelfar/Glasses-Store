@@ -79,7 +79,7 @@ export default function BrandsPage() {
       href: "/virtual-try-on",
       cta: "Lancer l'essai",
       icon: <Glasses size={18} />,
-      gradient: "linear-gradient(135deg, #06d3f7, #4f8cff)",
+      gradient: "linear-gradient(135deg, #1fb9c3, #5aa7ff)",
     },
     {
       title: "Trouver une boutique",
@@ -87,7 +87,7 @@ export default function BrandsPage() {
       href: "/store-locator",
       cta: "Voir les adresses",
       icon: <Store size={18} />,
-      gradient: "linear-gradient(135deg, #f472b6, #a855f7)",
+      gradient: "linear-gradient(135deg, #7bb6ff, #9acbff)",
     },
     {
       title: "Conseil WhatsApp",
@@ -96,7 +96,7 @@ export default function BrandsPage() {
       cta: "Discuter",
       icon: <MessageCircle size={18} />,
       external: true,
-      gradient: "linear-gradient(135deg, #2ed68a, #06d3f7)",
+      gradient: "linear-gradient(135deg, #1aa99c, #1fb9c3)",
     },
     {
       title: "Ajustement boutique",
@@ -104,7 +104,7 @@ export default function BrandsPage() {
       href: "/size-guide",
       cta: "Voir le guide",
       icon: <ShieldCheck size={18} />,
-      gradient: "linear-gradient(135deg, #fbbf24, #fb7185)",
+      gradient: "linear-gradient(135deg, #6fdcff, #7bb6ff)",
     },
   ];
 
@@ -138,7 +138,7 @@ export default function BrandsPage() {
     setRequestError("");
 
     const message = [
-      "Nouvelle demande marque · New Look Optic",
+      "Nouvelle demande marque · Newlook Optic Sidi Aiche",
       `Marque: ${requestForm.brand}`,
       `Monture: ${requestForm.monture}`,
       `Couleur: ${requestForm.couleur}`,
@@ -157,10 +157,10 @@ export default function BrandsPage() {
     <main className="flex-1 pt-28 lg:pt-32">
       {/* HERO */}
       <section className="relative overflow-hidden py-14 lg:py-20">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#fdf2ff] via-white to-[#f0f9ff]" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#eef5ff] via-white to-[#e6f2ff]" />
         <div
           className="glow-orb"
-          style={{ width: 400, height: 400, left: "5%", top: "-10%", background: "rgba(244,114,182,0.18)" }}
+          style={{ width: 400, height: 400, left: "5%", top: "-10%", background: "rgba(90,167,255,0.18)" }}
         />
         <div
           className="glow-orb"
@@ -178,7 +178,7 @@ export default function BrandsPage() {
               <span className="gradient-text font-semibold">Toutes les marques</span> que vous adorez
             </h1>
             <p className="mt-3 text-ink-soft max-w-2xl mx-auto">
-              De Dior à GIVENCHY en passant par KENZO, Polaroid et Skechers — explorez notre univers
+              De Dior à GIVENCHY en passant par KENZO, Polaroid et Skechers, explorez notre univers
               de griffes premium 100% authentiques.
             </p>
           </div>
@@ -197,7 +197,7 @@ export default function BrandsPage() {
                 Glissez parmi nos griffes
               </h2>
               <p className="mt-2 text-sm text-ink-soft max-w-xl">
-                Navigation fluide, indicateurs en tirets — pour explorer nos marques comme vous le faites sur les meilleurs sites optiques.
+                Navigation fluide, indicateurs en tirets pour explorer nos marques comme vous le faites sur les meilleurs sites optiques.
               </p>
             </div>
             <div className="relative">
@@ -258,7 +258,7 @@ export default function BrandsPage() {
                           className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-700 group-hover:scale-110"
                         />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/15" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/0 to-white/40" />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <Image
                           src={brand.logo}

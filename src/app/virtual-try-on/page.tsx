@@ -66,21 +66,21 @@ export default function VirtualTryOnPage() {
               })}
             </div>
 
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-[#04061a] via-[#0e0a2a] to-[#04061a] border border-[var(--neon-violet)]/20">
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff] border border-[var(--neon-violet)]/20">
               <div className="aurora opacity-40" />
               {/* Frame outline */}
               <div className="absolute inset-0 grid place-items-center pointer-events-none">
-                <div className="w-72 h-44 rounded-[2.5rem] border border-white/30 relative animate-pulse-glow">
-                  <div className="absolute -inset-2 rounded-[3rem] border border-white/10" />
+                <div className="w-72 h-44 rounded-[2.5rem] border border-[var(--neon-violet)]/30 relative animate-pulse-glow">
+                  <div className="absolute -inset-2 rounded-[3rem] border border-[var(--neon-violet)]/15" />
                 </div>
               </div>
 
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-ink">
                 {mode === "webcam" ? (
                   <>
                     <Camera size={44} className="mb-4 text-[var(--neon-cyan)]" strokeWidth={1.5} />
                     <p className="text-base">Miroir intelligent prêt</p>
-                    <p className="text-xs text-white/60 mb-5">Cliquez pour activer la webcam</p>
+                    <p className="text-xs text-ink-soft mb-5">Cliquez pour activer la webcam</p>
                     <button className="btn-primary">
                       <Sparkles size={14} />
                       Activer ma caméra
@@ -90,7 +90,7 @@ export default function VirtualTryOnPage() {
                   <>
                     <Upload size={44} className="mb-4 text-[var(--neon-magenta)]" strokeWidth={1.5} />
                     <p className="text-base">Photo de face recommandée</p>
-                    <p className="text-xs text-white/60 mb-5">JPG ou PNG · max 10 Mo</p>
+                    <p className="text-xs text-ink-soft mb-5">JPG ou PNG · max 10 Mo</p>
                     <label className="btn-primary cursor-pointer">
                       <Upload size={14} />
                       Choisir un fichier
@@ -104,7 +104,7 @@ export default function VirtualTryOnPage() {
                 {[Monitor, Smartphone, RotateCcw].map((Icon, i) => (
                   <button
                     key={i}
-                    className="w-9 h-9 grid place-items-center rounded-full bg-white/10 hover:bg-white/20 text-white/85 transition-colors"
+                    className="w-9 h-9 grid place-items-center rounded-full bg-white/80 hover:bg-white text-ink transition-colors"
                   >
                     <Icon size={14} />
                   </button>
@@ -112,7 +112,7 @@ export default function VirtualTryOnPage() {
               </div>
 
               {product && (
-                <div className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/15 backdrop-blur text-white text-xs">
+                <div className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/85 backdrop-blur text-ink text-xs">
                   <span className="w-2 h-2 rounded-full bg-[var(--neon-emerald)] animate-pulse" />
                   Monture active : <span className="font-semibold">{product.name}</span>
                 </div>

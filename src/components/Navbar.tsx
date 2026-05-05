@@ -19,7 +19,7 @@ import { useStore } from "@/lib/store";
 import { megaMenuData } from "@/lib/data";
 
 export class NavbarController {
-  static readonly brandName = "NEXLOOK OPTIC SIDI AICHE";
+  static readonly brandName = "NEWLOOK OPTIC SIDI AICHE";
   static readonly tagline = "Opticien · Sidi Aiche";
   static readonly phone = "+213 555 85 24 57";
   static readonly promoMessages = [
@@ -52,11 +52,11 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Promo strip with marquee */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#0b0d2b] via-[#1a1f4a] to-[#0b0d2b] text-white py-2">
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#e6f2ff] via-[#d7ebff] to-[#e6f2ff] text-ink py-2">
         <div className="aurora opacity-40" />
         <div className="marquee-track text-[10px] tracking-[0.35em] uppercase">
           {[...NavbarController.promoMessages, ...NavbarController.promoMessages].map((msg, i) => (
-            <span key={i} className="text-white/80">{msg}</span>
+            <span key={i} className="text-ink-soft">{msg}</span>
           ))}
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function Navbar() {
               </span>
               <div className="flex flex-col leading-tight">
                 <span className="text-base lg:text-lg font-semibold tracking-[0.2em] gradient-text">
-                  NEXLOOK
+                  NEWLOOK
                 </span>
                 <span className="text-[9px] tracking-[0.4em] text-ink-soft uppercase">
                   OPTIC · SIDI AICHE
@@ -131,7 +131,7 @@ export default function Navbar() {
                           <Link
                             key={sub.href}
                             href={sub.href}
-                            className="flex items-center justify-between gap-3 px-4 py-2.5 text-[12px] text-ink-soft hover:text-[var(--neon-violet)] hover:bg-[rgba(139,92,246,0.06)] rounded-xl transition-all"
+                            className="flex items-center justify-between gap-3 px-4 py-2.5 text-[12px] text-ink-soft hover:text-[var(--neon-violet)] hover:bg-[rgba(123,182,255,0.18)] rounded-xl transition-all"
                           >
                             <span>{sub.label}</span>
                             <span className="opacity-0 group-hover:opacity-100 text-[10px]">→</span>
@@ -161,14 +161,14 @@ export default function Navbar() {
               </a>
               <button
                 onClick={() => dispatch({ type: "TOGGLE_SEARCH" })}
-                className="p-2 rounded-full text-ink hover:text-[var(--neon-violet)] hover:bg-[rgba(139,92,246,0.08)] transition-all"
+                className="p-2 rounded-full text-ink hover:text-[var(--neon-violet)] hover:bg-[rgba(123,182,255,0.18)] transition-all"
                 aria-label="Rechercher"
               >
                 <Search size={18} />
               </button>
               <Link
                 href="/wishlist"
-                className="relative p-2 rounded-full text-ink hover:text-[var(--neon-rose)] hover:bg-[rgba(244,114,182,0.08)] transition-all"
+                className="relative p-2 rounded-full text-ink hover:text-[var(--neon-rose)] hover:bg-[rgba(31,185,195,0.08)] transition-all"
                 aria-label="Favoris"
               >
                 <Heart size={18} />
@@ -180,7 +180,7 @@ export default function Navbar() {
               </Link>
               <button
                 onClick={() => dispatch({ type: "TOGGLE_CART" })}
-                className="relative p-2 rounded-full text-ink hover:text-[var(--neon-violet)] hover:bg-[rgba(139,92,246,0.08)] transition-all"
+                className="relative p-2 rounded-full text-ink hover:text-[var(--neon-violet)] hover:bg-[rgba(123,182,255,0.18)] transition-all"
                 aria-label="Panier"
               >
                 <ShoppingBag size={18} />

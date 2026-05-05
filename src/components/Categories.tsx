@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Categories() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-[#04061a] text-white" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f4f9ff] via-white to-[#e9f3ff]" />
       <div className="aurora opacity-60" />
       <div
         className="absolute inset-0 -z-10 opacity-30"
@@ -20,16 +20,16 @@ export default function Categories() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-ink">
         <div className="text-center mb-14">
-          <p className="section-eyebrow text-white/70 justify-center">
+          <p className="section-eyebrow text-ink-soft justify-center">
             <Compass size={14} className="text-[var(--neon-cyan)]" />
             Notre univers
           </p>
-          <h2 className="mt-4 text-4xl lg:text-5xl xl:text-6xl font-light text-white tracking-tight">
+          <h2 className="mt-4 text-4xl lg:text-5xl xl:text-6xl font-light text-ink tracking-tight">
             Explorez par <span className="gradient-text font-semibold">catégorie</span>
           </h2>
-          <p className="mt-4 text-white/70 max-w-2xl mx-auto">
+          <p className="mt-4 text-ink-soft max-w-2xl mx-auto">
             Trois univers, trois langages visuels. Chaque catégorie est pensée pour révéler ce qui vous rend unique.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function Categories() {
               <Link
                 key={cat.id}
                 href={`/collections/${cat.slug}`}
-                className="group relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white/10"
+                className="group relative rounded-3xl overflow-hidden border border-[var(--neon-violet)]/15 bg-white/80 backdrop-blur-md transition-all hover:bg-white"
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 {/* glow background */}
@@ -84,10 +84,10 @@ export default function Categories() {
                       >
                         {accent.tag}
                       </p>
-                      <h3 className="mt-2 text-2xl font-semibold text-white">
+                      <h3 className="mt-2 text-2xl font-semibold text-ink">
                         {cat.name}
                       </h3>
-                      <p className="mt-1 text-sm text-white/60">
+                      <p className="mt-1 text-sm text-ink-soft">
                         {cat.productCount} modèles
                       </p>
                     </div>
