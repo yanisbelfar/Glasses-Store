@@ -75,7 +75,7 @@ export default function ComparePage() {
                       className="p-4 align-top text-left min-w-[220px]"
                     >
                       <div className="rounded-none bg-white border border-[var(--neon-violet)]/15 overflow-hidden shadow-md shadow-[var(--neon-violet)]/5">
-                        <div className="aspect-square bg-[#f0fefe] relative">
+                        <div className="aspect-square bg-[#f0f8ff] relative">
                           <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                           <button
                             onClick={() => remove(p.id)}
@@ -202,7 +202,7 @@ export default function ComparePage() {
                       onClick={() => add(p.id)}
                       className="text-left rounded-none border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/40 transition-all p-2"
                     >
-                      <div className="aspect-square rounded-none overflow-hidden bg-[#f0fefe]">
+                      <div className="aspect-square rounded-none overflow-hidden bg-[#f0f8ff]">
                         <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                       </div>
                       <p className="text-[10px] text-[var(--neon-violet)] mt-2 truncate">

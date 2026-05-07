@@ -40,7 +40,7 @@ export default function Newsletter() {
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f0fefe] via-white to-[#f0f3ff]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f0f8ff] via-white to-[#f0f3ff]" />
       <div
         className="glow-orb"
         style={{
@@ -48,7 +48,7 @@ export default function Newsletter() {
           height: 380,
           left: "5%",
           top: "10%",
-          background: "rgba(0, 180, 180, 0.18)",
+          background: "rgba(74, 171, 219, 0.18)",
         }}
       />
       <div

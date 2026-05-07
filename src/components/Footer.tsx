@@ -127,7 +127,7 @@ export default function Footer() {
         </div>
       </section>
 
-      <footer className="bg-[#e6f9f9] text-ink-soft relative overflow-hidden">
+      <footer className="bg-[#e1f3fc] text-ink-soft relative overflow-hidden">
         <div
           className="absolute inset-x-0 top-0 h-px"
           style={{

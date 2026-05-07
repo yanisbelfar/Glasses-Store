@@ -6,10 +6,10 @@ import { Product } from "@/lib/data";
 import { useStore } from "@/lib/store";
 
 const accentByCategory: Record<string, { from: string; to: string; ring: string }> = {
-  Soleil: { from: "#00b4b4", to: "#00d4d4", ring: "rgba(0,180,180,0.35)" },
-  Homme: { from: "#00b4b4", to: "#00d4d4", ring: "rgba(0,180,180,0.35)" },
-  Femme: { from: "#00b4b4", to: "#00d4d4", ring: "rgba(0,180,180,0.35)" },
-  Enfant: { from: "#00b4b4", to: "#00d4d4", ring: "rgba(0,180,180,0.35)" },
+  Soleil: { from: "#4AABDB", to: "#6DC4ED", ring: "rgba(74,171,219,0.35)" },
+  Homme: { from: "#4AABDB", to: "#6DC4ED", ring: "rgba(74,171,219,0.35)" },
+  Femme: { from: "#4AABDB", to: "#6DC4ED", ring: "rgba(74,171,219,0.35)" },
+  Enfant: { from: "#4AABDB", to: "#6DC4ED", ring: "rgba(74,171,219,0.35)" },
 };
 
 function badgeStyle(badge?: Product["badge"]) {
@@ -120,16 +120,11 @@ export default function ProductCard({
       <div className="px-4 py-3 flex items-center justify-between gap-2">
         <Link href={`/products/${product.id}`}>
           <p
-            className="text-sm font-bold tracking-[0.12em] uppercase text-ink group-hover:text-[#00b4b4] transition-colors"
+            className="text-sm font-bold tracking-[0.12em] uppercase text-ink group-hover:text-[#4AABDB] transition-colors"
           >
             {product.brand}
           </p>
         </Link>
-        {product.shape && (
-          <span className="text-[10px] tracking-[0.18em] uppercase text-muted/70">
-            {product.shape}
-          </span>
-        )}
       </div>
 
       {/* Bottom accent */}

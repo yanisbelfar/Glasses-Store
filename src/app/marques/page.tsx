@@ -79,7 +79,7 @@ export default function BrandsPage() {
       href: "/virtual-try-on",
       cta: "Lancer l'essai",
       icon: <Glasses size={18} />,
-      gradient: "linear-gradient(135deg, #1fb9c3, #009898)",
+      gradient: "linear-gradient(135deg, #1fb9c3, #2E8FB5)",
     },
     {
       title: "Trouver une boutique",
@@ -87,7 +87,7 @@ export default function BrandsPage() {
       href: "/store-locator",
       cta: "Voir les adresses",
       icon: <Store size={18} />,
-      gradient: "linear-gradient(135deg, #00b4b4, #00c4c4)",
+      gradient: "linear-gradient(135deg, #4AABDB, #00c4c4)",
     },
     {
       title: "Conseil WhatsApp",
@@ -104,7 +104,7 @@ export default function BrandsPage() {
       href: "/size-guide",
       cta: "Voir le guide",
       icon: <ShieldCheck size={18} />,
-      gradient: "linear-gradient(135deg, #00d4d4, #00b4b4)",
+      gradient: "linear-gradient(135deg, #6DC4ED, #4AABDB)",
     },
   ];
 
@@ -157,7 +157,7 @@ export default function BrandsPage() {
     <main className="flex-1 pt-28 lg:pt-32">
       {/* HERO */}
       <section className="relative overflow-hidden py-14 lg:py-20">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e4f8f8] via-white to-[#e6f2ff]" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e4f8f8] via-white to-[#e1f3fc]" />
         <div
           className="glow-orb"
           style={{ width: 400, height: 400, left: "5%", top: "-10%", background: "rgba(90,167,255,0.18)" }}

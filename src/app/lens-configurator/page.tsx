@@ -63,7 +63,7 @@ export default function LensConfiguratorPage() {
                         : "border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30"
                     }`}
                   >
-                    <div className="aspect-square rounded-none bg-[#f0fefe] overflow-hidden">
+                    <div className="aspect-square rounded-none bg-[#f0f8ff] overflow-hidden">
                       <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                     </div>
                     <p className="text-[10px] text-muted mt-1 truncate">{p.brand}</p>
@@ -94,7 +94,7 @@ export default function LensConfiguratorPage() {
                         className={`w-11 h-11 grid place-items-center rounded-none ${
                           active
                             ? "bg-gradient-to-br from-[var(--neon-violet)] to-[var(--neon-magenta)] text-white"
-                            : "bg-[#f0fefe] text-[var(--neon-violet)]"
+                            : "bg-[#f0f8ff] text-[var(--neon-violet)]"
                         }`}
                       >
                         <Icon size={18} />

@@ -4,11 +4,11 @@ import { testimonials } from "@/lib/data";
 import { Quote, Star, ShieldCheck } from "lucide-react";
 
 const palette = [
-  { from: "#00d4d4", to: "#00c4c4" },
-  { from: "#00b4b4", to: "#00c4c4" },
-  { from: "#00c8b0", to: "#f59e0b" },
-  { from: "#00d4d4", to: "#00b4b4" },
-  { from: "#00c4c4", to: "#00c8b0" },
+  { from: "#6DC4ED", to: "#00c4c4" },
+  { from: "#4AABDB", to: "#00c4c4" },
+  { from: "#4AABDB", to: "#f59e0b" },
+  { from: "#6DC4ED", to: "#4AABDB" },
+  { from: "#00c4c4", to: "#4AABDB" },
 ];
 
 export default function Testimonials() {

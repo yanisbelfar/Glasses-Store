@@ -139,7 +139,7 @@ export default function BrandLogoSwipe({ items, onRequestBrand }: BrandLogoSwipe
             <div
               className="min-w-[180px] sm:min-w-[200px] lg:min-w-[230px] snap-start rounded-none border border-[var(--neon-violet)]/10 bg-white px-5 py-6 text-center hover:border-[var(--neon-violet)]/30 hover:shadow-lg hover:shadow-[var(--neon-violet)]/10 transition-all"
               style={{
-                background: i % 4 === 0 ? "linear-gradient(180deg, #ffffff 0%, #f0fefe 100%)"
+                background: i % 4 === 0 ? "linear-gradient(180deg, #ffffff 0%, #f0f8ff 100%)"
                   : i % 4 === 1 ? "linear-gradient(180deg, #ffffff 0%, #fff5fb 100%)"
                   : i % 4 === 2 ? "linear-gradient(180deg, #ffffff 0%, #fef9f3 100%)"
                   : "linear-gradient(180deg, #ffffff 0%, #f3fff9 100%)",

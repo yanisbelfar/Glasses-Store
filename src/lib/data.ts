@@ -358,6 +358,7 @@ function buildSoleilProducts(): Product[] {
   const byBrand = new Map<string, typeof productImageCatalog>();
   for (const entry of productImageCatalog) {
     const brand = entry.label;
+    if (brand === 'Despada') continue; // Vue category handled separately
     if (!byBrand.has(brand)) byBrand.set(brand, []);
     byBrand.get(brand)!.push(entry);
   }
@@ -409,7 +410,52 @@ function buildSoleilProducts(): Product[] {
   return products;
 }
 
-export const allProducts: Product[] = buildSoleilProducts();
+function buildVueProducts(): Product[] {
+  const products: Product[] = [];
+  const vueMaterials = ["Métal", "Acétate", "Acétate/Métal", "Titane"];
+  const vueColors: Array<Array<{ name: string; hex: string }>> = [
+    [{ name: "Noir", hex: "#1a1a1a" }, { name: "Argent", hex: "#b0b8c1" }],
+    [{ name: "Havane", hex: "#654b3a" }, { name: "Or", hex: "#c8a96e" }],
+    [{ name: "Gris", hex: "#6b7280" }, { name: "Bleu", hex: "#1a4a7a" }],
+    [{ name: "Bordeaux", hex: "#7c2d3e" }, { name: "Nude", hex: "#c4a882" }],
+  ];
+
+  const despada = productImageCatalog.filter((e) => e.label === 'Despada');
+  let idOffset = 6000;
+
+  despada.forEach((img, idx) => {
+    const material = vueMaterials[idx % vueMaterials.length];
+    const colors = vueColors[idx % vueColors.length].map(
+      (c) => new ProductColor(c.name, c.hex)
+    );
+    const badge: ProductBadge | undefined = idx === 0 ? "best-seller" : idx === 1 ? "nouveau" : undefined;
+
+    products.push(
+      new Product(
+        String(idOffset++),
+        `Despada — Lunettes de Vue ${String(idx + 1).padStart(2, "0")}`,
+        12500 + (idx % 8) * 600,
+        img.path,
+        "Vue",
+        badge,
+        `Lunettes de vue Despada, monture en ${material.toLowerCase()}. Confort optimal et style contemporain. Disponible en boutique Newlook Optic Sidi Aiche.`,
+        "Despada",
+        colors,
+        ["S", "M", "L"],
+        undefined,
+        material,
+        "unisexe" as ProductGender,
+        [img.path],
+        "Correction",
+        135,
+      )
+    );
+  });
+
+  return products;
+}
+
+export const allProducts: Product[] = [...buildSoleilProducts(), ...buildVueProducts()];
 
 export const featuredProducts = allProducts.slice(0, 3);
 export const popularProducts = allProducts.slice(3, 11);
@@ -422,6 +468,14 @@ const categoryDefinitions = [
     sourceCategory: "Soleil",
     image: "/categories/soleil.jpg",
     description: "Lunettes de soleil Helen Keller et Horien",
+  },
+  {
+    id: "2",
+    name: "Lunettes de Vue",
+    slug: "vue",
+    sourceCategory: "Vue",
+    image: "/categories/vue.jpg",
+    description: "Lunettes de vue Despada",
   },
 ] as const;
 
@@ -445,10 +499,17 @@ export const categoryAccents: Record<string, { from: string; to: string; glow: s
     tag: "Soleil · UV400",
     emoji: "☀",
   },
+  vue: {
+    from: "#4AABDB",
+    to: "#6DC4ED",
+    glow: "rgba(74, 171, 219, 0.35)",
+    tag: "Vue · Correction",
+    emoji: "👓",
+  },
   all: {
     from: "#1fb9c3",
     to: "#00c4c4",
-    glow: "rgba(0, 180, 180, 0.35)",
+    glow: "rgba(74, 171, 219, 0.35)",
     tag: "Toutes les collections",
     emoji: "✦",
   },
@@ -588,14 +649,17 @@ export const appointmentSlots: AppointmentSlot[] = [
 export const megaMenuData: MegaMenuCategory[] = [
   new MegaMenuCategory("Lunettes Soleil", "/collections/soleil", [
     { label: "Toutes les lunettes soleil", href: "/collections/soleil" },
-    { label: "Aviator", href: "/collections/soleil?shape=Aviator" },
-    { label: "Oversize", href: "/collections/soleil?shape=Oversize" },
-    { label: "Pilote", href: "/collections/soleil?shape=Pilote" },
-    { label: "Carré", href: "/collections/soleil?shape=Carr%C3%A9" },
+    { label: "Helen Keller", href: "/collections/soleil?brand=Helen+Keller" },
+    { label: "Horien", href: "/collections/soleil?brand=Horien" },
+  ]),
+  new MegaMenuCategory("Lunettes de Vue", "/collections/vue", [
+    { label: "Toutes les lunettes de vue", href: "/collections/vue" },
+    { label: "Despada", href: "/collections/vue?brand=Despada" },
   ]),
   new MegaMenuCategory("Marques", "/marques", [
     { label: "Helen Keller", href: "/collections/all?brand=Helen+Keller" },
     { label: "Horien", href: "/collections/all?brand=Horien" },
+    { label: "Despada", href: "/collections/all?brand=Despada" },
     { label: "Voir toutes les marques", href: "/marques" },
   ]),
 ];

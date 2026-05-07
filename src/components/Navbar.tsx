@@ -14,7 +14,6 @@ import {
   Compass,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { useStore } from "@/lib/store";
 import { megaMenuData } from "@/lib/data";
 
@@ -51,7 +50,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Promo strip with marquee */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#e6f2ff] via-[#d7ebff] to-[#e6f2ff] text-ink py-2">
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#e1f3fc] via-[#c8eaf9] to-[#e1f3fc] text-ink py-2">
         <div className="aurora opacity-40" />
         <div className="marquee-track text-[10px] tracking-[0.35em] uppercase">
           {[...NavbarController.promoMessages, ...NavbarController.promoMessages].map((msg, i) => (
@@ -83,15 +82,20 @@ export default function Navbar() {
             </button>
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <Image
-                src="/newlook-logo.svg"
-                alt="New Look Optic Sidi Aiche"
-                width={110}
-                height={52}
-                className="transition-transform group-hover:scale-105 drop-shadow-sm"
-                priority
-              />
+            <Link href="/" className="flex items-center group">
+              <span className="flex flex-col leading-none select-none">
+                <span
+                  className="text-[17px] font-bold tracking-[0.18em] uppercase transition-colors"
+                  style={{ color: "var(--neon-violet)" }}
+                >
+                  NEW LOOK
+                </span>
+                <span
+                  className="text-[11px] font-light tracking-[0.38em] uppercase text-ink-soft"
+                >
+                  OPTIC
+                </span>
+              </span>
             </Link>
 
             {/* Desktop menu */}
@@ -272,15 +276,14 @@ export default function Navbar() {
               </div>
               <a
                 href={`tel:${NavbarController.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-2 text-sm gradient-text pt-3 border-t border-white/40"
-              >
-                <Phone size={14} />
-                {NavbarController.phone}
-              </a>
+                className="flex items-center gap-2 text-sm gradient-text pt-3 border-t border-white/40">
+                  <Phone size={14} />
+                  {NavbarController.phone}
+                </a>
+              </div>
             </div>
-          </div>
-        )}
-      </nav>
-    </header>
+          )}
+        </nav>
+      </header>
   );
 }

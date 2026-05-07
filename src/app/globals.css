@@ -2,22 +2,22 @@
 
 :root {
   /* Night blue palette */
-  --background: #f4fefe;
-  --background-soft: #e6f9f9;
-  --background-dark: #ccf0f0;
+  --background: #f0f8ff;
+  --background-soft: #e1f3fc;
+  --background-dark: #c5e8f7;
   --foreground: #3a5e7a;
   --ink: #3a5e7a;
   --ink-soft: #527392;
   --muted: #6f8aa3;
 
   /* Blue spectrum */
-  --neon-cyan: #00d4d4;
-  --neon-blue: #009898;
-  --neon-violet: #00b4b4;
-  --neon-magenta: #00c8c8;
-  --neon-rose: #00a0a0;
+  --neon-cyan: #6DC4ED;
+  --neon-blue: #2E8FB5;
+  --neon-violet: #4AABDB;
+  --neon-magenta: #5BB5E6;
+  --neon-rose: #3A9CC9;
   --neon-amber: #f59e0b;
-  --neon-emerald: #00c8b0;
+  --neon-emerald: #4AABDB;
 
   /* Glass surfaces */
   --glass: rgba(255, 255, 255, 0.65);
@@ -26,12 +26,12 @@
   --glass-border: rgba(255, 255, 255, 0.5);
 
   /* Legacy aliases (keep older code working during transition) */
-  --gold: #00b4b4;
+  --gold: #4AABDB;
   --gold-light: #7de8e8;
   --gold-dark: #008f8f;
   --charcoal: #3a5e7a;
   --charcoal-light: #4e6f8a;
-  --cream: #e6f9f9;
+  --cream: #e1f3fc;
   --warm-gray: #6f8aa3;
 }
 
@@ -91,8 +91,8 @@ body::before {
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(1100px 700px at 0% 0%, rgba(0, 180, 180, 0.14), transparent 60%),
-    radial-gradient(900px 600px at 100% 0%, rgba(0, 212, 212, 0.12), transparent 60%),
+    radial-gradient(1100px 700px at 0% 0%, rgba(74, 171, 219, 0.14), transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(109, 196, 237, 0.12), transparent 60%),
     radial-gradient(800px 500px at 50% 100%, rgba(0, 196, 196, 0.12), transparent 60%);
 }
 
@@ -107,7 +107,7 @@ body::before {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(0, 180, 180, 0.08);
+  background: rgba(74, 171, 219, 0.08);
 }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--neon-violet), var(--neon-cyan));
@@ -150,8 +150,8 @@ body::before {
   100% { background-position: 200% 0; }
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 rgba(0, 180, 180, 0); }
-  50% { box-shadow: 0 0 28px rgba(0, 180, 180, 0.45); }
+  0%, 100% { box-shadow: 0 0 0 rgba(74, 171, 219, 0); }
+  50% { box-shadow: 0 0 28px rgba(74, 171, 219, 0.45); }
 }
 @keyframes gradient-pan {
   0% { background-position: 0% 50%; }
@@ -273,7 +273,7 @@ body::before {
   color: white;
   background: linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-magenta) 50%, var(--neon-cyan) 100%);
   background-size: 200% 200%;
-  box-shadow: 0 14px 40px -10px rgba(0, 180, 180, 0.45), 0 0 0 1px rgba(255,255,255,0.06) inset;
+  box-shadow: 0 14px 40px -10px rgba(74, 171, 219, 0.45), 0 0 0 1px rgba(255,255,255,0.06) inset;
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   overflow: hidden;
 }
@@ -312,7 +312,7 @@ body::before {
 .btn-ghost:hover {
   border-color: var(--neon-violet);
   color: var(--neon-violet);
-  background: rgba(0, 180, 180, 0.12);
+  background: rgba(74, 171, 219, 0.12);
   transform: translateY(-1px);
 }
 
@@ -329,12 +329,12 @@ body::before {
   font-weight: 500;
   color: var(--ink);
   background: linear-gradient(135deg, #ccf2f2, #b2eded);
-  border: 1px solid rgba(0, 180, 180, 0.25);
+  border: 1px solid rgba(74, 171, 219, 0.25);
   transition: all 0.3s ease;
 }
 .btn-dark:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 32px -10px rgba(0, 180, 180, 0.45);
+  box-shadow: 0 12px 32px -10px rgba(74, 171, 219, 0.45);
 }
 
 .chip {
@@ -369,21 +369,21 @@ body::before {
 }
 .product-card:hover {
   transform: translateY(0);
-  box-shadow: 0 30px 60px -25px rgba(0, 180, 180, 0.35), 0 0 0 1px rgba(0, 180, 180, 0.18);
+  box-shadow: 0 30px 60px -25px rgba(74, 171, 219, 0.35), 0 0 0 1px rgba(74, 171, 219, 0.18);
 }
 .product-card .image-wrap {
   position: relative;
   background:
-    radial-gradient(120% 80% at 50% 0%, rgba(0, 180, 180, 0.12), transparent 60%),
+    radial-gradient(120% 80% at 50% 0%, rgba(74, 171, 219, 0.12), transparent 60%),
     radial-gradient(120% 80% at 50% 100%, rgba(0, 200, 200, 0.10), transparent 60%),
-    linear-gradient(180deg, #f4fefe 0%, #e8fafa 100%);
+    linear-gradient(180deg, #f0f8ff 0%, #e8fafa 100%);
 }
 .product-card .image-wrap::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    repeating-linear-gradient(45deg, rgba(0, 180, 180, 0.06) 0 1px, transparent 1px 24px);
+    repeating-linear-gradient(45deg, rgba(74, 171, 219, 0.06) 0 1px, transparent 1px 24px);
   pointer-events: none;
 }
 
@@ -399,7 +399,7 @@ body::before {
   border-radius: 999px;
   color: white;
   background: linear-gradient(90deg, var(--neon-violet), var(--neon-magenta));
-  box-shadow: 0 6px 20px -8px rgba(0, 180, 180, 0.55);
+  box-shadow: 0 6px 20px -8px rgba(74, 171, 219, 0.55);
 }
 
 .section-eyebrow {
@@ -450,9 +450,9 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(60% 60% at 20% 30%, rgba(0, 212, 212, 0.35), transparent 60%),
+    radial-gradient(60% 60% at 20% 30%, rgba(109, 196, 237, 0.35), transparent 60%),
     radial-gradient(50% 50% at 80% 20%, rgba(0, 196, 196, 0.3), transparent 60%),
-    radial-gradient(70% 60% at 50% 100%, rgba(0, 180, 180, 0.4), transparent 60%);
+    radial-gradient(70% 60% at 50% 100%, rgba(74, 171, 219, 0.4), transparent 60%);
   filter: blur(60px);
   opacity: 0.9;
   pointer-events: none;

@@ -125,7 +125,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
           {/* IMAGE GALLERY */}
           <div>
             <div
-              className="relative aspect-square rounded-none overflow-hidden bg-gradient-to-br from-[#f0fefe] via-white to-[#eef0ff] group cursor-zoom-in border border-[var(--neon-violet)]/10"
+              className="relative aspect-square rounded-none overflow-hidden bg-gradient-to-br from-[#f0f8ff] via-white to-[#eef0ff] group cursor-zoom-in border border-[var(--neon-violet)]/10"
               onClick={() => setZoomed((z) => !z)}
             >
               {/* repeating mesh pattern */}
@@ -219,11 +219,6 @@ export default function ProductDetailClient({ id }: { id: string }) {
             </h1>
 
             <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] tracking-[0.2em] uppercase font-semibold">
-              {product.shape && (
-                <span className="chip bg-[var(--neon-violet)]/10 text-[var(--neon-violet)]">
-                  <Tag size={10} /> {product.shape}
-                </span>
-              )}
               {product.material && (
                 <span className="chip bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)]">
                   <Layers size={10} /> {product.material}
@@ -367,7 +362,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
 
             {/* Tabs */}
             <div className="mt-9">
-              <div className="flex gap-1 p-1 rounded-full bg-[#f0fefe] w-fit">
+              <div className="flex gap-1 p-1 rounded-full bg-[#f0f8ff] w-fit">
                 {(
                   [
                     { key: "details", label: "Détails" },
@@ -391,7 +386,6 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 {activeTab === "details" && (
                   <div className="space-y-2">
                     {product.brand && <p><strong className="text-ink">Marque :</strong> {product.brand}</p>}
-                    {product.shape && <p><strong className="text-ink">Forme :</strong> {product.shape}</p>}
                     {product.material && <p><strong className="text-ink">Matière :</strong> {product.material}</p>}
                     {product.lensType && <p><strong className="text-ink">Verres :</strong> {product.lensType}</p>}
                     {product.gender && <p><strong className="text-ink">Genre :</strong> {product.gender.charAt(0).toUpperCase() + product.gender.slice(1)}</p>}

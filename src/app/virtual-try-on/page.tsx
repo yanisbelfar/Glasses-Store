@@ -171,7 +171,7 @@ export default function VirtualTryOnPage() {
                         : "bg-white border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30"
                     }`}
                   >
-                    <div className="aspect-square rounded-none overflow-hidden bg-[#f0fefe]">
+                    <div className="aspect-square rounded-none overflow-hidden bg-[#f0f8ff]">
                       <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                     </div>
                     <p className="text-[10px] text-[var(--neon-violet)] mt-2 truncate">

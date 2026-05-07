@@ -67,7 +67,7 @@ export default function FaceShapePage() {
             <p className="text-xs tracking-[0.3em] uppercase text-muted">
               {isDone ? "Résultat" : `Question ${step + 1} / ${faceShapeQuestions.length}`}
             </p>
-            <div className="flex-1 mx-4 h-1.5 bg-[#f0fefe] rounded-full overflow-hidden">
+            <div className="flex-1 mx-4 h-1.5 bg-[#f0f8ff] rounded-full overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-[var(--neon-violet)] via-[var(--neon-magenta)] to-[var(--neon-cyan)] transition-all duration-500"
                 style={{ width: `${isDone ? 100 : progress}%` }}

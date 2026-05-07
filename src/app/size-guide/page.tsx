@@ -7,11 +7,11 @@ import { Ruler, Compass, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const accents = [
-  { from: "#1fb9c3", to: "#009898" },
-  { from: "#00b4b4", to: "#00c4c4" },
+  { from: "#1fb9c3", to: "#2E8FB5" },
+  { from: "#4AABDB", to: "#00c4c4" },
   { from: "#1aa99c", to: "#7cc8ff" },
-  { from: "#00d4d4", to: "#00b4b4" },
-  { from: "#009898", to: "#1aa99c" },
+  { from: "#6DC4ED", to: "#4AABDB" },
+  { from: "#2E8FB5", to: "#1aa99c" },
 ];
 
 export default function SizeGuidePage() {
@@ -122,7 +122,7 @@ export default function SizeGuidePage() {
                         {entry.recommended.map((shape) => (
                           <span
                             key={shape}
-                            className="px-2.5 py-1 rounded-full text-[11px] text-ink bg-[#f0fefe] border border-[var(--neon-violet)]/10"
+                            className="px-2.5 py-1 rounded-full text-[11px] text-ink bg-[#f0f8ff] border border-[var(--neon-violet)]/10"
                           >
                             {shape}
                           </span>

@@ -44,7 +44,7 @@ export default function PopularProducts() {
             </h2>
           </div>
 
-          <div className="flex flex-wrap gap-1.5 p-1 bg-[#f0fefe] rounded-full">
+          <div className="flex flex-wrap gap-1.5 p-1 bg-[#f0f8ff] rounded-full">
             {tabs.map((t) => (
               <button
                 key={t.id}

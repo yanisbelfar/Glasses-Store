@@ -12,12 +12,7 @@ export class SearchController {
   static readonly popularSearches = [
     "Helen Keller",
     "Horien",
-    "Aviator",
     "Soleil",
-    "Oversize",
-    "Pilote",
-    "Carré",
-    "Rond",
   ];
 
   static search(query: string) {
@@ -195,7 +190,7 @@ export default function SearchOverlay() {
                         onClick={close}
                         className="group flex items-center gap-3 p-4 rounded-none border border-[var(--neon-violet)]/15 hover:border-[var(--neon-violet)]/40 hover:bg-[var(--neon-violet)]/5 transition-all"
                       >
-                        <div className="relative w-14 h-14 rounded-none bg-[#f0fefe] grid place-items-center overflow-hidden">
+                        <div className="relative w-14 h-14 rounded-none bg-[#f0f8ff] grid place-items-center overflow-hidden">
                           <Image
                             src={b.logo}
                             alt={b.name}
@@ -233,7 +228,7 @@ export default function SearchOverlay() {
                         onClick={close}
                         className="group block rounded-none overflow-hidden bg-white border border-[var(--neon-violet)]/10 transition-all"
                       >
-                        <div className="aspect-square bg-[#f0fefe] overflow-hidden">
+                        <div className="aspect-square bg-[#f0f8ff] overflow-hidden">
                           <img
                             src={p.image}
                             alt={p.name}

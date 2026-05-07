@@ -73,7 +73,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden text-ink pt-32 pb-20">
       {/* Background layers */}
-      <div className="absolute inset-0 -z-10 bg-[#e6f9f9]" />
+      <div className="absolute inset-0 -z-10 bg-[#e1f3fc]" />
       <div className="absolute inset-0 -z-10">
         <div className="aurora animate-mesh" />
         <div className="noise opacity-30" />
@@ -96,7 +96,7 @@ export default function Hero() {
             height: 380,
             left: "8%",
             top: "20%",
-            background: "rgba(0, 180, 180, 0.35)",
+            background: "rgba(74, 171, 219, 0.35)",
           }}
         />
         <div
@@ -106,7 +106,7 @@ export default function Hero() {
             height: 420,
             right: "5%",
             bottom: "10%",
-            background: "rgba(0, 212, 212, 0.35)",
+            background: "rgba(109, 196, 237, 0.35)",
             animationDelay: "1.2s",
           }}
         />

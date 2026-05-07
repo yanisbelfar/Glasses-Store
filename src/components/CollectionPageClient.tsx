@@ -9,14 +9,10 @@ import Breadcrumbs, { BreadcrumbItem } from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 
 type SidebarProps = {
-  selectedShapes: string[];
-  setSelectedShapes: (v: string[]) => void;
   selectedBrands: string[];
   setSelectedBrands: (v: string[]) => void;
   selectedMaterials: string[];
   setSelectedMaterials: (v: string[]) => void;
-  selectedGenders: string[];
-  setSelectedGenders: (v: string[]) => void;
   brands: Brand[];
   activeCount: number;
   clearFilters: () => void;
@@ -24,10 +20,8 @@ type SidebarProps = {
 
 function FiltersSidebar(props: SidebarProps) {
   const {
-    selectedShapes, setSelectedShapes,
     selectedBrands, setSelectedBrands,
     selectedMaterials, setSelectedMaterials,
-    selectedGenders, setSelectedGenders,
     brands, activeCount, clearFilters,
   } = props;
 
@@ -35,14 +29,13 @@ function FiltersSidebar(props: SidebarProps) {
     setter(list.includes(item) ? list.filter((i) => i !== item) : [...list, item]);
   };
 
-  const groups = [
-    { title: "Forme", list: CollectionFilterConfig.shapes, sel: selectedShapes, setter: setSelectedShapes, color: "var(--neon-violet)" },
+  const materialGroups = [
     { title: "Matière", list: CollectionFilterConfig.materials, sel: selectedMaterials, setter: setSelectedMaterials, color: "var(--neon-cyan)" },
   ];
 
   return (
     <div className="space-y-7">
-      {groups.map((group) => (
+      {materialGroups.map((group) => (
         <div key={group.title}>
           <p className="text-[11px] tracking-[0.25em] uppercase font-semibold mb-3" style={{ color: group.color }}>
             {group.title}
@@ -64,27 +57,6 @@ function FiltersSidebar(props: SidebarProps) {
           </div>
         </div>
       ))}
-
-      <div>
-        <p className="text-[11px] tracking-[0.25em] uppercase font-semibold mb-3 text-[var(--neon-rose)]">
-          Genre
-        </p>
-        <div className="space-y-1.5">
-          {CollectionFilterConfig.genders.map((g) => (
-            <label key={g.value} className="flex items-center gap-2.5 cursor-pointer group">
-              <input
-                type="checkbox"
-                checked={selectedGenders.includes(g.value)}
-                onChange={() => toggle(selectedGenders, g.value, setSelectedGenders)}
-                className="w-4 h-4 rounded accent-[var(--neon-rose)]"
-              />
-              <span className="text-sm text-ink-soft group-hover:text-[var(--neon-rose)] transition-colors">
-                {g.label}
-              </span>
-            </label>
-          ))}
-        </div>
-      </div>
 
       <div>
         <p className="text-[11px] tracking-[0.25em] uppercase font-semibold mb-3 text-[var(--neon-magenta)]">
@@ -120,14 +92,7 @@ function FiltersSidebar(props: SidebarProps) {
 }
 
 export class CollectionFilterConfig {
-  static readonly shapes = ["Aviator", "Carré", "Rond", "Rectangulaire", "Pilote", "Oversize", "Browline", "Papillon"];
   static readonly materials = ["Métal", "Acétate", "Acétate/Métal", "O-Matter"];
-  static readonly genders = [
-    { value: "homme", label: "Homme" },
-    { value: "femme", label: "Femme" },
-    { value: "enfant", label: "Enfant" },
-    { value: "unisexe", label: "Unisexe" },
-  ];
   static readonly sortOptions = [
     { value: "featured", label: "En vedette" },
     { value: "name", label: "Nom A → Z" },
@@ -136,18 +101,13 @@ export class CollectionFilterConfig {
 
 export default function CollectionPageClient({ slug }: { slug: string }) {
   const searchParams = useSearchParams();
-  const initialShape = searchParams.get("shape");
   const initialBrand = searchParams.get("brand");
 
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [selectedShapes, setSelectedShapes] = useState<string[]>(
-    initialShape ? [initialShape] : []
-  );
   const [selectedBrands, setSelectedBrands] = useState<string[]>(
     initialBrand ? [initialBrand] : []
   );
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
-  const [selectedGenders, setSelectedGenders] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState("featured");
 
   const category = categories.find((c) => c.slug === slug);
@@ -170,10 +130,8 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
           p.category.toLowerCase() === slug.toLowerCase()
       );
     }
-    if (selectedShapes.length > 0) products = products.filter((p) => p.shape && selectedShapes.includes(p.shape));
     if (selectedBrands.length > 0) products = products.filter((p) => p.brand && selectedBrands.includes(p.brand));
     if (selectedMaterials.length > 0) products = products.filter((p) => p.material && selectedMaterials.includes(p.material));
-    if (selectedGenders.length > 0) products = products.filter((p) => p.gender && selectedGenders.includes(p.gender));
 
     switch (sortBy) {
       case "name":
@@ -183,27 +141,20 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
         break;
     }
     return products;
-  }, [slug, isAll, selectedShapes, selectedBrands, selectedMaterials, selectedGenders, sortBy]);
+  }, [slug, isAll, selectedBrands, selectedMaterials, sortBy]);
 
-  const activeCount =
-    selectedShapes.length + selectedBrands.length + selectedMaterials.length + selectedGenders.length;
+  const activeCount = selectedBrands.length + selectedMaterials.length;
 
   const clearFilters = () => {
-    setSelectedShapes([]);
     setSelectedBrands([]);
     setSelectedMaterials([]);
-    setSelectedGenders([]);
   };
 
   const sidebarProps: SidebarProps = {
-    selectedShapes,
-    setSelectedShapes,
     selectedBrands,
     setSelectedBrands,
     selectedMaterials,
     setSelectedMaterials,
-    selectedGenders,
-    setSelectedGenders,
     brands,
     activeCount,
     clearFilters,
@@ -216,7 +167,7 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
         <div
           className="absolute inset-0 -z-10"
           style={{
-            background: `linear-gradient(135deg, ${accent.from}22, ${accent.to}22), #f5fefe`,
+            background: `linear-gradient(135deg, ${accent.from}22, ${accent.to}22), #f0f8ff`,
           }}
         />
         <div
@@ -283,7 +234,7 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
           {filtersOpen && (
             <>
               <div
-                className="fixed inset-0 z-50 bg-[rgba(123,182,255,0.22)] backdrop-blur-md lg:hidden"
+                className="fixed inset-0 z-50 bg-[rgba(74,171,219,0.22)] backdrop-blur-md lg:hidden"
                 onClick={() => setFiltersOpen(false)}
               />
               <div className="fixed top-0 left-0 bottom-0 z-50 w-80 bg-white p-6 overflow-y-auto lg:hidden animate-fade-in">

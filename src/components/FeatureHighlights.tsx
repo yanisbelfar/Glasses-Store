@@ -18,8 +18,8 @@ const features = [
       "Testez n'importe quelle monture depuis chez vous grâce à votre webcam ou une simple photo.",
     href: "/virtual-try-on",
     cta: "Lancer l'essai",
-    gradient: "linear-gradient(135deg, #1fb9c3, #009898)",
-    glow: "rgba(0, 180, 180, 0.35)",
+    gradient: "linear-gradient(135deg, #1fb9c3, #2E8FB5)",
+    glow: "rgba(74, 171, 219, 0.35)",
   },
   {
     icon: Compass,
@@ -28,7 +28,7 @@ const features = [
       "3 questions et nos experts vous proposent les montures qui flattent vraiment vos traits.",
     href: "/face-shape",
     cta: "Faire le quiz",
-    gradient: "linear-gradient(135deg, #00b4b4, #00c4c4)",
+    gradient: "linear-gradient(135deg, #4AABDB, #00c4c4)",
     glow: "rgba(0, 160, 160, 0.35)",
   },
   {
@@ -48,8 +48,8 @@ const features = [
       "Réservez un créneau en boutique pour un examen visuel complet et un conseil expert.",
     href: "/appointment",
     cta: "Réserver",
-    gradient: "linear-gradient(135deg, #00d4d4, #00b4b4)",
-    glow: "rgba(0, 180, 180, 0.35)",
+    gradient: "linear-gradient(135deg, #6DC4ED, #4AABDB)",
+    glow: "rgba(74, 171, 219, 0.35)",
   },
   {
     icon: GitCompareArrows,
@@ -58,7 +58,7 @@ const features = [
       "Hésitation ? Comparez jusqu'à 4 modèles côte à côte : forme, matériau, taille.",
     href: "/compare",
     cta: "Comparer",
-    gradient: "linear-gradient(135deg, #009898, #1aa99c)",
+    gradient: "linear-gradient(135deg, #2E8FB5, #1aa99c)",
     glow: "rgba(0, 160, 160, 0.35)",
   },
 ];

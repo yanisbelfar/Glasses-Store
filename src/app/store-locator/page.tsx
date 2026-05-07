@@ -6,8 +6,8 @@ import Footer from "@/components/Footer";
 import { stores } from "@/lib/data";
 
 const accents = [
-  { from: "#1fb9c3", to: "#009898" },
-  { from: "#00b4b4", to: "#00c4c4" },
+  { from: "#1fb9c3", to: "#2E8FB5" },
+  { from: "#4AABDB", to: "#00c4c4" },
   { from: "#1aa99c", to: "#7cc8ff" },
 ];
 
