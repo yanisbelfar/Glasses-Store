@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Camera, Upload, RotateCcw, Monitor, Smartphone, ScanFace, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
@@ -10,7 +10,7 @@ import { allProducts } from "@/lib/data";
 export class VirtualTryOnConfig {
   static readonly title = "Essai Virtuel 3D";
   static readonly subtitle =
-    "Notre miroir intelligent superpose la monture sur votre visage en temps réel. Aucun téléchargement requis.";
+    "Notre miroir intelligent superpose la monture sur votre visage en temps rÃ©el. Aucun tÃ©lÃ©chargement requis.";
   static readonly modes = [
     { key: "webcam", icon: "camera", label: "Webcam en direct" },
     { key: "photo", icon: "upload", label: "Importer une photo" },
@@ -66,12 +66,12 @@ export default function VirtualTryOnPage() {
               })}
             </div>
 
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff] border border-[var(--neon-violet)]/20">
+            <div className="relative aspect-[4/3] rounded-none overflow-hidden bg-gradient-to-br from-[#e0f5f5] via-white to-[#d0f0f0] border border-[var(--neon-violet)]/20">
               <div className="aurora opacity-40" />
               {/* Frame outline */}
               <div className="absolute inset-0 grid place-items-center pointer-events-none">
                 <div className="w-72 h-44 rounded-[2.5rem] border border-[var(--neon-violet)]/30 relative animate-pulse-glow">
-                  <div className="absolute -inset-2 rounded-[3rem] border border-[var(--neon-violet)]/15" />
+                  <div className="absolute -inset-2 rounded-none border border-[var(--neon-violet)]/15" />
                 </div>
               </div>
 
@@ -79,18 +79,18 @@ export default function VirtualTryOnPage() {
                 {mode === "webcam" ? (
                   <>
                     <Camera size={44} className="mb-4 text-[var(--neon-cyan)]" strokeWidth={1.5} />
-                    <p className="text-base">Miroir intelligent prêt</p>
+                    <p className="text-base">Miroir intelligent prÃªt</p>
                     <p className="text-xs text-ink-soft mb-5">Cliquez pour activer la webcam</p>
                     <button className="btn-primary">
                       <Sparkles size={14} />
-                      Activer ma caméra
+                      Activer ma camÃ©ra
                     </button>
                   </>
                 ) : (
                   <>
                     <Upload size={44} className="mb-4 text-[var(--neon-magenta)]" strokeWidth={1.5} />
-                    <p className="text-base">Photo de face recommandée</p>
-                    <p className="text-xs text-ink-soft mb-5">JPG ou PNG · max 10 Mo</p>
+                    <p className="text-base">Photo de face recommandÃ©e</p>
+                    <p className="text-xs text-ink-soft mb-5">JPG ou PNG Â· max 10 Mo</p>
                     <label className="btn-primary cursor-pointer">
                       <Upload size={14} />
                       Choisir un fichier
@@ -122,24 +122,24 @@ export default function VirtualTryOnPage() {
             <div className="mt-5 grid sm:grid-cols-3 gap-3">
               {[
                 {
-                  title: "100% privé",
-                  text: "Aucune photo envoyée à un serveur. Tout reste sur votre appareil.",
+                  title: "100% privÃ©",
+                  text: "Aucune photo envoyÃ©e Ã  un serveur. Tout reste sur votre appareil.",
                   color: "var(--neon-emerald)",
                 },
                 {
-                  title: "Précision IA",
-                  text: "Détection des points clés du visage pour un rendu réaliste.",
+                  title: "PrÃ©cision IA",
+                  text: "DÃ©tection des points clÃ©s du visage pour un rendu rÃ©aliste.",
                   color: "var(--neon-cyan)",
                 },
                 {
                   title: "Toutes les montures",
-                  text: "Plus de 16 modèles essayables instantanément.",
+                  text: "Plus de 16 modÃ¨les essayables instantanÃ©ment.",
                   color: "var(--neon-magenta)",
                 },
               ].map((c) => (
                 <div
                   key={c.title}
-                  className="rounded-2xl bg-white border border-[var(--neon-violet)]/10 p-4"
+                  className="rounded-none bg-white border border-[var(--neon-violet)]/10 p-4"
                 >
                   <p
                     className="text-[10px] tracking-[0.25em] uppercase font-semibold"
@@ -156,7 +156,7 @@ export default function VirtualTryOnPage() {
           {/* Product selector */}
           <div>
             <p className="text-[11px] tracking-[0.22em] uppercase text-muted mb-3">
-              Choisissez un modèle
+              Choisissez un modÃ¨le
             </p>
             <div className="grid grid-cols-2 gap-3 max-h-[640px] overflow-y-auto pr-1">
               {tryOnProducts.map((p) => {
@@ -165,13 +165,13 @@ export default function VirtualTryOnPage() {
                   <button
                     key={p.id}
                     onClick={() => setSelectedProduct(p.id)}
-                    className={`text-left rounded-2xl p-2 transition-all ${
+                    className={`text-left rounded-none p-2 transition-all ${
                       active
                         ? "bg-gradient-to-br from-[var(--neon-violet)]/10 to-[var(--neon-cyan)]/10 ring-2 ring-[var(--neon-violet)]/40"
                         : "bg-white border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30"
                     }`}
                   >
-                    <div className="aspect-square rounded-xl overflow-hidden bg-[#f5f7ff]">
+                    <div className="aspect-square rounded-none overflow-hidden bg-[#f0fefe]">
                       <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                     </div>
                     <p className="text-[10px] text-[var(--neon-violet)] mt-2 truncate">
@@ -186,7 +186,7 @@ export default function VirtualTryOnPage() {
               href="/collections/all"
               className="mt-4 inline-flex items-center gap-1 text-xs tracking-[0.22em] uppercase font-semibold text-[var(--neon-violet)] hover:gap-2 transition-all"
             >
-              Voir tous les modèles
+              Voir tous les modÃ¨les
               <ArrowRight size={12} />
             </Link>
           </div>

@@ -10,14 +10,14 @@ import { allProducts, brands } from "@/lib/data";
 export class SearchController {
   static readonly placeholder = "Rechercher une monture, une marque, une forme...";
   static readonly popularSearches = [
-    "Polaroid",
-    "Skechers",
+    "Helen Keller",
+    "Horien",
     "Aviator",
-    "Femme",
-    "Enfant",
-    "Dior",
-    "GIVENCHY",
+    "Soleil",
+    "Oversize",
+    "Pilote",
     "Carré",
+    "Rond",
   ];
 
   static search(query: string) {
@@ -102,7 +102,7 @@ export default function SearchOverlay() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={SearchController.placeholder}
-            className="w-full pl-14 pr-4 py-5 text-xl lg:text-2xl font-light text-ink rounded-2xl border-2 border-[var(--neon-violet)]/15 focus:border-[var(--neon-violet)] outline-none placeholder:text-muted/60 bg-white shadow-xl shadow-[var(--neon-violet)]/10 transition-colors"
+            className="w-full pl-14 pr-4 py-5 text-xl lg:text-2xl font-light text-ink rounded-none border-2 border-[var(--neon-violet)]/15 focus:border-[var(--neon-violet)] outline-none placeholder:text-muted/60 bg-white shadow-xl shadow-[var(--neon-violet)]/10 transition-colors"
           />
         </div>
 
@@ -163,7 +163,7 @@ export default function SearchOverlay() {
                       key={c.title}
                       href={c.href}
                       onClick={close}
-                      className="group rounded-2xl p-5 border border-[var(--neon-violet)]/10 bg-white transition-all"
+                      className="group rounded-none p-5 border border-[var(--neon-violet)]/10 bg-white transition-all"
                     >
                       <div
                         className="w-10 h-10 grid place-items-center rounded-full text-white mb-3"
@@ -193,9 +193,9 @@ export default function SearchOverlay() {
                         key={b.id}
                         href={`/collections/all?brand=${encodeURIComponent(b.name)}`}
                         onClick={close}
-                        className="group flex items-center gap-3 p-4 rounded-2xl border border-[var(--neon-violet)]/15 hover:border-[var(--neon-violet)]/40 hover:bg-[var(--neon-violet)]/5 transition-all"
+                        className="group flex items-center gap-3 p-4 rounded-none border border-[var(--neon-violet)]/15 hover:border-[var(--neon-violet)]/40 hover:bg-[var(--neon-violet)]/5 transition-all"
                       >
-                        <div className="relative w-14 h-14 rounded-xl bg-[#f5f7ff] grid place-items-center overflow-hidden">
+                        <div className="relative w-14 h-14 rounded-none bg-[#f0fefe] grid place-items-center overflow-hidden">
                           <Image
                             src={b.logo}
                             alt={b.name}
@@ -231,9 +231,9 @@ export default function SearchOverlay() {
                         key={p.id}
                         href={`/products/${p.id}`}
                         onClick={close}
-                        className="group block rounded-2xl overflow-hidden bg-white border border-[var(--neon-violet)]/10 transition-all"
+                        className="group block rounded-none overflow-hidden bg-white border border-[var(--neon-violet)]/10 transition-all"
                       >
-                        <div className="aspect-square bg-[#f5f7ff] overflow-hidden">
+                        <div className="aspect-square bg-[#f0fefe] overflow-hidden">
                           <img
                             src={p.image}
                             alt={p.name}

@@ -4,17 +4,17 @@ import { testimonials } from "@/lib/data";
 import { Quote, Star, ShieldCheck } from "lucide-react";
 
 const palette = [
-  { from: "#6fdcff", to: "#9acbff" },
-  { from: "#7bb6ff", to: "#9acbff" },
-  { from: "#7fe0d2", to: "#b1ddff" },
-  { from: "#6fdcff", to: "#7bb6ff" },
-  { from: "#9acbff", to: "#7fe0d2" },
+  { from: "#00d4d4", to: "#00c4c4" },
+  { from: "#00b4b4", to: "#00c4c4" },
+  { from: "#00c8b0", to: "#f59e0b" },
+  { from: "#00d4d4", to: "#00b4b4" },
+  { from: "#00c4c4", to: "#00c8b0" },
 ];
 
 export default function Testimonials() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e0f5f5] via-white to-[#d0f0f0]" />
       <div className="aurora opacity-40" />
       <div className="noise opacity-30" />
 
@@ -38,7 +38,7 @@ export default function Testimonials() {
             return (
               <div
                 key={t.id}
-                className="relative rounded-3xl overflow-hidden p-7 border border-[var(--neon-violet)]/10 bg-white/90 backdrop-blur-md hover:bg-white transition-all"
+                className="relative rounded-none overflow-hidden p-7 border border-[var(--neon-violet)]/10 bg-white/90 backdrop-blur-md hover:bg-white transition-all"
                 style={{ animationDelay: `${i * 80}ms` }}
               >
                 <div
@@ -89,11 +89,10 @@ export default function Testimonials() {
             { v: "5000+", l: "Clients servis" },
             { v: "4.9/5", l: "Note moyenne" },
             { v: "60+", l: "Marques premium" },
-            { v: "24-48h", l: "Livraison express" },
           ].map((s) => (
             <div
               key={s.l}
-              className="rounded-2xl p-5 border border-[var(--neon-violet)]/10 bg-white/90 text-center"
+              className="rounded-none p-5 border border-[var(--neon-violet)]/10 bg-white/90 text-center"
             >
               <p className="text-3xl font-semibold gradient-text">{s.v}</p>
               <p className="text-[11px] tracking-[0.22em] uppercase text-ink-soft mt-1">

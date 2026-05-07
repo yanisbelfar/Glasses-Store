@@ -6,8 +6,8 @@ import Footer from "@/components/Footer";
 import { stores } from "@/lib/data";
 
 const accents = [
-  { from: "#1fb9c3", to: "#5aa7ff" },
-  { from: "#7bb6ff", to: "#9acbff" },
+  { from: "#1fb9c3", to: "#009898" },
+  { from: "#00b4b4", to: "#00c4c4" },
   { from: "#1aa99c", to: "#7cc8ff" },
 ];
 
@@ -35,7 +35,7 @@ export default function StoreLocatorPage() {
             return (
               <div
                 key={store.id}
-                className="group relative rounded-3xl overflow-hidden border border-[var(--neon-violet)]/10 bg-white transition-all"
+                className="group relative rounded-none overflow-hidden border border-[var(--neon-violet)]/10 bg-white transition-all"
               >
                 <div
                   className="relative h-44 overflow-hidden"

@@ -58,7 +58,7 @@ export class FooterConfig {
   static readonly tagline = "Opticien · Sidi Aiche";
   static readonly ctaTitle = "Prêt à voir le monde autrement ?";
   static readonly ctaSubtitle =
-    "Rejoignez plus de 5000 clients qui ont choisi Newlook Optic Sidi Aiche pour leur regard. Conseil personnalise, livraison express et garantie 2 ans inclus.";
+    "Rejoignez plus de 5000 clients qui ont choisi Newlook Optic Sidi Aiche pour leur regard. Conseil personnalise par nos experts optiques.";
   static readonly phone = "+213 555 85 24 57";
   static readonly hours = "Sam-Jeu : 9h-18h · Ven : 9h-12h";
   static readonly location = "Sidi Aiche";
@@ -91,7 +91,7 @@ export default function Footer() {
     <>
       {/* CTA Section */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff]" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e0f5f5] via-white to-[#d0f0f0]" />
         <div className="aurora opacity-50" />
         <div className="noise opacity-30" />
 
@@ -127,7 +127,7 @@ export default function Footer() {
         </div>
       </section>
 
-      <footer className="bg-[#eef6ff] text-ink-soft relative overflow-hidden">
+      <footer className="bg-[#e6f9f9] text-ink-soft relative overflow-hidden">
         <div
           className="absolute inset-x-0 top-0 h-px"
           style={{
@@ -139,7 +139,7 @@ export default function Footer() {
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10">
             <div className="lg:col-span-2">
               <Link href="/" className="inline-flex items-center gap-3 mb-4">
-                <span className="w-11 h-11 grid place-items-center rounded-2xl bg-gradient-to-br from-[var(--neon-violet)] via-[var(--neon-magenta)] to-[var(--neon-cyan)] text-white">
+                <span className="w-11 h-11 grid place-items-center rounded-none bg-gradient-to-br from-[var(--neon-violet)] via-[var(--neon-magenta)] to-[var(--neon-cyan)] text-white">
                   <Sparkles size={20} />
                 </span>
                 <div>
@@ -153,7 +153,7 @@ export default function Footer() {
               </Link>
               <p className="text-sm text-ink-soft leading-relaxed max-w-md">
                 Opticien moderne a Sidi Aiche. Plus de 60 marques, conseil personnalise,
-                essai virtuel 3D et livraison express. Votre regard, notre signature.
+                essai virtuel 3D et conseil personnalise. Votre regard, notre signature.
               </p>
               <div className="flex gap-2 mt-6">
                 {FooterConfig.socials.map(({ label, href, Icon }) => (
@@ -267,6 +267,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-    </>
+     </>
   );
 }

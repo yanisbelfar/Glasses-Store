@@ -54,7 +54,7 @@ export default function ComparePage() {
         </div>
 
         {items.length === 0 ? (
-          <div className="rounded-3xl border-2 border-dashed border-[var(--neon-violet)]/30 p-16 text-center">
+          <div className="rounded-none border-2 border-dashed border-[var(--neon-violet)]/30 p-16 text-center">
             <p className="text-ink-soft mb-5">Sélectionnez au moins une monture pour démarrer.</p>
             <button onClick={() => setPickerOpen(true)} className="btn-primary">
               <Plus size={14} />
@@ -74,8 +74,8 @@ export default function ComparePage() {
                       key={p.id}
                       className="p-4 align-top text-left min-w-[220px]"
                     >
-                      <div className="rounded-2xl bg-white border border-[var(--neon-violet)]/15 overflow-hidden shadow-md shadow-[var(--neon-violet)]/5">
-                        <div className="aspect-square bg-[#f5f7ff] relative">
+                      <div className="rounded-none bg-white border border-[var(--neon-violet)]/15 overflow-hidden shadow-md shadow-[var(--neon-violet)]/5">
+                        <div className="aspect-square bg-[#f0fefe] relative">
                           <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                           <button
                             onClick={() => remove(p.id)}
@@ -104,7 +104,7 @@ export default function ComparePage() {
                     <th className="p-4 align-top min-w-[180px]">
                       <button
                         onClick={() => setPickerOpen(true)}
-                        className="w-full aspect-square rounded-2xl border-2 border-dashed border-[var(--neon-violet)]/30 grid place-items-center text-[var(--neon-violet)] hover:bg-[var(--neon-violet)]/5 hover:border-[var(--neon-violet)] transition-all"
+                        className="w-full aspect-square rounded-none border-2 border-dashed border-[var(--neon-violet)]/30 grid place-items-center text-[var(--neon-violet)] hover:bg-[var(--neon-violet)]/5 hover:border-[var(--neon-violet)] transition-all"
                       >
                         <Plus size={28} />
                       </button>
@@ -180,7 +180,7 @@ export default function ComparePage() {
               className="fixed inset-0 z-[60] bg-[rgba(123,182,255,0.22)] backdrop-blur-md"
               onClick={() => setPickerOpen(false)}
             />
-            <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[61] w-[92%] max-w-3xl max-h-[80vh] overflow-y-auto rounded-3xl bg-white shadow-2xl p-6 animate-scale-in">
+            <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[61] w-[92%] max-w-3xl max-h-[80vh] overflow-y-auto rounded-none bg-white shadow-2xl p-6 animate-scale-in">
               <div className="flex items-center justify-between mb-5">
                 <p className="text-xs tracking-[0.3em] uppercase text-muted">
                   Ajouter une monture
@@ -200,9 +200,9 @@ export default function ComparePage() {
                     <button
                       key={p.id}
                       onClick={() => add(p.id)}
-                      className="text-left rounded-2xl border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/40 transition-all p-2"
+                      className="text-left rounded-none border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/40 transition-all p-2"
                     >
-                      <div className="aspect-square rounded-xl overflow-hidden bg-[#f5f7ff]">
+                      <div className="aspect-square rounded-none overflow-hidden bg-[#f0fefe]">
                         <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                       </div>
                       <p className="text-[10px] text-[var(--neon-violet)] mt-2 truncate">

@@ -52,7 +52,7 @@ export default function AppointmentPage() {
         </div>
 
         {confirmed ? (
-          <div className="rounded-3xl border border-[var(--neon-emerald)]/30 bg-gradient-to-br from-[var(--neon-emerald)]/10 via-white to-[var(--neon-cyan)]/10 p-10 text-center animate-scale-in">
+          <div className="rounded-none border border-[var(--neon-emerald)]/30 bg-gradient-to-br from-[var(--neon-emerald)]/10 via-white to-[var(--neon-cyan)]/10 p-10 text-center animate-scale-in">
             <span className="inline-grid place-items-center w-20 h-20 rounded-full bg-gradient-to-br from-[var(--neon-emerald)] to-[var(--neon-cyan)] text-white">
               <Check size={36} />
             </span>
@@ -71,7 +71,7 @@ export default function AppointmentPage() {
           <form onSubmit={submit} className="grid lg:grid-cols-[1.1fr_1fr] gap-7">
             {/* Left: choices */}
             <div className="space-y-6">
-              <div className="rounded-3xl border border-[var(--neon-violet)]/15 bg-white p-6 shadow-md shadow-[var(--neon-violet)]/5">
+              <div className="rounded-none border border-[var(--neon-violet)]/15 bg-white p-6 shadow-md shadow-[var(--neon-violet)]/5">
                 <p className="text-xs tracking-[0.25em] uppercase text-muted">1. Boutique</p>
                 <div className="mt-4 grid sm:grid-cols-2 gap-3">
                   {stores.map((s) => (
@@ -79,7 +79,7 @@ export default function AppointmentPage() {
                       key={s.id}
                       type="button"
                       onClick={() => setStore(s.id)}
-                      className={`text-left p-4 rounded-2xl border transition-all ${
+                      className={`text-left p-4 rounded-none border transition-all ${
                         store === s.id
                           ? "border-[var(--neon-violet)] bg-[var(--neon-violet)]/5"
                           : "border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30"
@@ -95,7 +95,7 @@ export default function AppointmentPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-[var(--neon-violet)]/15 bg-white p-6 shadow-md shadow-[var(--neon-violet)]/5">
+              <div className="rounded-none border border-[var(--neon-violet)]/15 bg-white p-6 shadow-md shadow-[var(--neon-violet)]/5">
                 <p className="text-xs tracking-[0.25em] uppercase text-muted">2. Service</p>
                 <div className="mt-4 grid sm:grid-cols-2 gap-3">
                   {services.map((s) => (
@@ -103,7 +103,7 @@ export default function AppointmentPage() {
                       key={s.id}
                       type="button"
                       onClick={() => setService(s.id)}
-                      className={`text-left p-4 rounded-2xl border transition-all ${
+                      className={`text-left p-4 rounded-none border transition-all ${
                         service === s.id
                           ? "border-[var(--neon-cyan)] bg-[var(--neon-cyan)]/8"
                           : "border-[var(--neon-violet)]/10 hover:border-[var(--neon-cyan)]/30"
@@ -116,7 +116,7 @@ export default function AppointmentPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-[var(--neon-violet)]/15 bg-white p-6 shadow-md shadow-[var(--neon-violet)]/5">
+              <div className="rounded-none border border-[var(--neon-violet)]/15 bg-white p-6 shadow-md shadow-[var(--neon-violet)]/5">
                 <p className="text-xs tracking-[0.25em] uppercase text-muted">3. Date & créneau</p>
                 <div className="mt-4 flex gap-2 overflow-x-auto pb-2 no-scrollbar">
                   {appointmentSlots.map((d) => (
@@ -127,7 +127,7 @@ export default function AppointmentPage() {
                         setDay(d.id);
                         setHour(d.hours[0]);
                       }}
-                      className={`min-w-[88px] px-3 py-3 rounded-2xl border text-center transition-all ${
+                      className={`min-w-[88px] px-3 py-3 rounded-none border text-center transition-all ${
                         day === d.id
                           ? "border-[var(--neon-magenta)] bg-[var(--neon-magenta)]/8"
                           : "border-[var(--neon-violet)]/10 hover:border-[var(--neon-magenta)]/30"
@@ -164,7 +164,7 @@ export default function AppointmentPage() {
 
             {/* Right: contact + summary */}
             <div className="lg:sticky lg:top-32 self-start space-y-5">
-              <div className="rounded-3xl border border-[var(--neon-violet)]/15 bg-white p-6 shadow-md shadow-[var(--neon-violet)]/5">
+              <div className="rounded-none border border-[var(--neon-violet)]/15 bg-white p-6 shadow-md shadow-[var(--neon-violet)]/5">
                 <p className="text-xs tracking-[0.25em] uppercase text-muted">4. Vos coordonnées</p>
                 <div className="mt-4 space-y-3">
                   <label className="block text-sm">
@@ -174,7 +174,7 @@ export default function AppointmentPage() {
                     <input
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full rounded-xl border border-[var(--neon-violet)]/15 px-4 py-3 outline-none focus:border-[var(--neon-violet)] transition-colors"
+                      className="w-full rounded-none border border-[var(--neon-violet)]/15 px-4 py-3 outline-none focus:border-[var(--neon-violet)] transition-colors"
                       placeholder="Ex : Yanis B."
                       required
                     />
@@ -186,7 +186,7 @@ export default function AppointmentPage() {
                     <input
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full rounded-xl border border-[var(--neon-violet)]/15 px-4 py-3 outline-none focus:border-[var(--neon-cyan)] transition-colors"
+                      className="w-full rounded-none border border-[var(--neon-violet)]/15 px-4 py-3 outline-none focus:border-[var(--neon-cyan)] transition-colors"
                       placeholder="+213 ..."
                       required
                     />
@@ -199,14 +199,14 @@ export default function AppointmentPage() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full rounded-xl border border-[var(--neon-violet)]/15 px-4 py-3 outline-none focus:border-[var(--neon-magenta)] transition-colors"
+                      className="w-full rounded-none border border-[var(--neon-violet)]/15 px-4 py-3 outline-none focus:border-[var(--neon-magenta)] transition-colors"
                       placeholder="vous@email.com"
                     />
                   </label>
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff] text-ink p-6">
+              <div className="rounded-none bg-gradient-to-br from-[#e0f5f5] via-white to-[#d0f0f0] text-ink p-6">
                 <p className="text-xs tracking-[0.3em] uppercase text-ink-soft">
                   Récapitulatif
                 </p>

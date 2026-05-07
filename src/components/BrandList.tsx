@@ -26,7 +26,7 @@ export default function BrandList() {
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#fafbff] to-white" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#f5fefe] to-white" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
@@ -55,7 +55,7 @@ export default function BrandList() {
           {letters.map((l) => (
             <div key={l} id={`letter-${l}`}>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-10 h-10 grid place-items-center rounded-xl bg-gradient-to-br from-[var(--neon-violet)] to-[var(--neon-magenta)] text-white text-sm font-semibold">
+                <span className="w-10 h-10 grid place-items-center rounded-none bg-gradient-to-br from-[var(--neon-violet)] to-[var(--neon-magenta)] text-white text-sm font-semibold">
                   {l}
                 </span>
                 <span className="text-xs tracking-[0.3em] uppercase text-muted">
@@ -67,9 +67,9 @@ export default function BrandList() {
                   <Link
                     key={b.id}
                     href={`/collections/all?brand=${encodeURIComponent(b.name)}`}
-                    className="group flex items-center gap-3 p-4 rounded-2xl border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30 hover:bg-[var(--neon-violet)]/4 transition-all"
+                    className="group flex items-center gap-3 p-4 rounded-none border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30 hover:bg-[var(--neon-violet)]/4 transition-all"
                   >
-                    <div className="relative w-12 h-12 rounded-xl bg-white grid place-items-center overflow-hidden border border-[var(--neon-violet)]/10">
+                    <div className="relative w-12 h-12 rounded-none bg-white grid place-items-center overflow-hidden border border-[var(--neon-violet)]/10">
                       {b.cover ? (
                         <img
                           src={b.cover}

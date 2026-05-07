@@ -216,7 +216,7 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
         <div
           className="absolute inset-0 -z-10"
           style={{
-            background: `linear-gradient(135deg, ${accent.from}22, ${accent.to}22), #fafbff`,
+            background: `linear-gradient(135deg, ${accent.from}22, ${accent.to}22), #f5fefe`,
           }}
         />
         <div
@@ -275,7 +275,7 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="flex gap-8">
           <aside className="hidden lg:block w-64 shrink-0 sticky top-32 self-start">
-            <div className="rounded-3xl border border-[var(--neon-violet)]/15 bg-white p-5 shadow-md shadow-[var(--neon-violet)]/5">
+            <div className="rounded-none border border-[var(--neon-violet)]/15 bg-white p-5 shadow-md shadow-[var(--neon-violet)]/5">
               <FiltersSidebar {...sidebarProps} />
             </div>
           </aside>
@@ -302,7 +302,7 @@ export default function CollectionPageClient({ slug }: { slug: string }) {
 
           <div className="flex-1 min-w-0">
             {filtered.length === 0 ? (
-              <div className="rounded-3xl border-2 border-dashed border-[var(--neon-violet)]/20 p-16 text-center">
+              <div className="rounded-none border-2 border-dashed border-[var(--neon-violet)]/20 p-16 text-center">
                 <p className="text-lg font-light text-ink">
                   Aucun produit ne correspond à vos filtres.
                 </p>

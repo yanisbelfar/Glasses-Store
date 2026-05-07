@@ -40,7 +40,7 @@ export default function Newsletter() {
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f5f7ff] via-white to-[#f0f3ff]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f0fefe] via-white to-[#f0f3ff]" />
       <div
         className="glow-orb"
         style={{
@@ -48,7 +48,7 @@ export default function Newsletter() {
           height: 380,
           left: "5%",
           top: "10%",
-          background: "rgba(123, 182, 255, 0.18)",
+          background: "rgba(0, 180, 180, 0.18)",
         }}
       />
       <div
@@ -58,12 +58,12 @@ export default function Newsletter() {
           height: 360,
           right: "5%",
           bottom: "10%",
-          background: "rgba(90, 167, 255, 0.16)",
+          background: "rgba(0, 160, 160, 0.16)",
         }}
       />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden border border-white/60 bg-white/70 backdrop-blur-xl p-10 lg:p-14 shadow-xl shadow-[var(--neon-violet)]/10">
+        <div className="relative rounded-none overflow-hidden border border-white/60 bg-white/70 backdrop-blur-xl p-10 lg:p-14 shadow-xl shadow-[var(--neon-violet)]/10">
           <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-[var(--neon-violet)] to-[var(--neon-magenta)] blur-3xl opacity-30 pointer-events-none" />
           <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-gradient-to-br from-[var(--neon-cyan)] to-[var(--neon-blue)] blur-3xl opacity-25 pointer-events-none" />
 
@@ -102,7 +102,7 @@ export default function Newsletter() {
 
             <div>
               {submitted ? (
-                <div className="rounded-3xl p-8 bg-gradient-to-br from-[var(--neon-emerald)]/15 to-[var(--neon-cyan)]/15 border border-[var(--neon-emerald)]/30 flex flex-col items-center text-center animate-scale-in">
+                <div className="rounded-none p-8 bg-gradient-to-br from-[var(--neon-emerald)]/15 to-[var(--neon-cyan)]/15 border border-[var(--neon-emerald)]/30 flex flex-col items-center text-center animate-scale-in">
                   <CheckCircle2 size={48} className="text-[var(--neon-emerald)] mb-3" />
                   <p className="text-lg font-semibold text-ink">
                     {NewsletterConfig.successMessage}
@@ -111,7 +111,7 @@ export default function Newsletter() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="rounded-3xl p-6 lg:p-7 bg-white border border-white/60 shadow-lg shadow-[var(--neon-violet)]/10"
+                  className="rounded-none p-6 lg:p-7 bg-white border border-white/60 shadow-lg shadow-[var(--neon-violet)]/10"
                 >
                   <label className="text-[11px] tracking-[0.25em] uppercase text-muted">
                     Adresse email

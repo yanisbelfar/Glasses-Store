@@ -23,7 +23,6 @@ export class HeroConfig {
   static readonly ctaPrimary = "Explorer la Collection";
   static readonly ctaSecondary = "Essayer en 3D";
   static readonly trustBadges = [
-    { icon: "truck", label: "24-48h", sub: "Livraison Express", color: "var(--neon-cyan)" },
     { icon: "shield", label: "100%", sub: "Authentique", color: "var(--neon-violet)" },
     { icon: "glasses", label: "60+", sub: "Marques Premium", color: "var(--neon-magenta)" },
     { icon: "users", label: "5000+", sub: "Clients Satisfaits", color: "var(--neon-amber)" },
@@ -74,7 +73,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden text-ink pt-32 pb-20">
       {/* Background layers */}
-      <div className="absolute inset-0 -z-10 bg-[#eef6ff]" />
+      <div className="absolute inset-0 -z-10 bg-[#e6f9f9]" />
       <div className="absolute inset-0 -z-10">
         <div className="aurora animate-mesh" />
         <div className="noise opacity-30" />
@@ -97,7 +96,7 @@ export default function Hero() {
             height: 380,
             left: "8%",
             top: "20%",
-            background: "rgba(123, 182, 255, 0.35)",
+            background: "rgba(0, 180, 180, 0.35)",
           }}
         />
         <div
@@ -107,7 +106,7 @@ export default function Hero() {
             height: 420,
             right: "5%",
             bottom: "10%",
-            background: "rgba(111, 220, 255, 0.35)",
+            background: "rgba(0, 212, 212, 0.35)",
             animationDelay: "1.2s",
           }}
         />
@@ -118,7 +117,7 @@ export default function Hero() {
             height: 280,
             right: "30%",
             top: "55%",
-            background: "rgba(154, 203, 255, 0.35)",
+            background: "rgba(0, 196, 196, 0.35)",
             animationDelay: "2.4s",
           }}
         />
@@ -139,7 +138,7 @@ export default function Hero() {
                 <span className="gradient-text font-semibold">
                   {rotatingHeadlines[headlineIndex]}
                 </span>
-                <span className="inline-block w-1 h-12 bg-[var(--neon-cyan)] rounded-sm animate-blink-caret align-middle" />
+                <span className="inline-block w-1 h-12 bg-[var(--neon-cyan)] rounded-none animate-blink-caret align-middle" />
               </span>
             </h1>
             <p className="mt-7 text-base lg:text-lg text-ink-soft leading-relaxed max-w-xl mx-auto lg:mx-0">
@@ -173,7 +172,7 @@ export default function Hero() {
                 return (
                   <div
                     key={badge.label}
-                    className="relative rounded-2xl p-4 border border-[var(--neon-violet)]/15 bg-white/80 backdrop-blur-md hover:bg-white transition-colors group"
+                    className="relative rounded-none p-4 border border-[var(--neon-violet)]/15 bg-white/80 backdrop-blur-md hover:bg-white transition-colors group"
                     style={{ animationDelay: `${idx * 80}ms` }}
                   >
                     <div
@@ -222,7 +221,7 @@ export default function Hero() {
 
               {/* Big card */}
               <div
-                className="absolute left-1/2 top-1/2 w-[330px] aspect-[4/5] -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden shadow-2xl border border-white/20 transition-transform duration-300"
+                className="absolute left-1/2 top-1/2 w-[330px] aspect-[4/5] -translate-x-1/2 -translate-y-1/2 rounded-none overflow-hidden shadow-2xl border border-white/20 transition-transform duration-300"
                 style={{
                   transform: `translate(-50%, -50%) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`,
                   background:
@@ -251,25 +250,25 @@ export default function Hero() {
 
               {/* Floating cards */}
               <div
-                className="absolute top-4 right-4 w-44 aspect-square rounded-2xl overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
+                className="absolute top-4 right-4 w-44 aspect-square rounded-none overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
                 style={{ animationDelay: "0.4s" }}
               >
                 <img src={heroImages[1]} alt="" className="w-full h-full object-cover" />
               </div>
               <div
-                className="absolute bottom-6 left-2 w-40 aspect-square rounded-2xl overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
+                className="absolute bottom-6 left-2 w-40 aspect-square rounded-none overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
                 style={{ animationDelay: "1.2s" }}
               >
                 <img src={heroImages[2]} alt="" className="w-full h-full object-cover" />
               </div>
               <div
-                className="absolute top-12 left-0 w-32 aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
+                className="absolute top-12 left-0 w-32 aspect-[4/3] rounded-none overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
                 style={{ animationDelay: "2s" }}
               >
                 <img src={heroImages[3]} alt="" className="w-full h-full object-cover" />
               </div>
               <div
-                className="absolute bottom-2 right-12 w-32 aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
+                className="absolute bottom-2 right-12 w-32 aspect-[4/3] rounded-none overflow-hidden border border-[var(--neon-violet)]/20 shadow-xl animate-float-soft"
                 style={{ animationDelay: "1.6s" }}
               >
                 <img src={heroImages[4]} alt="" className="w-full h-full object-cover" />
@@ -278,6 +277,7 @@ export default function Hero() {
               {/* Stat bubble */}
               <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[var(--neon-violet)]/20 text-[10px] tracking-[0.25em] uppercase text-ink">
                 {totalProducts}+ modèles disponibles
+             
               </div>
             </div>
           </div>

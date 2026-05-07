@@ -79,7 +79,7 @@ export default function BrandsPage() {
       href: "/virtual-try-on",
       cta: "Lancer l'essai",
       icon: <Glasses size={18} />,
-      gradient: "linear-gradient(135deg, #1fb9c3, #5aa7ff)",
+      gradient: "linear-gradient(135deg, #1fb9c3, #009898)",
     },
     {
       title: "Trouver une boutique",
@@ -87,7 +87,7 @@ export default function BrandsPage() {
       href: "/store-locator",
       cta: "Voir les adresses",
       icon: <Store size={18} />,
-      gradient: "linear-gradient(135deg, #7bb6ff, #9acbff)",
+      gradient: "linear-gradient(135deg, #00b4b4, #00c4c4)",
     },
     {
       title: "Conseil WhatsApp",
@@ -104,7 +104,7 @@ export default function BrandsPage() {
       href: "/size-guide",
       cta: "Voir le guide",
       icon: <ShieldCheck size={18} />,
-      gradient: "linear-gradient(135deg, #6fdcff, #7bb6ff)",
+      gradient: "linear-gradient(135deg, #00d4d4, #00b4b4)",
     },
   ];
 
@@ -157,7 +157,7 @@ export default function BrandsPage() {
     <main className="flex-1 pt-28 lg:pt-32">
       {/* HERO */}
       <section className="relative overflow-hidden py-14 lg:py-20">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#eef5ff] via-white to-[#e6f2ff]" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#e4f8f8] via-white to-[#e6f2ff]" />
         <div
           className="glow-orb"
           style={{ width: 400, height: 400, left: "5%", top: "-10%", background: "rgba(90,167,255,0.18)" }}
@@ -172,14 +172,14 @@ export default function BrandsPage() {
           <div className="text-center mt-6">
             <p className="section-eyebrow text-ink-soft justify-center">
               <Crown size={14} className="text-[var(--neon-amber)]" />
-              {brands.length}+ griffes premium
+              {brands.length} marques disponibles
             </p>
             <h1 className="mt-4 text-4xl lg:text-6xl font-light text-ink leading-[1.05]">
               <span className="gradient-text font-semibold">Toutes les marques</span> que vous adorez
             </h1>
             <p className="mt-3 text-ink-soft max-w-2xl mx-auto">
-              De Dior à GIVENCHY en passant par KENZO, Polaroid et Skechers, explorez notre univers
-              de griffes premium 100% authentiques.
+              Helen Keller et Horien, références mondiales de l'optique soleil,
+              disponibles chez Newlook Optic Sidi Aiche — 100% authentiques.
             </p>
           </div>
         </div>
@@ -187,7 +187,7 @@ export default function BrandsPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-14">
         {/* Logo swiper section */}
-        <section className="rounded-3xl bg-white border border-[var(--neon-violet)]/10 shadow-md shadow-[var(--neon-violet)]/5 p-6 lg:p-8">
+        <section className="rounded-none bg-white border border-[var(--neon-violet)]/10 shadow-md shadow-[var(--neon-violet)]/5 p-6 lg:p-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
             <div>
               <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--neon-violet)] font-semibold">
@@ -244,7 +244,7 @@ export default function BrandsPage() {
                   <Link
                     key={brand.name}
                     href={`/collections/all?brand=${encodeURIComponent(brand.name)}`}
-                    className="group relative rounded-3xl overflow-hidden bg-white border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30 transition-all"
+                    className="group relative rounded-none overflow-hidden bg-white border border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30 transition-all"
                     style={{ animationDelay: `${i * 40}ms` }}
                   >
                     <div className="relative aspect-[4/3] overflow-hidden">
@@ -290,7 +290,7 @@ export default function BrandsPage() {
                 <button
                   key={brand.name}
                   onClick={() => openBrandRequest(brand.name)}
-                  className="group rounded-3xl overflow-hidden bg-gradient-to-br from-[#fafbff] to-white border-2 border-dashed border-[var(--neon-violet)]/25 hover:border-[var(--neon-violet)]/45 transition-all"
+                  className="group rounded-none overflow-hidden bg-gradient-to-br from-[#f5fefe] to-white border-2 border-dashed border-[var(--neon-violet)]/25 hover:border-[var(--neon-violet)]/45 transition-all"
                 >
                   <div className="aspect-[4/3] flex flex-col items-center justify-center gap-3 p-5">
                     <Image
@@ -334,14 +334,14 @@ export default function BrandsPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {serviceHighlights.map((service) => {
               const card = (
-                <div className="relative h-full rounded-3xl overflow-hidden p-6 bg-white border border-[var(--neon-violet)]/10 transition-all">
+                <div className="relative h-full rounded-none overflow-hidden p-6 bg-white border border-[var(--neon-violet)]/10 transition-all">
                   <div
                     className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-30 blur-2xl"
                     style={{ background: service.gradient }}
                   />
                   <div className="relative">
                     <span
-                      className="w-11 h-11 grid place-items-center rounded-2xl text-white"
+                      className="w-11 h-11 grid place-items-center rounded-none text-white"
                       style={{ background: service.gradient }}
                     >
                       {service.icon}
@@ -382,7 +382,7 @@ export default function BrandsPage() {
         {isRequestOpen && (
           <section
             id="brand-request"
-            className="mt-16 rounded-3xl border border-[var(--neon-emerald)]/30 bg-gradient-to-br from-[var(--neon-emerald)]/5 to-[var(--neon-cyan)]/5 p-6 lg:p-9 animate-fade-in"
+            className="mt-16 rounded-none border border-[var(--neon-emerald)]/30 bg-gradient-to-br from-[var(--neon-emerald)]/5 to-[var(--neon-cyan)]/5 p-6 lg:p-9 animate-fade-in"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -417,7 +417,7 @@ export default function BrandsPage() {
                   <input
                     value={requestForm[key]}
                     onChange={(e) => updateForm(key, e.target.value)}
-                    className="mt-1.5 w-full rounded-xl border border-[var(--neon-emerald)]/20 px-3 py-2.5 outline-none focus:border-[var(--neon-emerald)]"
+                    className="mt-1.5 w-full rounded-none border border-[var(--neon-emerald)]/20 px-3 py-2.5 outline-none focus:border-[var(--neon-emerald)]"
                     placeholder={ph}
                   />
                 </label>

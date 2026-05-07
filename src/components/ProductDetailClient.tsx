@@ -29,8 +29,6 @@ export class ProductDetailConfig {
     "Vos données ont bien été envoyées. Vous recevrez une réponse dans les plus brefs délais.";
 
   static readonly guarantees = [
-    { icon: "truck", label: "Livraison 24-48h", detail: "Express partout en Algérie", color: "var(--neon-cyan)" },
-    { icon: "shield", label: "Garantie 2 ans", detail: "Produit 100% authentique", color: "var(--neon-emerald)" },
     { icon: "return", label: "Retour 14 jours", detail: "Satisfait ou remboursé", color: "var(--neon-amber)" },
   ];
 
@@ -70,7 +68,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
   const [frameInput, setFrameInput] = useState("");
   const [requestError, setRequestError] = useState("");
   const [requestSent, setRequestSent] = useState(false);
-  const [activeTab, setActiveTab] = useState<"details" | "livraison" | "guide">("details");
+  const [activeTab, setActiveTab] = useState<"details" | "guide">("details");
   const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
@@ -127,7 +125,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
           {/* IMAGE GALLERY */}
           <div>
             <div
-              className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-[#f5f7ff] via-white to-[#eef0ff] group cursor-zoom-in border border-[var(--neon-violet)]/10"
+              className="relative aspect-square rounded-none overflow-hidden bg-gradient-to-br from-[#f0fefe] via-white to-[#eef0ff] group cursor-zoom-in border border-[var(--neon-violet)]/10"
               onClick={() => setZoomed((z) => !z)}
             >
               {/* repeating mesh pattern */}
@@ -198,7 +196,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                   <button
                     key={i}
                     onClick={() => setCurrentImage(i)}
-                    className={`w-20 h-20 rounded-2xl overflow-hidden border-2 transition-all ${
+                    className={`w-20 h-20 rounded-none overflow-hidden border-2 transition-all ${
                       currentImage === i
                         ? "border-[var(--neon-violet)] scale-105"
                         : "border-transparent hover:border-[var(--neon-violet)]/30"
@@ -313,7 +311,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                   value={frameInput}
                   onChange={(e) => setFrameInput(e.target.value)}
                   placeholder="Ex : 138 mm / référence / besoin spécifique"
-                  className="w-full rounded-2xl border border-[var(--neon-violet)]/20 px-4 py-3.5 text-sm outline-none focus:border-[var(--neon-violet)] transition-colors"
+                  className="w-full rounded-none border border-[var(--neon-violet)]/20 px-4 py-3.5 text-sm outline-none focus:border-[var(--neon-violet)] transition-colors"
                 />
               </div>
               <button onClick={handleSendRequest} className="btn-primary w-full">
@@ -332,12 +330,12 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 {isWished ? "Dans vos favoris" : "Ajouter aux favoris"}
               </button>
               {requestError && (
-                <p className="text-sm text-[var(--neon-rose)] bg-[var(--neon-rose)]/8 px-3 py-2 rounded-xl">
+                <p className="text-sm text-[var(--neon-rose)] bg-[var(--neon-rose)]/8 px-3 py-2 rounded-none">
                   {requestError}
                 </p>
               )}
               {requestSent && (
-                <p className="text-sm text-[var(--neon-emerald)] bg-[var(--neon-emerald)]/8 border border-[var(--neon-emerald)]/20 px-3 py-2 rounded-xl">
+                <p className="text-sm text-[var(--neon-emerald)] bg-[var(--neon-emerald)]/8 border border-[var(--neon-emerald)]/20 px-3 py-2 rounded-none">
                   ✓ {ProductDetailConfig.requestSuccessMessage}
                 </p>
               )}
@@ -350,7 +348,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 return (
                   <div
                     key={g.label}
-                    className="rounded-2xl border border-[var(--neon-violet)]/10 bg-white p-3 text-center"
+                    className="rounded-none border border-[var(--neon-violet)]/10 bg-white p-3 text-center"
                   >
                     <span
                       className="inline-grid place-items-center w-10 h-10 rounded-full text-white mb-1"
@@ -369,11 +367,10 @@ export default function ProductDetailClient({ id }: { id: string }) {
 
             {/* Tabs */}
             <div className="mt-9">
-              <div className="flex gap-1 p-1 rounded-full bg-[#f5f7ff] w-fit">
+              <div className="flex gap-1 p-1 rounded-full bg-[#f0fefe] w-fit">
                 {(
                   [
                     { key: "details", label: "Détails" },
-                    { key: "livraison", label: "Livraison" },
                     { key: "guide", label: "Entretien" },
                   ] as const
                 ).map((tab) => (
@@ -402,14 +399,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                     <p><strong className="text-ink">Protection UV :</strong> 100% UV400</p>
                   </div>
                 )}
-                {activeTab === "livraison" && (
-                  <div className="space-y-2">
-                    <p>Livraison express 24-48h dans tout le territoire algérien.</p>
-                    <p>Suivi WhatsApp dédié, paiement sécurisé en boutique ou en ligne.</p>
-                    <p>Retrait gratuit dans nos boutiques d&apos;Alger, Oran et Constantine.</p>
-                    <p>Conseiller dédié joignable du samedi au jeudi.</p>
-                  </div>
-                )}
+                
                 {activeTab === "guide" && (
                   <div className="space-y-2">
                     <p>Nettoyez vos verres avec le chiffon microfibre fourni.</p>

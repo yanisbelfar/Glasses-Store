@@ -11,7 +11,7 @@ export default function BrandShowcase() {
 
   return (
     <section className="relative py-20 lg:py-24 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#eef5ff] to-white" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#e4f8f8] to-white" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
@@ -21,11 +21,11 @@ export default function BrandShowcase() {
               Nos griffes
             </p>
             <h2 className="mt-3 text-4xl lg:text-5xl font-light text-ink leading-[1.05]">
-              <span className="gradient-text-warm font-semibold">60+ marques</span> que vous adorez
+              <span className="gradient-text-warm font-semibold">Les marques</span> du moment
             </h2>
             <p className="mt-3 text-ink-soft max-w-xl">
-              De Dior à Skechers en passant par GIVENCHY, KENZO et Polaroid, toutes les
-              griffes que vous cherchez, vérifiées et 100% authentiques.
+              Helen Keller et Horien, deux références mondiales de l'optique soleil,
+              disponibles chez Newlook Optic Sidi Aiche — 100% authentiques.
             </p>
           </div>
           <Link href="/marques" className="btn-ghost shrink-0">
@@ -46,7 +46,7 @@ export default function BrandShowcase() {
               href={`/collections/all?brand=${encodeURIComponent(b.name)}`}
               className="shrink-0 group"
             >
-              <div className="w-44 h-24 rounded-2xl bg-white border border-[var(--neon-violet)]/10 grid place-items-center px-4 shadow-sm hover:shadow-lg hover:shadow-[var(--neon-violet)]/15 transition-all">
+              <div className="w-44 h-24 rounded-none bg-white border border-[var(--neon-violet)]/10 grid place-items-center px-4 shadow-sm hover:shadow-lg hover:shadow-[var(--neon-violet)]/15 transition-all">
                 <Image
                   src={b.logo}
                   alt={b.name}

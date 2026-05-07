@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Categories() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f4f9ff] via-white to-[#e9f3ff]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f4f9ff] via-white to-[#e0f5f5]" />
       <div className="aurora opacity-60" />
       <div
         className="absolute inset-0 -z-10 opacity-30"
@@ -45,7 +45,7 @@ export default function Categories() {
               <Link
                 key={cat.id}
                 href={`/collections/${cat.slug}`}
-                className="group relative rounded-3xl overflow-hidden border border-[var(--neon-violet)]/15 bg-white/80 backdrop-blur-md transition-all hover:bg-white"
+                className="group relative rounded-none overflow-hidden border border-[var(--neon-violet)]/15 bg-white/80 backdrop-blur-md transition-all hover:bg-white"
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 {/* glow background */}
@@ -62,7 +62,7 @@ export default function Categories() {
                     {sample.slice(0, 4).map((p, i) => (
                       <div
                         key={p.id}
-                        className={`aspect-square rounded-xl overflow-hidden ${
+                        className={`aspect-square rounded-none overflow-hidden ${
                           i === 0 ? "row-span-2 col-span-1 aspect-auto h-full" : ""
                         }`}
                       >

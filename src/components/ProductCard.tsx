@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Heart, Eye, Sparkles } from "lucide-react";
+import { Heart, Eye } from "lucide-react";
 import { Product } from "@/lib/data";
 import { useStore } from "@/lib/store";
 
 const accentByCategory: Record<string, { from: string; to: string; ring: string }> = {
-  Homme: { from: "#1fb9c3", to: "#5aa7ff", ring: "rgba(31,185,195,0.35)" },
-  Femme: { from: "#7bb6ff", to: "#9acbff", ring: "rgba(123,182,255,0.35)" },
-  Enfant: { from: "#1aa99c", to: "#7cc8ff", ring: "rgba(26,169,156,0.35)" },
+  Soleil: { from: "#00b4b4", to: "#00d4d4", ring: "rgba(0,180,180,0.35)" },
+  Homme: { from: "#00b4b4", to: "#00d4d4", ring: "rgba(0,180,180,0.35)" },
+  Femme: { from: "#00b4b4", to: "#00d4d4", ring: "rgba(0,180,180,0.35)" },
+  Enfant: { from: "#00b4b4", to: "#00d4d4", ring: "rgba(0,180,180,0.35)" },
 };
 
 function badgeStyle(badge?: Product["badge"]) {
@@ -115,44 +116,20 @@ export default function ProductCard({
         </div>
       </div>
 
-      {/* Bottom info */}
-      <div className="p-4 flex flex-col gap-2">
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-muted">
-            {product.category}
-          </p>
-          {product.shape && (
-            <span className="text-[10px] tracking-[0.18em] uppercase text-muted/80">
-              {product.shape}
-            </span>
-          )}
-        </div>
+      {/* Bottom info — marque uniquement */}
+      <div className="px-4 py-3 flex items-center justify-between gap-2">
         <Link href={`/products/${product.id}`}>
-          <h3
-            className={`${titleClass} text-ink leading-tight group-hover:gradient-text transition-colors`}
+          <p
+            className="text-sm font-bold tracking-[0.12em] uppercase text-ink group-hover:text-[#00b4b4] transition-colors"
           >
-            {product.name}
-          </h3>
+            {product.brand}
+          </p>
         </Link>
-        <div className="flex items-center justify-between gap-2 mt-1">
-          <div className="flex items-center gap-1">
-            {product.colors?.slice(0, 4).map((c) => (
-              <span
-                key={c.name}
-                className="w-3.5 h-3.5 rounded-full border border-white shadow-sm"
-                style={{ backgroundColor: c.hex }}
-                title={c.name}
-              />
-            ))}
-            {product.colors && product.colors.length > 4 && (
-              <span className="text-[10px] text-muted">+{product.colors.length - 4}</span>
-            )}
-          </div>
-          <span className="text-[11px] inline-flex items-center gap-1 text-[var(--neon-violet)] font-semibold">
-            <Sparkles size={11} />
-            {product.lensType}
+        {product.shape && (
+          <span className="text-[10px] tracking-[0.18em] uppercase text-muted/70">
+            {product.shape}
           </span>
-        </div>
+        )}
       </div>
 
       {/* Bottom accent */}

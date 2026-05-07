@@ -91,7 +91,7 @@ export default function BrandLogoSwipe({ items, onRequestBrand }: BrandLogoSwipe
 
   if (items.length === 0) {
     return (
-      <div className="mt-6 rounded-3xl border-2 border-dashed border-[var(--neon-violet)]/25 px-6 py-10 text-center text-sm text-muted">
+      <div className="mt-6 rounded-none border-2 border-dashed border-[var(--neon-violet)]/25 px-6 py-10 text-center text-sm text-muted">
         Aucune marque ne correspond à votre recherche.
       </div>
     );
@@ -137,9 +137,9 @@ export default function BrandLogoSwipe({ items, onRequestBrand }: BrandLogoSwipe
         {items.map((item, i) => {
           const card = (
             <div
-              className="min-w-[180px] sm:min-w-[200px] lg:min-w-[230px] snap-start rounded-2xl border border-[var(--neon-violet)]/10 bg-white px-5 py-6 text-center hover:border-[var(--neon-violet)]/30 hover:shadow-lg hover:shadow-[var(--neon-violet)]/10 transition-all"
+              className="min-w-[180px] sm:min-w-[200px] lg:min-w-[230px] snap-start rounded-none border border-[var(--neon-violet)]/10 bg-white px-5 py-6 text-center hover:border-[var(--neon-violet)]/30 hover:shadow-lg hover:shadow-[var(--neon-violet)]/10 transition-all"
               style={{
-                background: i % 4 === 0 ? "linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%)"
+                background: i % 4 === 0 ? "linear-gradient(180deg, #ffffff 0%, #f0fefe 100%)"
                   : i % 4 === 1 ? "linear-gradient(180deg, #ffffff 0%, #fff5fb 100%)"
                   : i % 4 === 2 ? "linear-gradient(180deg, #ffffff 0%, #fef9f3 100%)"
                   : "linear-gradient(180deg, #ffffff 0%, #f3fff9 100%)",

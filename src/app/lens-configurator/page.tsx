@@ -48,7 +48,7 @@ export default function LensConfiguratorPage() {
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-8">
           {/* Left: Frame chooser + Lens options */}
           <div className="space-y-7">
-            <div className="rounded-3xl bg-white border border-[var(--neon-violet)]/15 p-6 shadow-md shadow-[var(--neon-violet)]/5">
+            <div className="rounded-none bg-white border border-[var(--neon-violet)]/15 p-6 shadow-md shadow-[var(--neon-violet)]/5">
               <p className="text-xs tracking-[0.25em] uppercase text-muted">
                 1. Choisissez votre monture
               </p>
@@ -57,13 +57,13 @@ export default function LensConfiguratorPage() {
                   <button
                     key={p.id}
                     onClick={() => setSelectedFrame(p.id)}
-                    className={`rounded-xl border p-2 transition-all ${
+                    className={`rounded-none border p-2 transition-all ${
                       selectedFrame === p.id
                         ? "border-[var(--neon-violet)] ring-2 ring-[var(--neon-violet)]/30 bg-[var(--neon-violet)]/4"
                         : "border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30"
                     }`}
                   >
-                    <div className="aspect-square rounded-lg bg-[#f5f7ff] overflow-hidden">
+                    <div className="aspect-square rounded-none bg-[#f0fefe] overflow-hidden">
                       <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                     </div>
                     <p className="text-[10px] text-muted mt-1 truncate">{p.brand}</p>
@@ -72,7 +72,7 @@ export default function LensConfiguratorPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white border border-[var(--neon-violet)]/15 p-6 shadow-md shadow-[var(--neon-violet)]/5">
+            <div className="rounded-none bg-white border border-[var(--neon-violet)]/15 p-6 shadow-md shadow-[var(--neon-violet)]/5">
               <p className="text-xs tracking-[0.25em] uppercase text-muted">
                 2. Choisissez vos traitements
               </p>
@@ -84,17 +84,17 @@ export default function LensConfiguratorPage() {
                     <button
                       key={opt.id}
                       onClick={() => toggleLens(opt.id)}
-                      className={`w-full text-left flex items-center gap-4 p-4 rounded-2xl border transition-all ${
+                      className={`w-full text-left flex items-center gap-4 p-4 rounded-none border transition-all ${
                         active
                           ? "border-[var(--neon-violet)] bg-[var(--neon-violet)]/5"
                           : "border-[var(--neon-violet)]/10 hover:border-[var(--neon-violet)]/30"
                       }`}
                     >
                       <span
-                        className={`w-11 h-11 grid place-items-center rounded-xl ${
+                        className={`w-11 h-11 grid place-items-center rounded-none ${
                           active
                             ? "bg-gradient-to-br from-[var(--neon-violet)] to-[var(--neon-magenta)] text-white"
-                            : "bg-[#f5f7ff] text-[var(--neon-violet)]"
+                            : "bg-[#f0fefe] text-[var(--neon-violet)]"
                         }`}
                       >
                         <Icon size={18} />
@@ -119,7 +119,7 @@ export default function LensConfiguratorPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white border border-[var(--neon-violet)]/15 p-6 shadow-md shadow-[var(--neon-violet)]/5">
+            <div className="rounded-none bg-white border border-[var(--neon-violet)]/15 p-6 shadow-md shadow-[var(--neon-violet)]/5">
               <p className="text-xs tracking-[0.25em] uppercase text-muted">
                 3. Finition de monture
               </p>
@@ -136,7 +136,7 @@ export default function LensConfiguratorPage() {
                   <button
                     key={c.id}
                     onClick={() => setCoating(c.id)}
-                    className={`text-left p-4 rounded-2xl border transition-all ${
+                    className={`text-left p-4 rounded-none border transition-all ${
                       coating === c.id
                         ? "border-[var(--neon-amber)] bg-[var(--neon-amber)]/8"
                         : "border-[var(--neon-violet)]/10 hover:border-[var(--neon-amber)]/40"
@@ -155,7 +155,7 @@ export default function LensConfiguratorPage() {
 
           {/* Right: Summary */}
           <div className="lg:sticky lg:top-32 self-start">
-            <div className="rounded-3xl overflow-hidden border border-[var(--neon-violet)]/15 bg-gradient-to-br from-[#e9f3ff] via-white to-[#dfeeff] text-ink shadow-2xl shadow-[var(--neon-violet)]/15">
+            <div className="rounded-none overflow-hidden border border-[var(--neon-violet)]/15 bg-gradient-to-br from-[#e0f5f5] via-white to-[#d0f0f0] text-ink shadow-2xl shadow-[var(--neon-violet)]/15">
               <div className="aurora opacity-40" />
               <div className="relative p-7">
                 <p className="text-xs tracking-[0.3em] uppercase text-ink-soft">
@@ -165,7 +165,7 @@ export default function LensConfiguratorPage() {
 
                 {frame && (
                   <div className="mt-6 flex gap-4 items-center">
-                    <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white/80 border border-[var(--neon-violet)]/15">
+                    <div className="w-24 h-24 rounded-none overflow-hidden bg-white/80 border border-[var(--neon-violet)]/15">
                       <img src={frame.image} alt={frame.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="min-w-0">

@@ -32,7 +32,7 @@ export default function WishlistPage() {
         </div>
 
         {wished.length === 0 ? (
-          <div className="rounded-3xl border-2 border-dashed border-[var(--neon-rose)]/30 p-16 text-center bg-gradient-to-br from-[var(--neon-rose)]/4 via-white to-[var(--neon-violet)]/4">
+          <div className="rounded-none border-2 border-dashed border-[var(--neon-rose)]/30 p-16 text-center bg-gradient-to-br from-[var(--neon-rose)]/4 via-white to-[var(--neon-violet)]/4">
             <span className="inline-grid place-items-center w-20 h-20 rounded-full bg-gradient-to-br from-[var(--neon-rose)] to-[var(--neon-magenta)] text-white">
               <Heart size={32} />
             </span>

@@ -111,70 +111,11 @@ export class SizeGuideEntry {
 
 type InventorySection = "homme" | "femme" | "enfant";
 
+// Inventaire vide — les marques sont ajoutées ici au fur et à mesure de l'ajout des photos
 const importedStoreInventory: Record<InventorySection, string[]> = {
-  homme: [
-    "Gauss",
-    "New Man",
-    "Arschè",
-    "SENS",
-    "DESPADA",
-    "Polaroid",
-    "ATELLO",
-    "ELITE",
-    "oscar",
-    "OPEX",
-    "Georges RECH",
-    "Marco-Joy",
-  ],
-  femme: [
-    "Kareen walker",
-    "Marco Joy",
-    "Zinea cavalo",
-    "opexcel",
-    "SOLO",
-    "CREMIEUX",
-    "POLSKA",
-    "Ana white",
-    "Ritzy",
-    "M.S.",
-    "Polaroid",
-    "Nice look",
-    "DESPada",
-    "oscar",
-    "GIVENCHY",
-    "KENZO",
-    "Dior",
-  ],
-  enfant: [
-    "M.S.",
-    "Ondaou",
-    "Cascata",
-    "Ben. X. Fantasia",
-    "Espera",
-    "Sundoo",
-    "eye zook",
-    "Ozen",
-    "star wars",
-    "Lacina plus",
-    "Flirt",
-    "Nice look",
-    "Fiesta",
-    "Anticall",
-    "Impala",
-    "Eye zook",
-    "Bibi shop",
-    "B.S Vision",
-    "New look",
-    "Summit",
-    "Massimo",
-    "Gucci",
-    "optique",
-    "Skechers",
-    "Tudor",
-    "Premium time",
-    "Sivas",
-    "Bambino",
-  ],
+  homme: [],
+  femme: [],
+  enfant: [],
 };
 
 const inventorySectionConfig: Record<
@@ -406,7 +347,69 @@ function buildProductsFromInventory(): Product[] {
 // App Data
 // ============================================
 
-export const allProducts: Product[] = buildProductsFromInventory();
+// ============================================
+// Produits Soleil (Helen Keller, Horien) depuis le catalogue photos
+// ============================================
+
+function buildSoleilProducts(): Product[] {
+  const products: Product[] = [];
+
+  // Group images by brand label
+  const byBrand = new Map<string, typeof productImageCatalog>();
+  for (const entry of productImageCatalog) {
+    const brand = entry.label;
+    if (!byBrand.has(brand)) byBrand.set(brand, []);
+    byBrand.get(brand)!.push(entry);
+  }
+
+  const soleilShapes = ["Aviator", "Oversize", "Pilote", "Carré", "Papillon", "Rond"];
+  const soleilMaterials = ["Métal", "Acétate", "Acétate/Métal"];
+  const soleilColors: Array<Array<{ name: string; hex: string }>> = [
+    [{ name: "Noir", hex: "#1a1a1a" }, { name: "Or", hex: "#c8a96e" }],
+    [{ name: "Havane", hex: "#654b3a" }, { name: "Brun", hex: "#8b5e3c" }],
+    [{ name: "Noir Mat", hex: "#1f2f34" }, { name: "Argent", hex: "#b0b8c1" }],
+    [{ name: "Bleu", hex: "#1a4a7a" }, { name: "Vert", hex: "#2d5a27" }],
+  ];
+
+  let idOffset = 5000;
+
+  for (const [brand, images] of byBrand) {
+    images.forEach((img, idx) => {
+      const shape = soleilShapes[idx % soleilShapes.length];
+      const material = soleilMaterials[idx % soleilMaterials.length];
+      const colors = soleilColors[idx % soleilColors.length].map(
+        (c) => new ProductColor(c.name, c.hex)
+      );
+      const price = brand === "Helen Keller" ? 22500 + (idx % 8) * 800 : 18500 + (idx % 6) * 700;
+      const badge: ProductBadge | undefined = idx === 0 ? "best-seller" : idx === 1 ? "nouveau" : undefined;
+
+      products.push(
+        new Product(
+          String(idOffset++),
+          `${brand} — Lunettes Soleil ${String(idx + 1).padStart(2, "0")}`,
+          price,
+          img.path,
+          "Soleil",
+          badge,
+          `Lunettes de soleil ${brand}, monture ${shape.toLowerCase()} en ${material.toLowerCase()}. Style premium, protection UV400. Disponible en boutique Newlook Optic Sidi Aiche.`,
+          brand,
+          colors,
+          ["S", "M", "L"],
+          shape,
+          material,
+          "unisexe" as ProductGender,
+          [img.path],
+          "Soleil UV400",
+          138,
+        )
+      );
+    });
+  }
+
+  return products;
+}
+
+export const allProducts: Product[] = buildSoleilProducts();
 
 export const featuredProducts = allProducts.slice(0, 3);
 export const popularProducts = allProducts.slice(3, 11);
@@ -414,27 +417,11 @@ export const popularProducts = allProducts.slice(3, 11);
 const categoryDefinitions = [
   {
     id: "1",
-    name: "Lunettes Homme",
-    slug: "homme",
-    sourceCategory: "Homme",
-    image: "/categories/homme.jpg",
-    description: "Montures masculines de la liste magasin",
-  },
-  {
-    id: "2",
-    name: "Lunettes Femme",
-    slug: "femme",
-    sourceCategory: "Femme",
-    image: "/categories/femme.jpg",
-    description: "Montures feminines de la liste magasin",
-  },
-  {
-    id: "3",
-    name: "Lunettes Enfant",
-    slug: "enfant",
-    sourceCategory: "Enfant",
-    image: "/categories/enfant.jpg",
-    description: "Montures enfant de la liste magasin",
+    name: "Lunettes Soleil",
+    slug: "soleil",
+    sourceCategory: "Soleil",
+    image: "/categories/soleil.jpg",
+    description: "Lunettes de soleil Helen Keller et Horien",
   },
 ] as const;
 
@@ -451,31 +438,17 @@ export const categories: Category[] = categoryDefinitions.map((definition) =>
 
 // Category visual accents (gradients for futuristic theme)
 export const categoryAccents: Record<string, { from: string; to: string; glow: string; tag: string; emoji: string }> = {
-  homme: {
-    from: "#1fb9c3",
-    to: "#5aa7ff",
-    glow: "rgba(31, 185, 195, 0.4)",
-    tag: "Masculin · Affirmé",
-    emoji: "♂",
-  },
-  femme: {
-    from: "#2bb3b1",
-    to: "#7cc8ff",
-    glow: "rgba(43, 179, 177, 0.4)",
-    tag: "Féminin · Élégant",
-    emoji: "♀",
-  },
-  enfant: {
-    from: "#7cc8ff",
-    to: "#1aa99c",
-    glow: "rgba(124, 200, 255, 0.4)",
-    tag: "Enfant · Ludique",
-    emoji: "★",
+  soleil: {
+    from: "#f59e0b",
+    to: "#f97316",
+    glow: "rgba(245, 158, 11, 0.4)",
+    tag: "Soleil · UV400",
+    emoji: "☀",
   },
   all: {
     from: "#1fb9c3",
-    to: "#9acbff",
-    glow: "rgba(123, 182, 255, 0.35)",
+    to: "#00c4c4",
+    glow: "rgba(0, 180, 180, 0.35)",
     tag: "Toutes les collections",
     emoji: "✦",
   },
@@ -613,26 +586,16 @@ export const appointmentSlots: AppointmentSlot[] = [
 ];
 
 export const megaMenuData: MegaMenuCategory[] = [
-  new MegaMenuCategory("Lunettes Homme", "/collections/homme", [
-    { label: "Toutes les montures homme", href: "/collections/homme" },
-    { label: "Aviator", href: "/collections/homme?shape=Aviator" },
-    { label: "Carré", href: "/collections/homme?shape=Carr%C3%A9" },
-    { label: "Rectangulaire", href: "/collections/homme?shape=Rectangulaire" },
-  ]),
-  new MegaMenuCategory("Lunettes Femme", "/collections/femme", [
-    { label: "Toutes les montures femme", href: "/collections/femme" },
-    { label: "Papillon", href: "/collections/femme?shape=Papillon" },
-    { label: "Rond", href: "/collections/femme?shape=Rond" },
-    { label: "Oversize", href: "/collections/femme?shape=Oversize" },
-  ]),
-  new MegaMenuCategory("Lunettes Enfant", "/collections/enfant", [
-    { label: "Toutes les montures enfant", href: "/collections/enfant" },
-    { label: "Rond", href: "/collections/enfant?shape=Rond" },
-    { label: "Browline", href: "/collections/enfant?shape=Browline" },
-    { label: "Pilote", href: "/collections/enfant?shape=Pilote" },
+  new MegaMenuCategory("Lunettes Soleil", "/collections/soleil", [
+    { label: "Toutes les lunettes soleil", href: "/collections/soleil" },
+    { label: "Aviator", href: "/collections/soleil?shape=Aviator" },
+    { label: "Oversize", href: "/collections/soleil?shape=Oversize" },
+    { label: "Pilote", href: "/collections/soleil?shape=Pilote" },
+    { label: "Carré", href: "/collections/soleil?shape=Carr%C3%A9" },
   ]),
   new MegaMenuCategory("Marques", "/marques", [
-    ...featuredBrandLinks,
+    { label: "Helen Keller", href: "/collections/all?brand=Helen+Keller" },
+    { label: "Horien", href: "/collections/all?brand=Horien" },
     { label: "Voir toutes les marques", href: "/marques" },
   ]),
 ];

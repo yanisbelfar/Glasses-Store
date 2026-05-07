@@ -76,9 +76,9 @@ export default function CartSidebar() {
               {state.items.map((item) => (
                 <div
                   key={item.product.id}
-                  className="flex gap-4 p-3 rounded-2xl border border-[var(--neon-violet)]/10 bg-white shadow-sm"
+                  className="flex gap-4 p-3 rounded-none border border-[var(--neon-violet)]/10 bg-white shadow-sm"
                 >
-                  <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#f5f7ff] shrink-0">
+                  <div className="w-20 h-20 rounded-none overflow-hidden bg-[#f0fefe] shrink-0">
                     <img
                       src={item.product.image}
                       alt={item.product.name}
@@ -111,7 +111,7 @@ export default function CartSidebar() {
                       </p>
                     )}
                     <div className="flex items-center justify-between mt-2.5">
-                      <div className="inline-flex items-center rounded-full bg-[#f5f7ff] p-0.5">
+                      <div className="inline-flex items-center rounded-full bg-[#f0fefe] p-0.5">
                         <button
                           onClick={() =>
                             dispatch({

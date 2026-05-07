@@ -25,7 +25,7 @@ export default function QuickView() {
         className="fixed inset-0 z-[60] bg-[rgba(123,182,255,0.25)] backdrop-blur-md animate-fade-in"
         onClick={() => dispatch({ type: "CLOSE_QUICK_VIEW" })}
       />
-      <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[61] bg-white max-w-3xl w-full max-h-[92vh] overflow-y-auto rounded-3xl shadow-2xl shadow-[var(--neon-violet)]/20 border border-white/60 animate-scale-in">
+      <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[61] bg-white max-w-3xl w-full max-h-[92vh] overflow-y-auto rounded-none shadow-2xl shadow-[var(--neon-violet)]/20 border border-white/60 animate-scale-in">
         <button
           onClick={() => dispatch({ type: "CLOSE_QUICK_VIEW" })}
           className="absolute top-4 right-4 w-10 h-10 grid place-items-center rounded-full bg-white/80 backdrop-blur text-ink hover:text-[var(--neon-rose)] z-10 shadow-md"
@@ -35,7 +35,7 @@ export default function QuickView() {
 
         <div className="grid md:grid-cols-2">
           {/* Image */}
-          <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-[#f5f7ff] to-[#e9eeff]">
+          <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-[#f0fefe] to-[#e9eeff]">
             <img
               src={product.image}
               alt={product.name}
@@ -94,7 +94,7 @@ export default function QuickView() {
                   {product.sizes.map((s) => (
                     <span
                       key={s}
-                      className="px-3 py-1 rounded-full border border-[var(--neon-violet)]/20 text-xs text-ink-soft bg-[#f5f7ff]"
+                      className="px-3 py-1 rounded-full border border-[var(--neon-violet)]/20 text-xs text-ink-soft bg-[#f0fefe]"
                     >
                       {s}
                     </span>
@@ -105,7 +105,7 @@ export default function QuickView() {
 
             <div className="mt-7 grid grid-cols-2 gap-2 text-xs text-ink-soft">
               {product.material && (
-                <div className="rounded-xl border border-[var(--neon-violet)]/10 p-3 bg-[#f5f7ff]/60">
+                <div className="rounded-none border border-[var(--neon-violet)]/10 p-3 bg-[#f0fefe]/60">
                   <p className="text-[10px] tracking-wider uppercase text-muted">
                     Matière
                   </p>
@@ -113,7 +113,7 @@ export default function QuickView() {
                 </div>
               )}
               {product.lensType && (
-                <div className="rounded-xl border border-[var(--neon-violet)]/10 p-3 bg-[#f5f7ff]/60">
+                <div className="rounded-none border border-[var(--neon-violet)]/10 p-3 bg-[#f0fefe]/60">
                   <p className="text-[10px] tracking-wider uppercase text-muted">
                     Verres
                   </p>

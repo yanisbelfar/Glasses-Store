@@ -7,11 +7,11 @@ import { Ruler, Compass, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const accents = [
-  { from: "#1fb9c3", to: "#5aa7ff" },
-  { from: "#7bb6ff", to: "#9acbff" },
+  { from: "#1fb9c3", to: "#009898" },
+  { from: "#00b4b4", to: "#00c4c4" },
   { from: "#1aa99c", to: "#7cc8ff" },
-  { from: "#6fdcff", to: "#7bb6ff" },
-  { from: "#5aa7ff", to: "#1aa99c" },
+  { from: "#00d4d4", to: "#00b4b4" },
+  { from: "#009898", to: "#1aa99c" },
 ];
 
 export default function SizeGuidePage() {
@@ -35,7 +35,7 @@ export default function SizeGuidePage() {
         </div>
 
         {/* How to measure */}
-        <section className="rounded-3xl bg-white border border-[var(--neon-violet)]/10 p-8 shadow-md shadow-[var(--neon-violet)]/5">
+        <section className="rounded-none bg-white border border-[var(--neon-violet)]/10 p-8 shadow-md shadow-[var(--neon-violet)]/5">
           <h2 className="text-2xl font-semibold text-ink">Comment mesurer ?</h2>
           <div className="mt-5 grid sm:grid-cols-3 gap-4">
             {[
@@ -57,7 +57,7 @@ export default function SizeGuidePage() {
             ].map((m) => (
               <div
                 key={m.title}
-                className="rounded-2xl border border-[var(--neon-violet)]/10 bg-[#fafbff] p-5"
+                className="rounded-none border border-[var(--neon-violet)]/10 bg-[#f5fefe] p-5"
               >
                 <p
                   className="text-[11px] tracking-[0.25em] uppercase font-semibold"
@@ -95,7 +95,7 @@ export default function SizeGuidePage() {
               return (
                 <div
                   key={entry.faceShape}
-                  className="relative rounded-3xl overflow-hidden border border-[var(--neon-violet)]/10 bg-white p-6 transition-all"
+                  className="relative rounded-none overflow-hidden border border-[var(--neon-violet)]/10 bg-white p-6 transition-all"
                 >
                   <div
                     className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-25 blur-2xl"
@@ -122,7 +122,7 @@ export default function SizeGuidePage() {
                         {entry.recommended.map((shape) => (
                           <span
                             key={shape}
-                            className="px-2.5 py-1 rounded-full text-[11px] text-ink bg-[#f5f7ff] border border-[var(--neon-violet)]/10"
+                            className="px-2.5 py-1 rounded-full text-[11px] text-ink bg-[#f0fefe] border border-[var(--neon-violet)]/10"
                           >
                             {shape}
                           </span>

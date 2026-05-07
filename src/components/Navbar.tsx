@@ -23,7 +23,6 @@ export class NavbarController {
   static readonly tagline = "Opticien · Sidi Aiche";
   static readonly phone = "+213 555 85 24 57";
   static readonly promoMessages = [
-    "✦ Livraison express 24-48h",
     "✶ Essai virtuel 3D depuis votre canapé",
     "★ Plus de 60 marques · 100% authentiques",
     "✧ Conseil personnalisé par WhatsApp",
@@ -122,12 +121,12 @@ export default function Navbar() {
                   </Link>
                   {activeMenu === cat.label && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 animate-fade-in">
-                      <div className="glass-strong rounded-2xl shadow-2xl shadow-[var(--neon-violet)]/10 min-w-[260px] p-3 border border-white/60">
+                      <div className="glass-strong rounded-none shadow-2xl shadow-[var(--neon-violet)]/10 min-w-[260px] p-3 border border-white/60">
                         {cat.subcategories.map((sub) => (
                           <Link
                             key={sub.href}
                             href={sub.href}
-                            className="flex items-center justify-between gap-3 px-4 py-2.5 text-[12px] text-ink-soft hover:text-[var(--neon-violet)] hover:bg-[rgba(123,182,255,0.18)] rounded-xl transition-all"
+                            className="flex items-center justify-between gap-3 px-4 py-2.5 text-[12px] text-ink-soft hover:text-[var(--neon-violet)] hover:bg-[rgba(123,182,255,0.18)] rounded-none transition-all"
                           >
                             <span>{sub.label}</span>
                             <span className="opacity-0 group-hover:opacity-100 text-[10px]">→</span>

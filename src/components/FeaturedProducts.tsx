@@ -9,7 +9,7 @@ export default function FeaturedProducts() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#f5f7ff] to-white" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-[#f0fefe] to-white" />
       <div
         className="glow-orb"
         style={{
@@ -17,7 +17,7 @@ export default function FeaturedProducts() {
           height: 420,
           left: "-8%",
           top: "10%",
-          background: "rgba(123, 182, 255, 0.12)",
+          background: "rgba(0, 180, 180, 0.12)",
         }}
       />
       <div
@@ -27,7 +27,7 @@ export default function FeaturedProducts() {
           height: 360,
           right: "-6%",
           bottom: "-6%",
-          background: "rgba(6, 211, 247, 0.12)",
+          background: "rgba(0, 200, 200, 0.12)",
         }}
       />
 

@@ -7,6 +7,8 @@ const brandLogoByKey: Record<string, string> = {
   einar: "/brands/logos/einar.svg",
   eyewearaz: "/brands/logos/eyewear-a-z.svg",
   eyewearritzy: "/brands/logos/eyewear-ritzy.svg",
+  helenkeller: "/brands/logos/helen-keller.svg",
+  horien: "/brands/logos/horien.svg",
   laneacavallo: "/brands/logos/lanea-cavallo.svg",
   lineacavalo: "/brands/logos/linea-cavalo.svg",
   marwitzberlin: "/brands/logos/marwitz-berlin.svg",
@@ -19,7 +21,7 @@ export function normalizeBrandKey(value: string): string {
   return value
     .trim()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "");
 }

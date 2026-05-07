@@ -58,7 +58,7 @@ export default function FaceShapePage() {
           </p>
         </div>
 
-        <div className="relative rounded-3xl overflow-hidden border border-[var(--neon-violet)]/15 bg-white shadow-xl shadow-[var(--neon-violet)]/10 p-8 lg:p-12">
+        <div className="relative rounded-none overflow-hidden border border-[var(--neon-violet)]/15 bg-white shadow-xl shadow-[var(--neon-violet)]/10 p-8 lg:p-12">
           <div
             className="absolute -top-32 -right-32 w-72 h-72 rounded-full bg-gradient-to-br from-[var(--neon-violet)] to-[var(--neon-magenta)] blur-3xl opacity-25 pointer-events-none"
           />
@@ -67,7 +67,7 @@ export default function FaceShapePage() {
             <p className="text-xs tracking-[0.3em] uppercase text-muted">
               {isDone ? "Résultat" : `Question ${step + 1} / ${faceShapeQuestions.length}`}
             </p>
-            <div className="flex-1 mx-4 h-1.5 bg-[#f5f7ff] rounded-full overflow-hidden">
+            <div className="flex-1 mx-4 h-1.5 bg-[#f0fefe] rounded-full overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-[var(--neon-violet)] via-[var(--neon-magenta)] to-[var(--neon-cyan)] transition-all duration-500"
                 style={{ width: `${isDone ? 100 : progress}%` }}
@@ -93,7 +93,7 @@ export default function FaceShapePage() {
                   <button
                     key={opt.label}
                     onClick={() => choose(opt.shapes)}
-                    className="group text-left p-5 rounded-2xl border border-[var(--neon-violet)]/15 bg-white hover:border-[var(--neon-violet)]/40 hover:bg-[var(--neon-violet)]/4 transition-all"
+                    className="group text-left p-5 rounded-none border border-[var(--neon-violet)]/15 bg-white hover:border-[var(--neon-violet)]/40 hover:bg-[var(--neon-violet)]/4 transition-all"
                   >
                     <p className="text-base text-ink font-medium">{opt.label}</p>
                     <p className="text-xs text-[var(--neon-violet)] tracking-[0.2em] uppercase mt-2 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
@@ -125,7 +125,7 @@ export default function FaceShapePage() {
                   {guideEntry.recommended.map((shape) => (
                     <div
                       key={shape}
-                      className="rounded-2xl p-4 border border-[var(--neon-violet)]/15 bg-gradient-to-br from-[#fafbff] to-white text-center"
+                      className="rounded-none p-4 border border-[var(--neon-violet)]/15 bg-gradient-to-br from-[#f5fefe] to-white text-center"
                     >
                       <p className="text-[10px] tracking-[0.25em] uppercase text-muted">
                         Forme recommandée

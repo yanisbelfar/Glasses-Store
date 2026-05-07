@@ -28,7 +28,7 @@ export default function PopularProducts() {
           height: 380,
           right: "-6%",
           top: "20%",
-          background: "rgba(90, 167, 255, 0.18)",
+          background: "rgba(0, 160, 160, 0.18)",
         }}
       />
 
@@ -44,7 +44,7 @@ export default function PopularProducts() {
             </h2>
           </div>
 
-          <div className="flex flex-wrap gap-1.5 p-1 bg-[#f5f7ff] rounded-full">
+          <div className="flex flex-wrap gap-1.5 p-1 bg-[#f0fefe] rounded-full">
             {tabs.map((t) => (
               <button
                 key={t.id}

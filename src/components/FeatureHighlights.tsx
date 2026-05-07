@@ -18,8 +18,8 @@ const features = [
       "Testez n'importe quelle monture depuis chez vous grâce à votre webcam ou une simple photo.",
     href: "/virtual-try-on",
     cta: "Lancer l'essai",
-    gradient: "linear-gradient(135deg, #1fb9c3, #5aa7ff)",
-    glow: "rgba(31, 185, 195, 0.35)",
+    gradient: "linear-gradient(135deg, #1fb9c3, #009898)",
+    glow: "rgba(0, 180, 180, 0.35)",
   },
   {
     icon: Compass,
@@ -28,8 +28,8 @@ const features = [
       "3 questions et nos experts vous proposent les montures qui flattent vraiment vos traits.",
     href: "/face-shape",
     cta: "Faire le quiz",
-    gradient: "linear-gradient(135deg, #7bb6ff, #9acbff)",
-    glow: "rgba(90, 167, 255, 0.35)",
+    gradient: "linear-gradient(135deg, #00b4b4, #00c4c4)",
+    glow: "rgba(0, 160, 160, 0.35)",
   },
   {
     icon: Layers,
@@ -39,7 +39,7 @@ const features = [
     href: "/lens-configurator",
     cta: "Configurer",
     gradient: "linear-gradient(135deg, #1aa99c, #7cc8ff)",
-    glow: "rgba(26, 169, 156, 0.35)",
+    glow: "rgba(0, 160, 150, 0.35)",
   },
   {
     icon: CalendarDays,
@@ -48,8 +48,8 @@ const features = [
       "Réservez un créneau en boutique pour un examen visuel complet et un conseil expert.",
     href: "/appointment",
     cta: "Réserver",
-    gradient: "linear-gradient(135deg, #6fdcff, #7bb6ff)",
-    glow: "rgba(123, 182, 255, 0.35)",
+    gradient: "linear-gradient(135deg, #00d4d4, #00b4b4)",
+    glow: "rgba(0, 180, 180, 0.35)",
   },
   {
     icon: GitCompareArrows,
@@ -58,15 +58,15 @@ const features = [
       "Hésitation ? Comparez jusqu'à 4 modèles côte à côte : forme, matériau, taille.",
     href: "/compare",
     cta: "Comparer",
-    gradient: "linear-gradient(135deg, #5aa7ff, #1aa99c)",
-    glow: "rgba(90, 167, 255, 0.35)",
+    gradient: "linear-gradient(135deg, #009898, #1aa99c)",
+    glow: "rgba(0, 160, 160, 0.35)",
   },
 ];
 
 export default function FeatureHighlights() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#fafbff] via-white to-[#fafbff]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5fefe] via-white to-[#f5fefe]" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 max-w-2xl mx-auto">
@@ -89,7 +89,7 @@ export default function FeatureHighlights() {
               <Link
                 key={f.title}
                 href={f.href}
-                className={`group relative rounded-3xl overflow-hidden p-7 border border-[var(--neon-violet)]/10 bg-white transition-all ${span}`}
+                className={`group relative rounded-none overflow-hidden p-7 border border-[var(--neon-violet)]/10 bg-white transition-all ${span}`}
                 style={{ animationDelay: `${i * 80}ms` }}
               >
                 <div
@@ -98,7 +98,7 @@ export default function FeatureHighlights() {
                 />
                 <div className="relative">
                   <span
-                    className="w-12 h-12 grid place-items-center rounded-2xl text-white shadow-lg"
+                    className="w-12 h-12 grid place-items-center rounded-none text-white shadow-lg"
                     style={{ background: f.gradient, boxShadow: `0 16px 36px -12px ${f.glow}` }}
                   >
                     <Icon size={20} />
