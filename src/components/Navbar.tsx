@@ -8,13 +8,13 @@ import {
   Phone,
   Heart,
   ChevronDown,
-  Sparkles,
   ShoppingBag,
   ScanFace,
   CalendarDays,
   Compass,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useStore } from "@/lib/store";
 import { megaMenuData } from "@/lib/data";
 
@@ -84,19 +84,15 @@ export default function Navbar() {
             </button>
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <span className="relative w-10 h-10 grid place-items-center rounded-2xl bg-gradient-to-br from-[var(--neon-violet)] via-[var(--neon-magenta)] to-[var(--neon-cyan)] text-white shadow-lg shadow-[var(--neon-violet)]/30 transition-transform group-hover:rotate-3">
-                <Sparkles size={18} strokeWidth={2.4} />
-                <span className="absolute -inset-0.5 rounded-2xl border border-white/40" />
-              </span>
-              <div className="flex flex-col leading-tight">
-                <span className="text-base lg:text-lg font-semibold tracking-[0.2em] gradient-text">
-                  NEWLOOK
-                </span>
-                <span className="text-[9px] tracking-[0.4em] text-ink-soft uppercase">
-                  OPTIC · SIDI AICHE
-                </span>
-              </div>
+            <Link href="/" className="flex items-center gap-2 group">
+              <Image
+                src="/newlook-logo.svg"
+                alt="New Look Optic Sidi Aiche"
+                width={110}
+                height={52}
+                className="transition-transform group-hover:scale-105 drop-shadow-sm"
+                priority
+              />
             </Link>
 
             {/* Desktop menu */}

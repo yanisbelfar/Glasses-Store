@@ -1,0 +1,46 @@
+<svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7ec8e3"/>
+      <stop offset="50%" style="stop-color:#9b8ee8"/>
+      <stop offset="100%" style="stop-color:#b07bda"/>
+    </linearGradient>
+    <linearGradient id="bannerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7ec8e3"/>
+      <stop offset="100%" style="stop-color:#c084fc"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Glasses - left lens browline -->
+  <path d="M10,72 Q10,38 58,38 Q106,38 106,72" stroke="url(#glassGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- Left lens bottom thin line -->
+  <path d="M12,70 Q12,95 58,98 Q104,95 104,70" stroke="url(#glassGrad)" stroke-width="2.5" fill="none" opacity="0.5"/>
+
+  <!-- Bridge -->
+  <path d="M106,60 Q120,56 134,60" stroke="url(#glassGrad)" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- Glasses - right lens browline -->
+  <path d="M134,72 Q134,38 182,38 Q230,38 230,72" stroke="url(#glassGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- Right lens bottom thin line -->
+  <path d="M136,70 Q136,95 182,98 Q228,95 228,70" stroke="url(#glassGrad)" stroke-width="2.5" fill="none" opacity="0.5"/>
+
+  <!-- Left temple -->
+  <line x1="10" y1="65" x2="0" y2="52" stroke="url(#glassGrad)" stroke-width="6" stroke-linecap="round"/>
+  <!-- Right temple -->
+  <line x1="230" y1="65" x2="242" y2="52" stroke="url(#glassGrad)" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- "NEW" text -->
+  <text x="8" y="135" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="46" fill="#1a1f5e" letter-spacing="-1">NEW</text>
+
+  <!-- Diagonal slash -->
+  <line x1="118" y1="108" x2="128" y2="148" stroke="#1a1f5e" stroke-width="5"/>
+
+  <!-- Gradient banner (parallelogram) -->
+  <polygon points="126,108 246,108 258,148 138,148" fill="url(#bannerGrad)"/>
+
+  <!-- "LOOK" text in banner -->
+  <text x="142" y="140" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="38" fill="white" letter-spacing="1">LOOK</text>
+
+  <!-- "OPTIC SIDI AICH" subtitle -->
+  <text x="138" y="160" font-family="Arial, sans-serif" font-weight="600" font-size="13" fill="#9b72d4" letter-spacing="3">OPTIC SIDI AICH</text>
+</svg>

@@ -24,7 +24,7 @@ const lora = Lora({
 export const metadata: Metadata = {
   title: "Newlook Optic Sidi Aiche",
   description:
-    "Plus de 60 marques exclusives, essai virtuel 3D et conseil personnalisé a Sidi Aiche. Newlook Optic Sidi Aiche reinvente l'optique.",
+    "Plus de 60 marques exclusives, essai virtuel 3D et conseil personnalise a Sidi Aiche. Newlook Optic Sidi Aiche reinvente l'optique.",
   keywords: [
     "lunettes",
     "opticien",
@@ -37,6 +37,26 @@ export const metadata: Metadata = {
     "KENZO",
     "Skechers",
   ],
+  icons: {
+    icon: "/newlook-logo.svg",
+    shortcut: "/newlook-logo.svg",
+    apple: "/newlook-logo.svg",
+  },
+  openGraph: {
+    title: "Newlook Optic Sidi Aiche",
+    description:
+      "Plus de 60 marques exclusives, essai virtuel 3D et conseil personnalise a Sidi Aiche. Newlook Optic Sidi Aiche reinvente l'optique.",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 340,
+        height: 160,
+        alt: "New Look Optic Sidi Aiche",
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
