@@ -358,7 +358,9 @@ function buildSoleilProducts(): Product[] {
   const byBrand = new Map<string, typeof productImageCatalog>();
   for (const entry of productImageCatalog) {
     const brand = entry.label;
-    if (brand === 'Despada') continue; // Vue category handled separately
+    // Only include images explicitly tagged Soleil, or untagged entries from known soleil-only brands
+    if (entry.type === 'Vue') continue;
+    if (!entry.type && brand === 'Despada') continue;
     if (!byBrand.has(brand)) byBrand.set(brand, []);
     byBrand.get(brand)!.push(entry);
   }
@@ -420,7 +422,8 @@ function buildVueProducts(): Product[] {
     [{ name: "Bordeaux", hex: "#7c2d3e" }, { name: "Nude", hex: "#c4a882" }],
   ];
 
-  const despada = productImageCatalog.filter((e) => e.label === 'Despada');
+  // All Vue-typed entries, plus untyped Despada (backward compat)
+  const despada = productImageCatalog.filter((e) => e.type === 'Vue' || (!e.type && e.label === 'Despada'));
   let idOffset = 6000;
 
   despada.forEach((img, idx) => {
@@ -433,13 +436,13 @@ function buildVueProducts(): Product[] {
     products.push(
       new Product(
         String(idOffset++),
-        `Despada — Lunettes de Vue ${String(idx + 1).padStart(2, "0")}`,
-        12500 + (idx % 8) * 600,
+        `${img.label} — Lunettes de Vue ${String(idx + 1).padStart(2, "0")}`,
+        (img.label === "Despada" ? 12500 : img.label === "John Varvatos" ? 28000 : 15500) + (idx % 8) * 600,
         img.path,
         "Vue",
         badge,
-        `Lunettes de vue Despada, monture en ${material.toLowerCase()}. Confort optimal et style contemporain. Disponible en boutique Newlook Optic Sidi Aiche.`,
-        "Despada",
+        `Lunettes de vue ${img.label}, monture en ${material.toLowerCase()}. Confort optimal et style contemporain. Disponible en boutique Newlook Optic Sidi Aiche.`,
+        img.label,
         colors,
         ["S", "M", "L"],
         undefined,
@@ -475,7 +478,7 @@ const categoryDefinitions = [
     slug: "vue",
     sourceCategory: "Vue",
     image: "/categories/vue.jpg",
-    description: "Lunettes de vue Despada",
+    description: "Lunettes de vue Despada, MS Eyewear, John Varvatos",
   },
 ] as const;
 
@@ -651,15 +654,21 @@ export const megaMenuData: MegaMenuCategory[] = [
     { label: "Toutes les lunettes soleil", href: "/collections/soleil" },
     { label: "Helen Keller", href: "/collections/soleil?brand=Helen+Keller" },
     { label: "Horien", href: "/collections/soleil?brand=Horien" },
+    { label: "MS Eyewear", href: "/collections/soleil?brand=MS+Eyewear" },
+    { label: "John Varvatos", href: "/collections/soleil?brand=John+Varvatos" },
   ]),
   new MegaMenuCategory("Lunettes de Vue", "/collections/vue", [
     { label: "Toutes les lunettes de vue", href: "/collections/vue" },
     { label: "Despada", href: "/collections/vue?brand=Despada" },
+    { label: "MS Eyewear", href: "/collections/vue?brand=MS+Eyewear" },
+    { label: "John Varvatos", href: "/collections/vue?brand=John+Varvatos" },
   ]),
   new MegaMenuCategory("Marques", "/marques", [
     { label: "Helen Keller", href: "/collections/all?brand=Helen+Keller" },
     { label: "Horien", href: "/collections/all?brand=Horien" },
     { label: "Despada", href: "/collections/all?brand=Despada" },
+    { label: "MS Eyewear", href: "/collections/all?brand=MS+Eyewear" },
+    { label: "John Varvatos", href: "/collections/all?brand=John+Varvatos" },
     { label: "Voir toutes les marques", href: "/marques" },
   ]),
 ];

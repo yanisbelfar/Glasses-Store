@@ -8,6 +8,8 @@ const brandLogoByKey: Record<string, string> = {
   eyewearaz: "/brands/logos/eyewear-a-z.svg",
   eyewearritzy: "/brands/logos/eyewear-ritzy.svg",
   despada: "/brands/logos/despada.svg",
+  johnvarvatos: "/brands/logos/john-varvatos.svg",
+  mseyewear: "/brands/logos/ms-eyewear.svg",
   helenkeller: "/brands/logos/helen-keller.svg",
   horien: "/brands/logos/horien.svg",
   laneacavallo: "/brands/logos/lanea-cavallo.svg",
